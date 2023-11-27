@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   resources :comments, only: [] do
     resources :sub_comments, only: %i[create destroy]
   end
+
+  resources :observations, only: %i[index new create]
+
 end
