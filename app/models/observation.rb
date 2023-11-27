@@ -7,6 +7,4 @@ class Observation < ApplicationRecord
   validates :location, presence: true
   validates :description, presence: true
   validates :dangerosity, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
-  validates_presence_of :user
-  validates_presence_of :category
 end
