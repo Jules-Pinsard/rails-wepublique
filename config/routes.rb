@@ -10,5 +10,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  resources :mesures, only: %i[index show new create update destroy] do
+    resources :comments, only: %i[create destroy]
+  end
+
+  resources :comments, only: [] do
+    resources :sub_comments, only: %i[create destroy]
+  end
+
   resources :observations, only: %i[index new create]
+
 end
