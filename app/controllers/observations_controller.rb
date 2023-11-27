@@ -5,7 +5,7 @@ class ObservationsController < ApplicationController
 
   def create
     @observation = Observation.new(params_observation)
-    @observation.save
+    @observaton.user = current_user
     if @observation.save
       redirect_to observation_path(@observation)
     else
