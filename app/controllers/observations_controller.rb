@@ -1,10 +1,15 @@
 class ObservationsController < ApplicationController
+
+  def index
+    @observations = Observation.all
+  end
+  
   def new
     @observation = Observation.new
   end
 
   def create
-    @observation = Observation.new(params_observation)
+    @observation = Observation.new(observations_params)
     @observaton.user = current_user
     if @observation.save
       redirect_to observation_path(@observation)
@@ -13,13 +18,9 @@ class ObservationsController < ApplicationController
     end
   end
 
-  def index
-    @observations = Observation.all
-  end
-
   private
 
-  def params_observation
+  def observations_params
     params.require(:observation).permit(:title, :location, :description, :dangerosity, :category)
   end
 end
