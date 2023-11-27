@@ -1,2 +1,11 @@
+<div class="container">
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<div class="row gap-4">
+<%= render partial: "shared/mesures_box", locals: {first_title: "Yo le maire", first_mesures: [Mesure.new(title:"Création d'un jardin partagé", created_at: Time.now), Mesure.new(title:"Création d'un jardin partagé", created_at: Time.now) ]} %>
+<%= render partial: "shared/mapbox" %>
+<%= render partial: "shared/mesures_box", locals: {first_title: "Yo l'utilisateur", first_mesures: [Mesure.new(title:"Réparer le rond-point central") ]} %>
+<%= render partial: "shared/mesures_box", locals: {first_title: "Yo les mesures retenues", first_mesures: [Mesure.new(title:"Réparer le rond-point central") ]} %>
+
+</div>
+</div>
