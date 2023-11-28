@@ -2,8 +2,13 @@
   justify-content: space-between;
   background: #002654;
   color: #FAFDFF;
+  padding: 0;
   a {
     color: #FAFDFF;
+  }
+  h3 {
+    font-family: 'Fasthand', cursive;
+    font-size: 36px;
   }
 }
 
@@ -12,7 +17,8 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 48px;
+  border-radius: 6px;
 }
 
 .navbar-toggler-icon {

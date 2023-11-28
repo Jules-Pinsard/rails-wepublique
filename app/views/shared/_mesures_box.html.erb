@@ -1,13 +1,17 @@
 <div class="mesure-box col-5">
   <h3><%= first_title %></h3>
   <% first_mesures.each do |mesure| %>
-    <div class="item">
-      <h5><%= mesure.title %></h5>
-      <p>Discuté depuis: <%#= mesure.created_at.strftime("%a %b %e at %l:%M %p") %> </p>
-      <div class="votes">
-      <p><%= mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up me-1"></i>
-      <p><%= mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down"></i>
+    <%# <% link_to mesure do %>
+      <div class="item">
+        <h5><%= mesure.title %></h5>
+        <% if mesure.status == "En cours de concertation" %>
+        <p>Discuté depuis: <%= mesure.created_at.strftime("%a %b %e at %l:%M %p") %> </p>
+        <% end %>
+        <div class="votes">
+        <p><%= mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up me-1"></i>
+        <p><%= mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down"></i>
+        </div>
       </div>
-    </div>
+    <%# <% end %>
   <% end %>
 </div>
