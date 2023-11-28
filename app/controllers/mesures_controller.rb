@@ -4,6 +4,7 @@ class MesuresController < ApplicationController
 
   def index
     @mesures = Mesure.all
+    @comments = Comment.all
   end
 
   def show
@@ -17,7 +18,7 @@ class MesuresController < ApplicationController
   def create
     @mesure = Mesure.new(mesures_params)
     @mesure.user = current_user
-    @mesure.status = "En cours de concertation"
+    @mesure.status = "En cours de concertation" if @mesure.status.empty?
     if @mesure.save
       redirect_to mesure_path(@mesure)
     else

@@ -11,5 +11,5 @@ class Observation < ApplicationRecord
   validates :location, presence: true
   validates :description, presence: true
   validates :category, presence: true
-  validates :dangerosity, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
+  validates :dangerosity, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
 end
