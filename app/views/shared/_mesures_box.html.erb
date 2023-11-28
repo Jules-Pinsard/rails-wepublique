@@ -8,8 +8,8 @@
           <p>Discuté depuis: <%#= mesure.created_at.strftime("%a %b %e at %l:%M %p") %> </p>
         <% end %>
         <div class="votes">
-          <p><%= mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up me-1"></i>
-          <p><%= mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down"></i>
+          <p><%= mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up mx-1"></i>
+          <p><%= mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down mx-1"></i>
         </div>
       </div>
     <%# <% end %>

@@ -1,0 +1,10 @@
+<div class="blue-box col-3">
+<h4> Les derniers messages</h4>
+<% comments.each do |comment| %>
+  <%= link_to comment.mesure, class:"item" do  %>
+      <h6><%= comment.user.first_name %> <%= comment.user.first_name %> :</h6>
+      <p>"<%= comment.content.slice(0..50) %>"</p>
+      <p><%#= (Time.now - comment.created_at).strftime('%M') %> minutes ago</p>
+  <% end %>
+<% end %>
+</div>
