@@ -1,7 +1,8 @@
-<div class="mesure-box col-5">
-  <h3>Carte des problèmes repportés</h3>
+<div class="blue-box col-md-5">
+  <h3>Carte des problèmes reportés</h3>
 <div style="width: 100%; height: 400px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <%= link_to "Afficher la carte", observations_path, class: "btn btn-primary"%>
 </div>
