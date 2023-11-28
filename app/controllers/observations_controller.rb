@@ -1,4 +1,5 @@
 class ObservationsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index]
   def index
     @observations = Observation.all
   end

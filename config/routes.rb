@@ -19,5 +19,4 @@ Rails.application.routes.draw do
   end
 
   resources :observations, only: %i[index new create]
-
 end
