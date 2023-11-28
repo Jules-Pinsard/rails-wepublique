@@ -1,9 +1,15 @@
-<div class="container">
-<div class="row gap-4">
-<%= render partial: "shared/mesures_box", locals: {first_title: "Yo le maire", first_mesures: [Mesure.new(title:"Création d'un jardin partagé", created_at: Time.now), Mesure.new(title:"Création d'un jardin partagé", created_at: Time.now) ]} %>
-<%= render partial: "shared/mapbox" %>
-<%= render partial: "shared/mesures_box", locals: {first_title: "Yo l'utilisateur", first_mesures: [Mesure.new(title:"Réparer le rond-point central") ]} %>
-<%= render partial: "shared/mesures_box", locals: {first_title: "Yo les mesures retenues", first_mesures: [Mesure.new(title:"Réparer le rond-point central") ]} %>
 
-</div>
+<div class="row gap-4">
+  <%# if current_user.mayor %>
+  <%= render partial: "shared/mesures_box", locals: {first_title: "Vos mesures", first_mesures: [Mesure.new(title:"Création d'un jardin partagé", created_at: Time.now), Mesure.new(title:"Création d'un jardin partagé", created_at: Time.now) ]} %>
+  <%= render partial: "shared/mapbox" %>
+  <%= render partial: "shared/mesures_box", locals: {first_title: "Les mesures citoyennes", first_mesures: [Mesure.new(title:"Réparer le rond-point central") ]} %>
+  <%= render partial: "shared/mesures_box", locals: {first_title: "Yo les mesures retenues", first_mesures: [Mesure.new(title:"Réparer le rond-point central") ]} %>
+  <%# else %>
+  <%#= render partial: "shared/mesures_box", locals: {first_title: "Les mesures du maire", first_mesures: [Mesure.new(title:"Création d'un jardin partagé", created_at: Time.now), Mesure.new(title:"Création d'un jardin partagé", created_at: Time.now) ]} %>
+  <%#= render partial: "shared/mapbox" %>
+  <%#= render partial: "shared/mesures_box", locals: {first_title: "Les mesures citoyennes", first_mesures: [Mesure.new(title:"Réparer le rond-point central") ]} %>
+  <%#= render partial: "shared/mesures_box", locals: {first_title: "Yo les mesures retenues", first_mesures: [Mesure.new(title:"Réparer le rond-point central") ]} %>
+  <%# end %>
+
 </div>

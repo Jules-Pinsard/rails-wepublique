@@ -3,12 +3,21 @@
   background: #002654;
   color: #FAFDFF;
   padding: 0;
+  position: sticky;
+  top: 0px;
+  z-index: 1 ;
   a {
     color: #FAFDFF;
   }
   h3 {
     font-family: 'Fasthand', cursive;
     font-size: 36px;
+  }
+  .nav-link:hover {
+    color:#BAD7E9;
+  }
+  .navbar-brand:hover {
+    color: #FAFDFF;
   }
 }
 

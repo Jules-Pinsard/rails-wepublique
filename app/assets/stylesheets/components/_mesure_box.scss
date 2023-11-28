@@ -6,6 +6,7 @@
   margin-top: 16px;
   margin-bottom: 16px;
   flex-grow: 1;
+  position: relative;
 
   p {
     font-size: 12px;
@@ -42,5 +43,11 @@
     p {
       margin: 0;
     }
+  }
+  .btn-primary {
+    position:absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 12px;
   }
 }
