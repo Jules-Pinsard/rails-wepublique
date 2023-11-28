@@ -58,10 +58,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_164514) do
   end
 
   create_table "sub_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "comment_id"
+    t.text "content"
+    t.bigint "comment_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_sub_comments_on_comment_id"
+    t.index ["user_id"], name: "index_sub_comments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,4 +102,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_164514) do
   add_foreign_key "comments", "users"
   add_foreign_key "mesures", "users"
   add_foreign_key "observations", "users"
+  add_foreign_key "sub_comments", "comments"
+  add_foreign_key "sub_comments", "users"
 end

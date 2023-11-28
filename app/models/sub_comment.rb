@@ -1,7 +1,6 @@
-class Comment < ApplicationRecord
+class SubComment < ApplicationRecord
   belongs_to :user
-  belongs_to :mesure
-  has_many :sub_comments
+  belongs_to :comment
 
   acts_as_votable
 
