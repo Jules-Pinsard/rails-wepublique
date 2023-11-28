@@ -1,8 +1,11 @@
-
-<%= simple_form_for @mesure do |f| %>
-  <%= f.input :title %>
-  <%= f.input :content %>
-  <%= f.association :category %>
-  <%= f.input :photo, as: :file %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+<h2 class='text-center mt-3'>Ajoutez une nouvelle mesure</h2>
+  <div class="container w-50">
+    <%= simple_form_for @mesure do |f| %>
+      <%= f.input :title %>
+      <%= f.input :content %>
+      <%= f.association :category %>
+  <div class="form-actions mt-5 mb-3 text-center">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
