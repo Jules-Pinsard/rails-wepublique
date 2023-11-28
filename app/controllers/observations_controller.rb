@@ -1,9 +1,8 @@
 class ObservationsController < ApplicationController
-
   def index
     @observations = Observation.all
   end
-  
+
   def new
     @observation = Observation.new
   end
