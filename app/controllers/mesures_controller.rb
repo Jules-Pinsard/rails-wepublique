@@ -2,7 +2,7 @@ class MesuresController < ApplicationController
   before_action :find_mesure, only: %i[show update destroy]
 
   def index
-    @mesures = Mesures.all
+    @mesures = Mesure.all
   end
 
   def show
