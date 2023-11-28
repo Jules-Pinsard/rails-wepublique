@@ -4,5 +4,7 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+  <%= link_to "Faire une observation", new_observation_path, class: "btn btn-danger"%>
   <%= link_to "Afficher la carte", observations_path, class: "btn btn-primary"%>
 </div>

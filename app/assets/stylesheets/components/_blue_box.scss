@@ -28,6 +28,7 @@
 
   h3 {
     text-align: center;
+    background-color: #F6FBFF ;
   }
   .item {
     display: flex;
@@ -50,11 +51,22 @@
     right: 12px;
     font-size: 12px;
   }
-  .mapboxgl-ctrl-attrib.mapboxgl-compact {
-    display: none;
+
+  .btn-danger {
+    position:absolute;
+    bottom: 12px;
+    left: 12px;
+    font-size: 12px;
   }
+
 }
 .fa-thumbs-down {
   color: $red;
 }
+.mapboxgl-ctrl-attrib.mapboxgl-compact {
+    display: none;
+  }
 
+a.mapboxgl-ctrl-logo {
+  display: none;
+}
