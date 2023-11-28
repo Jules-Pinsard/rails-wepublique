@@ -1,2 +1,5 @@
-<h1>Mesures#index</h1>
-<p>Find me in app/views/mesures/index.html.erb</p>
+  <%= link_to "Ajouter une mesure", new_mesure_path, class:"btn btn-primary mt-3" %>
+<div class="row gap-4">
+  <%= render partial: "shared/small_mesure_card", locals: {mesure: Mesure.new(title:"Réparer le rond-point central", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mauris diam, suscipit mattis dolor a, iaculis sagittis arcu. Etiam dignissim, sem a pulvinar scelerisque, tellus nulla tempor dui, a sodales lorem justo eget ipsum. Nulla vitae ex a neque pharetra pulvinar.")} %>
+  <%= render partial: "shared/notification_tab" %>
+</div>

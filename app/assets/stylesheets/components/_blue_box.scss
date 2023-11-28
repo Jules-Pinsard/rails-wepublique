@@ -1,4 +1,4 @@
-.mesure-box {
+.blue-box {
   background-color: #BAD7E9;
   color: #002654;
   border-radius: 4px;
@@ -46,8 +46,11 @@
   }
   .btn-primary {
     position:absolute;
-    bottom: 8px;
-    right: 8px;
+    bottom: 12px;
+    right: 12px;
     font-size: 12px;
+  }
+  .mapboxgl-ctrl-attrib.mapboxgl-compact {
+    display: none;
   }
 }
