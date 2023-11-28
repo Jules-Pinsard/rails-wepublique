@@ -1,0 +1,46 @@
+.mesure-box {
+  background-color: #BAD7E9;
+  color: #002654;
+  border-radius: 4px;
+  padding: 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  flex-grow: 1;
+
+  p {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: lighter;
+  }
+
+  .votes {
+    display: flex;
+    width: 60px;
+    font-size: 16px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h3 {
+    text-align: center;
+  }
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F6FBFF;
+    padding: 4px 8px 4px 16px;
+    margin-top: 4px;
+    flex-grow: 1;
+    h5 {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
