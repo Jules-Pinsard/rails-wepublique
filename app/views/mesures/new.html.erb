@@ -1,2 +1,10 @@
 <h1>Mesures#new</h1>
 <p>Find me in app/views/mesures/new.html.erb</p>
+
+<%= simple_form_for @mesure do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.input :category %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
