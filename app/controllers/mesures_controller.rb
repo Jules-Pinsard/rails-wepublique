@@ -8,7 +8,7 @@ class MesuresController < ApplicationController
   end
 
   def show
-    @mesure
+    @comments = Comment.includes(:sub_comments).where(mesure: @mesure)
   end
 
   def new

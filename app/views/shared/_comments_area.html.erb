@@ -1,0 +1,12 @@
+ <%= render partial: "shared/comment", locals: {comments: @comments } %>
+
+<script>
+  function toggleSubComments(commentId) {
+    var subCommentsContainer = document.getElementById('sub-comments-container-' + commentId);
+    if (subCommentsContainer.style.display === 'none') {
+      subCommentsContainer.style.display = 'block';
+    } else {
+      subCommentsContainer.style.display = 'none';
+    }
+  }
+</script>
