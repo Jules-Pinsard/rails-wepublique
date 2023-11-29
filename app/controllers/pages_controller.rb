@@ -5,7 +5,8 @@ class PagesController < ApplicationController
     @markers = Observation.all.geocoded.map do |observation|
       {
         lat: observation.latitude,
-        lng: observation.longitude
+        lng: observation.longitude,
+        info_window_html: render_to_string(partial: "shared/observation_window", locals: {observation: observation})
       }
     end
     mayor = User.where(mayor: true)
