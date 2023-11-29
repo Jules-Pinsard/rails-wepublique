@@ -2,18 +2,18 @@
 <div class="m-0 row g-2">
   <div class="col-8">
     <div class="blue-box">
-      <h2><%= @mesure.title %></h2>
-      <h3>
+      <h2 class="text-center"><%= @mesure.title %></h2>
         <p class="text-start"> <%= @mesure.category %> </p>
-        <p class="text-start"> <%= @mesure.content %></p>
+      <h3 class="border border-black">
+        <p class="text-start text-wrap"> <%= @mesure.content %></p>
       <h3>
     </div>
   </div>
   <div class="col-4">
     <div class="blue-box">
       <div class="votes">
-        <p><%= @mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up mx-1"></i>
-        <p><%= @mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down mx-1"></i>
+        <p><%= @mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up fa-2xl mx-1"></i>
+        <p><%= @mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down fa-2xl mx-1"></i>
       </div>
     </div>
   </div>
