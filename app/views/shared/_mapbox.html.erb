@@ -1,14 +1,13 @@
 <div class="col-6">
   <div class="blue-box">
-    <h3>Carte des problèmes reportés</h3>
+    <h3><%= title %></h3>
     <div style="width: 100%; height: 400px;"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     <div class="position-bottom-map">
-      <%= link_to "Faire une observation", new_observation_path, class: "btn btn-danger z-1" %>
-      <%= link_to "Afficher la carte", observations_path, class: "btn btn-primary z-2" %>
+      <%= link_to "Faire une observation", new_observation_path, class: "btn btn-danger" if btn_red%>
     </div>
   </div>
 </div>
