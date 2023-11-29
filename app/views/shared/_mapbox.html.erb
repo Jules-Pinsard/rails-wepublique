@@ -6,7 +6,7 @@
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-    <div class="position-bottom-map">
+    <div class="position-bottom-map justify-content-between">
       <%= link_to "Faire une observation", new_observation_path, class: "btn btn-danger" if btn_red%>
     </div>
   </div>

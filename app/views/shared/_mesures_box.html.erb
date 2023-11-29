@@ -1,6 +1,7 @@
 <div class="col-6 d-flex">
   <div class="blue-box">
     <h3><%= title %></h3>
+    <div class="mb-5 pb-2">
       <% mesures.each do |mesure| %>
         <%= link_to mesure do %>
           <div class="item">
@@ -15,8 +16,9 @@
           </div>
         <% end %>
       <% end %>
-      <div class="position-map-bottom">
-        <%= link_to "Afficher plus", mesures_path, class: "btn btn-primary"  %>
-      </div>
+    </div>
+    <div class="position-bottom-map justify-content-end">
+      <%= link_to "Afficher plus", mesures_path, class: "btn btn-primary"  %>
+    </div>
   </div>
 </div>
