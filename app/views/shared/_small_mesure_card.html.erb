@@ -1,14 +1,15 @@
-<div class="blue-box col-8 ">
+<div class="col-8">
+  <div class="blue-box">
     <% mesures.each do |mesure| %>
       <%= link_to mesure do %>
         <div class="item">
           <h3><%= mesure.title %></h3>
           <div class="d-flex">
-          <p class="date">Discuté depuis le <%= mesure.created_at.strftime("%e %b à %H:%M") %> </p>
-          <div class="votes">
-            <p><%= mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up mx-1"></i>
-            <p><%= mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down mx-1"></i>
-          </div>
+            <p class="date">Discuté depuis le <%= mesure.created_at.strftime("%e %b à %H:%M") %> </p>
+            <div class="votes">
+              <p><%= mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up mx-1"></i>
+              <p><%= mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down mx-1"></i>
+            </div>
           </div>
         </div>
         <div class="item mt-0 mb-2">
@@ -16,4 +17,5 @@
         </div>
       <% end %>
     <% end %>
+  </div>
 </div>

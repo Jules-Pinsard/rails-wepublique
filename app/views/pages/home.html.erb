@@ -1,4 +1,4 @@
-<div class="row gap-4">
+<div class="m-0 row g-2">
   <% if current_user && current_user.mayor %>
   <%= render partial: "shared/mesures_box", locals: {title: "Vos mesures", mesures: @mayor_mesures} %>
   <%= render partial: "shared/mapbox", locals: {title: "Carte des problèmes reportés", btn_red: true, btn_blue: true} %>
@@ -6,9 +6,8 @@
   <%= render partial: "shared/mesures_box", locals: {title: "Yo les mesures retenues", mesures: @mesures_retenues} %>
   <% else %>
   <%= render partial: "shared/mesures_box", locals: {title: "Les mesures du maire", mesures: @mayor_mesures} %>
-  <%= render partial: "shared/mapbox" %>
+  <%= render partial: "shared/mapbox", locals: {title: "Carte des problèmes reportés", btn_red: true, btn_blue: true} %>
   <%= render partial: "shared/mesures_box", locals: {title: "Les mesures citoyennes", mesures: @mesures} %>
   <%= render partial: "shared/mesures_box", locals: {title: "Yo les mesures retenues", mesures: @mesures_retenues} %>
   <% end %>
-
 </div>

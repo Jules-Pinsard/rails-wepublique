@@ -1,17 +1,19 @@
-<div class="blue-box col-3">
-<h4> Les derniers messages</h4>
-<% comments.each do |comment| %>
-  <%= link_to comment.mesure, class:"small-white-item" do  %>
-      <h6 class="name"><%= comment.user.first_name[0] %>. <%= comment.user.last_name %> </h6>
-      <p class="col-6">"<%= comment.content.slice(0..30) %>..."</p>
-      <% minutes = ((Time.now - comment.created_at)/60).round %>
-      <%if minutes < 60 %>
-      <p class="time">Il y a <%= minutes %> min</p>
-      <% elsif (minutes/60).round < 24%>
-      <p class="time">Il y a <%= (minutes/60).round %> h </p>
-      <% else %>
-      <p class="time">Il y a <%= (minutes/60/24).round %> j </p>
+<div class="col-4">
+  <div class="blue-box">
+    <h4> Les derniers messages</h4>
+    <% comments.each do |comment| %>
+      <%= link_to comment.mesure, class:"small-white-item" do  %>
+        <h6 class="name"><%= comment.user.first_name[0] %>. <%= comment.user.last_name %> </h6>
+        <p class="col-6">"<%= comment.content.slice(0..30) %>..."</p>
+        <% minutes = ((Time.now - comment.created_at)/60).round %>
+        <% if minutes < 60 %>
+        <p class="time">Il y a <%= minutes %> min</p>
+        <% elsif (minutes/60).round < 24%>
+        <p class="time">Il y a <%= (minutes/60).round %> h </p>
+        <% else %>
+        <p class="time">Il y a <%= (minutes/60/24).round %> j </p>
+        <% end %>
       <% end %>
-  <% end %>
-<% end %>
+    <% end %>
+  </div>
 </div>
