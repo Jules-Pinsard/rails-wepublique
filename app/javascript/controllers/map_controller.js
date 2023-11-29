@@ -16,8 +16,18 @@ export default class extends Controller {
     })
     this.#addMarkersToMap()
     this.map.on('click', (e) => {
-      document.getElementById("observation_latitude").value = e.lngLat.wrap()["lat"]
-      document.getElementById("observation_longitude").value = e.lngLat.wrap()["lng"]
+      const lat = e.lngLat.wrap()["lat"]
+      const long = e.lngLat.wrap()["lng"]
+      console.log(lat);
+      document.getElementById("observation_latitude").value = lat
+      document.getElementById("observation_longitude").value = long
+       const location = document.getElementById("observation_location")
+       location.placeholder = "Position déjà placée sur la carte"
+       location.disabled = true
+      new mapboxgl.Marker()
+        .setLngLat([ long, lat ])
+        .setPopup(new mapboxgl.Popup().setHTML("<h5>La position choisie</h5>"))
+        .addTo(this.map)
       });
   }
 

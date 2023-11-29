@@ -1,7 +1,7 @@
 class Observation < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
-  before_validation :get_location_with_coordinate
+  before_validation :location_with_coordinate
 
   belongs_to :user
   belongs_to :category
@@ -16,7 +16,7 @@ class Observation < ApplicationRecord
 
   private
 
-  def get_location_with_coordinate
-    self.location = Geocoder.search([latitude, longitude]) if location.nil?
+  def location_with_coordinate
+    self.location = Geocoder.search([latitude, longitude]) if location.nil? && (!latitude.nil? && !longitude.nil?)
   end
 end
