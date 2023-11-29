@@ -3,10 +3,8 @@
   color: #002654;
   border-radius: 4px;
   padding: 12px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  flex-grow: 1;
   position: relative;
+  width: 100%;
 
   p {
     font-size: 12px;
@@ -45,19 +43,19 @@
       margin: 0;
     }
   }
-  .btn-primary {
-    position:absolute;
-    bottom: 12px;
-    right: 12px;
-    font-size: 12px;
-  }
+  // .btn-primary {
+  //   position:absolute;
+  //   bottom: 12px;
+  //   right: 12px;
+  //   font-size: 12px;
+  // }
 
-  .btn-danger {
-    position:absolute;
-    bottom: 12px;
-    left: 12px;
-    font-size: 12px;
-  }
+  // .btn-danger {
+  //   position:absolute;
+  //   bottom: 12px;
+  //   left: 12px;
+  //   font-size: 12px;
+  // }
 
   a {
     text-decoration: none;
@@ -91,4 +89,13 @@ a.mapboxgl-ctrl-logo {
     margin: 0;
     font-size: 8px;
   }
+}
+
+.position-bottom-map {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
 }

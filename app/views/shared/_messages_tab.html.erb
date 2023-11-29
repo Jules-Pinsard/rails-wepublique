@@ -1,10 +1,12 @@
-<div class="blue-box col-3">
-<h4> Les derniers messages</h4>
-<% comments.each do |comment| %>
-  <%= link_to comment.mesure, class:"small-white-item" do  %>
-      <h6 class="name"><%= comment.user.first_name[0] %>. <%= comment.user.last_name %> </h6>
-      <p>"<%= comment.content.slice(0..50) %>"</p>
-      <p class="time"><%= (Time.now - comment.created_at).minutes%> minutes ago</p>
+<div class="col-4">
+  <div class="blue-box">
+  <h4> Les derniers messages</h4>
+  <% comments.each do |comment| %>
+    <%= link_to comment.mesure, class:"small-white-item" do  %>
+        <h6 class="name"><%= comment.user.first_name[0] %>. <%= comment.user.last_name %> </h6>
+        <p>"<%= comment.content.slice(0..50) %>"</p>
+        <p class="time"><%= (Time.now - comment.created_at).minutes%> minutes ago</p>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
 </div>

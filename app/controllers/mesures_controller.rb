@@ -39,7 +39,7 @@ class MesuresController < ApplicationController
   private
 
   def find_mesure
-    @mesure = Mesure.find(params[:trip_id])
+    @mesure = Mesure.find(params[:id])
   end
 
   def mesures_params
