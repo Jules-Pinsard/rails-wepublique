@@ -6,21 +6,30 @@ class ObservationsController < ApplicationController
 
   def new
     @observation = Observation.new
+    @markers = Observation.all.geocoded.map do |observation|
+      {
+        lat: observation.latitude,
+        lng: observation.longitude
+      }
+    end
   end
 
   def create
     @observation = Observation.new(observations_params)
-    @observaton.user = current_user
+    category = Category.find(params[:observation][:category_id])
+    @observation.category = category
+    @observation.user = current_user
     if @observation.save
-      redirect_to observation_path(@observation)
+      redirect_to observations_path
     else
       render :new, status: :unprocessable_entity
+      raise
     end
   end
 
   private
 
   def observations_params
-    params.require(:observation).permit(:title, :location, :description, :dangerosity, :category)
+    params.require(:observation).permit(:title, :location, :description, :dangerosity, :latitude, :longitude, :category_id)
   end
 end

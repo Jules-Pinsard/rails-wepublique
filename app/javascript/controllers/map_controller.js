@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl'
 
 export default class extends Controller {
-  static values = {
+    static values = {
     apiKey: String,
     markers: Array
   }
@@ -15,6 +15,10 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
     this.#addMarkersToMap()
+    this.map.on('click', (e) => {
+      document.getElementById("observation_latitude").value = e.lngLat.wrap()["lat"]
+      document.getElementById("observation_longitude").value = e.lngLat.wrap()["lng"]
+      });
   }
 
   #addMarkersToMap() {
