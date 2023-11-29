@@ -3,10 +3,8 @@
   color: #002654;
   border-radius: 4px;
   padding: 12px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  flex-grow: 1;
   position: relative;
+  width: 100%;
 
   p {
     font-size: 12px;
@@ -61,19 +59,6 @@
       margin: 0;
     }
   }
-  .btn-primary {
-    position:absolute;
-    bottom: 12px;
-    right: 12px;
-    font-size: 12px;
-  }
-
-  .btn-danger {
-    position:absolute;
-    bottom: 12px;
-    left: 12px;
-    font-size: 12px;
-  }
 
   a {
     text-decoration: none;
@@ -85,6 +70,9 @@
   .btn-link:hover {
     background-color: #BBD7E9;
     border-radius: 10px;
+
+  .date {
+    width: 200px;
   }
 }
 .fa-thumbs-down {
@@ -108,12 +96,24 @@ a.mapboxgl-ctrl-logo {
   flex-grow: 1;
   .name {
     margin: 0;
+    font-size: 14px;
+  }
+  p {
     font-size: 12px;
-  }
-  .minute {
     margin: 0;
-    font-size: 8px;
   }
+  .time {
+    font-size: 10px;
+    width: 50px;
+  }
+}
+
+.position-bottom-map {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
 }
 
 .comment {

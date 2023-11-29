@@ -1,0 +1,7 @@
+<h5><%= observation.title %></h5>
+<div class="row gap-4">
+<p class="col 5">Reporté par <%= observation.user.first_name %> <%= observation.user.last_name %></p>
+<p class="col 5"> le <%= observation.created_at.strftime("%e %b %Y") %></p>
+</div>
+<p> <%= observation.description %></p>
+
