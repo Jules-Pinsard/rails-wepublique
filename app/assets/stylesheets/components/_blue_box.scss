@@ -62,7 +62,9 @@
   a {
     text-decoration: none;
   }
-
+  .date {
+    width: 200px;
+  }
 }
 .fa-thumbs-down {
   color: $red;
@@ -85,10 +87,14 @@ a.mapboxgl-ctrl-logo {
   flex-grow: 1;
   .name {
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
   }
-  .minute {
+  p {
+    font-size: 12px;
     margin: 0;
-    font-size: 8px;
+  }
+  .time {
+    font-size: 10px;
+    width: 50px;
   }
 }
