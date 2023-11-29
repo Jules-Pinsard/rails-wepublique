@@ -9,9 +9,9 @@ class PagesController < ApplicationController
       }
     end
     mayor = User.where(mayor: true)
-    @mayor_mesure = Mesure.where(user: mayor)
-    @mesures_discussed = Comment.last(10).map(&:mesure)
-    @retenues = Mesure.where(status: "Validé")
+    @mayor_mesures = Mesure.where(user: mayor)
+    @mesures = Comment.last(10).map(&:mesure)
+    @mesures_retenues = Mesure.where(status: "Validé")
   end
 
 end
