@@ -39,7 +39,7 @@ Category.create!([{ name: "Mobilier" },
                   { name: "Tourisme" },
                   { name: "Autre" }])
 
-(1..30).times do
+30.times do
   Mesure.create!(
     title: Faker::Lorem.sentence(word_count: 5),
     content: Faker::Lorem.sentence,
@@ -49,7 +49,7 @@ Category.create!([{ name: "Mobilier" },
   )
 end
 
-(1..30).times do
+30.times do
   Observation.create!(
     title: Faker::Lorem.sentence,
     location: Faker::Address.city,
@@ -60,7 +60,7 @@ end
   )
 end
 
-(1..100).times do
+100.times do
   Comment.create!(
     content: Faker::Lorem.sentence,
     user: User.all.sample,
@@ -68,7 +68,7 @@ end
   )
 end
 
-(1..100).times do
+100.times do
   SubComment.create!(
     content: Faker::Lorem.sentence,
     user: User.all.sample,

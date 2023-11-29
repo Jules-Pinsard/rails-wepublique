@@ -4,7 +4,7 @@ class MesuresController < ApplicationController
 
   def index
     @mesures = Mesure.all
-    @comments = Comment.all
+    @comments = Comment.all.last(10)
   end
 
   def show
@@ -16,11 +16,13 @@ class MesuresController < ApplicationController
   end
 
   def create
+    @category = Category.find(params[:mesure][:category_id])
     @mesure = Mesure.new(mesures_params)
+    @mesure.category = @category
     @mesure.user = current_user
-    @mesure.status = "En cours de concertation" if @mesure.status.empty?
+    @mesure.status = "En cours de concertation"
     if @mesure.save
-      redirect_to mesure_path(@mesure)
+      redirect_to mesures_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,6 +43,6 @@ class MesuresController < ApplicationController
   end
 
   def mesures_params
-    params.require(:mesure).permit(:title, :content, :category)
+    params.require(:mesure).permit(:title, :content, :category_id)
   end
 end
