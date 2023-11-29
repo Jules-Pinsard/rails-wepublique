@@ -5,7 +5,7 @@
   padding: 12px;
   position: relative;
   width: 100%;
-
+  box-shadow: 1px 1px 5px #BAD7E9;
   p {
     font-size: 12px;
     font-style: italic;
@@ -86,8 +86,11 @@ a.mapboxgl-ctrl-logo {
 
 .position-bottom-map {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
   display: flex;
+  .btn {
+    font-size: 12px;
+  }
 }
