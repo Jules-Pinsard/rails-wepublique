@@ -42,12 +42,15 @@
 
   h3 {
     text-align: center;
-    background-color: #F6FBFF ;
+    background-color: #F6FBFF;
+    border-radius: 8px;
   }
 
   h4 {
     background-color: #F6FBFF ;
     min-height: 200px;
+    border-radius: 5px;
+    border: 1px solid black;
   }
 
   .item {
@@ -100,6 +103,7 @@ a.mapboxgl-ctrl-logo {
   padding: 4px 8px 4px 8px;
   margin-top: 4px;
   flex-grow: 1;
+  border-radius: 8px;
   .name {
     margin: 0;
     font-size: 14px;

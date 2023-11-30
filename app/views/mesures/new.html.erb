@@ -1,3 +1,4 @@
+<%= link_to "Retour à la liste", mesures_path, class:"btn btn-primary mt-3" %>
 <h2 class='text-center mt-3'>Ajoutez une nouvelle mesure</h2>
   <div class="container col-6">
     <%= simple_form_for @mesure do |f| %>
@@ -5,7 +6,7 @@
       <%= f.input :content %>
       <%= f.association :category %>
   <div class="form-actions mt-5 mb-3 text-center">
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.button :submit, value:'Créer une mesure', class: "btn btn-primary" %>
   </div>
   <% end %>
 </div>

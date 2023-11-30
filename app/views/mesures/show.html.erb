@@ -9,13 +9,13 @@
       <h2 class="text-start"><%= @mesure.title %></h2>
         <p class="text-start fs-4 ">catégorie: <%= @mesure.category.name %> </p>
         <div class="col-8">
-          <h4 class="rounded">
+          <h4>
         <p class="text-start text-wrap fs-6"> <%= @mesure.content %></p>
           </h4>
         </div>
     </div>
+      <%= render partial: "shared/comments_area", locals: {comments: @comments } %>
   </div>
-  <div class="mt-2">
-  <%= render partial: "shared/comments_area", locals: {comments: @comments } %>
-  </div>
+    <%# <div class="mt-2"> %>
+    <%# </div> %>
 </div>
