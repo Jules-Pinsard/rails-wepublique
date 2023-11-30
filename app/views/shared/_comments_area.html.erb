@@ -1,4 +1,7 @@
- <%= render partial: "shared/comment", locals: {comments: @comments } %>
+<div class="col-8">
+  <%= render partial: "shared/comment", locals: {comments: @comments } %>
+</div>
+
 
 <script>
   function toggleSubComments(commentId) {
@@ -9,4 +12,9 @@
       subCommentsContainer.style.display = 'none';
     }
   }
+
+function toggleReplyForm(commentId) {
+  var formContainer = document.getElementById('reply-form-container-' + commentId);
+  formContainer.style.display = (formContainer.style.display === 'none') ? 'block' : 'none';
+}
 </script>

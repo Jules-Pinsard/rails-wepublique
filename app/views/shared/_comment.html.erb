@@ -1,24 +1,54 @@
 <div class="blue-box col-md-8">
+  <%= simple_form_for [@mesure, @comment] do |f| %>
+    <%= f.input :content, label: 'Votre commentaire' %>
+    <div class="form-actions my-2 text-end">
+      <%= f.button :submit, "Envoyer", class: "btn btn-primary" %>
+    </div>
+  <% end %>
   <h5><%= comments.count %> commentaires</h5>
   <% comments.each do |comment| %>
-    <div class="row comment">
-      <div class="comment">
-        <h6 class="name"><%= comment.user.first_name[0] %>. <%= comment.user.last_name %> </h6>
-        <p class="comment-content"><%= comment.content %></p>
-        <p class="time"><%= (Time.now - comment.created_at).minutes%> minutes ago</p>
-          <div class="votes">
-            <p class="votes-medium"><%= comment.votes_for.size %></p><i class="fa-regular fa-thumbs-up"></i>
-            <p class="votes-medium"><%= comment.get_downvotes.size %></p><i class="fa-regular fa-thumbs-down"></i>
-          </div>
+    <div class="comment-area">
+      <div class="user-name-time-comment">
+        <h6 class="name-comment"><%= comment.user.first_name %> <%= comment.user.last_name %> </h6>
+        <p class="time-comment">
+          <% minutes = ((Time.now - comment.created_at)/60).round %>
+          <% if minutes < 60 %>
+            <p class="time">Il y a <%= minutes %> min</p>
+          <% elsif (minutes/60).round < 24%>
+            <p class="time">Il y a <%= (minutes/60).round %> h </p>
+          <% else %>
+            <p class="time">Il y a <%= (minutes/60/24).round %> j </p>
+          <% end %>
+        </p>
+      </div>
+      <p class="content"><%= comment.content %></p>
+      <div class="answers-like">
+        <div class="answers">
+          <% if comment.sub_comments.present? %>
+            <button class="btn btn-link btn-sm" onclick="toggleSubComments(<%= comment.id %>)"><%= comment.sub_comments.count %> réponses</button>
+          <% end %>
+        </div>
+        <div class="votes">
+          <button class="btn btn-link btn-sm" onclick="toggleReplyForm(<%= comment.id %>)">Répondre</button>
+          <div class="comment-votes"><%= comment.votes_for.size %><i class="fa-regular fa-thumbs-up m-2"></i></div>
+          <div class="comment-votes"><%= comment.get_downvotes.size %><i class="fa-regular fa-thumbs-down m-2"></i></div>
+        </div>
       </div>
     </div>
-    <div class="answers">
-      <% if comment.sub_comments.present? %>
-        <button class="btn btn-link" onclick="toggleSubComments(<%= comment.id %>)"><%= comment.sub_comments.count %> réponses</button>
-      <% end %>
-      <div id="sub-comments-container-<%= comment.id %>" style="display: none;">
-        <%= render partial: "shared/sub_comment", locals: {sub_comments: comment.sub_comments } %>
+    <div id="reply-form-container-<%= comment.id %>" style="display: none" class="col-md-12 sub-comment-area flex-end">
+      <div class="row justify-content-end">
+        <div class="col-10">
+          <%= simple_form_for [comment, @sub_comment] do |f| %>
+            <%= f.input :content, label: 'Votre réponse' %>
+            <div class="form-actions my-2 text-end">
+              <%= f.button :submit, "Envoyer", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
       </div>
+    </div>
+    <div id="sub-comments-container-<%= comment.id %>" style="display: none;">
+      <%= render partial: "shared/sub_comment", locals: {sub_comments: comment.sub_comments } %>
     </div>
   <% end %>
 </div>
