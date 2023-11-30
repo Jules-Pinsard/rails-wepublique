@@ -1,12 +1,12 @@
-<%= link_to "Retour à la liste", mesures_path, class:"btn btn-primary mt-3" %>
+<%= link_to "Retour à la liste", mesures_path, class:"btn btn-primary mt-3 ms-1" %>
 <div class="m-0 row g-2">
   <div class="col-8">
     <div class="blue-box">
       <h2 class="text-center"><%= @mesure.title %></h2>
-        <p class="text-start"> <%= @mesure.category %> </p>
+        <p class="text-start"> <%= @mesure.category.name %> </p>
       <h3 class="border border-black">
         <p class="text-start text-wrap"> <%= @mesure.content %></p>
-      <h3>
+      </h3>
     </div>
   </div>
   <div class="col-4">
@@ -18,5 +18,6 @@
     </div>
   </div>
 </div>
-    
-<%= render partial: "shared/comments_area", locals: {comments: @comments } %>
+<div class="mt-2">
+  <%= render partial: "shared/comments_area", locals: {comments: @comments } %>
+</div>
