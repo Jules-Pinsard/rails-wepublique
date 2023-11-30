@@ -15,4 +15,10 @@ class PagesController < ApplicationController
     @mesures_retenues = Mesure.where(status: "Validé")
   end
 
+  def category
+    category = Category.find(params[:id])
+    @mesures = category.mesures
+    respond_to :json
+  end
+
 end
