@@ -16,6 +16,8 @@ allmesures = Mesure.all
 
   def show
     @comments = Comment.includes(:sub_comments).where(mesure: @mesure)
+    @comment = Comment.new
+    @sub_comment = SubComment.new
   end
 
   def new
