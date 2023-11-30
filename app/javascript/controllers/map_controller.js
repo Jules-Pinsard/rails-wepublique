@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl'
 
 export default class extends Controller {
-    static values = {
+  static values = {
     apiKey: String,
     markers: Array
   }
@@ -21,21 +21,25 @@ export default class extends Controller {
       document.getElementById("observation_latitude").value = lat
       document.getElementById("observation_longitude").value = long
       if (document.getElementById("observation_location")) {
-      const location = document.getElementById("observation_location")
-       location.placeholder = "Position déjà placée sur la carte"
-       location.disabled = true
-      new mapboxgl.Marker()
-        .setLngLat([ long, lat ])
-        .setPopup(new mapboxgl.Popup().setHTML("<h5>La position choisie</h5>"))
-        .addTo(this.map)
-      }});
+        if (this.marker) {
+          this.marker.remove()
+        }
+        const location = document.getElementById("observation_location")
+        location.placeholder = "Position déjà placée sur la carte"
+        location.disabled = true
+        this.marker = new mapboxgl.Marker()
+          .setLngLat([long, lat])
+          .setPopup(new mapboxgl.Popup().setHTML("<h5>La position choisie</h5>"))
+          .addTo(this.map)
+      }
+    });
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
+        .setLngLat([marker.lng, marker.lat])
         .setPopup(popup)
         .addTo(this.map)
     })
