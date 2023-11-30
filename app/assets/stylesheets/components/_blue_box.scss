@@ -6,6 +6,7 @@
   position: relative;
   width: 100%;
   box-shadow: 1px 1px 5px #BAD7E9;
+
   p {
     font-size: 12px;
     font-style: italic;
@@ -42,8 +43,9 @@
 
   h3 {
     text-align: center;
-    background-color: #F6FBFF ;
+    background-color: #F6FBFF;
   }
+
   .item {
     display: flex;
     justify-content: space-between;
@@ -52,9 +54,11 @@
     padding: 4px 8px 4px 16px;
     margin-top: 4px;
     flex-grow: 1;
+
     h5 {
       margin: 0;
     }
+
     p {
       margin: 0;
     }
@@ -67,20 +71,35 @@
   .btn-link {
     transition: 0.2s;
   }
+
   .btn-link:hover {
     background-color: #BBD7E9;
     border-radius: 10px;
   }
+
   .date {
     width: 200px;
   }
+
+  .page-link {
+    text-decoration: underline;
+    background-color: #F6FBFF;
+    margin-right: 4px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    align-items: center;
+  }
 }
+
 .fa-thumbs-down {
   color: $red;
 }
+
 .mapboxgl-ctrl-attrib.mapboxgl-compact {
-    display: none;
-  }
+  display: none;
+}
 
 a.mapboxgl-ctrl-logo {
   display: none;
@@ -94,14 +113,17 @@ a.mapboxgl-ctrl-logo {
   padding: 4px 8px 4px 8px;
   margin-top: 4px;
   flex-grow: 1;
+
   .name {
     margin: 0;
     font-size: 14px;
   }
+
   p {
     font-size: 12px;
     margin: 0;
   }
+
   .time {
     font-size: 10px;
     width: 50px;
@@ -114,6 +136,7 @@ a.mapboxgl-ctrl-logo {
   left: 12px;
   right: 12px;
   display: flex;
+
   .btn {
     font-size: 12px;
   }
@@ -128,20 +151,24 @@ a.mapboxgl-ctrl-logo {
   margin: 4px;
   flex-grow: 1;
   border-radius: 10px;
+
   p {
     font-size: 16px;
-      text-align: center;
-      font-style: normal;
+    text-align: center;
+    font-style: normal;
   }
+
   .name {
     margin: 0;
     font-size: 14px;
   }
+
   .time {
     margin: 0;
     font-size: 12px;
     font-style: italic;
   }
+
   .answers {
     display: flex;
   }
@@ -160,15 +187,18 @@ a.mapboxgl-ctrl-logo {
   flex-grow: 1;
   opacity: 0.8;
   border-radius: 10px;
+
   p {
     font-size: 14px;
     text-align: center;
     font-style: normal;
   }
+
   .name {
     margin: 0;
     font-size: 12px;
   }
+
   .time {
     margin: 0;
     font-size: 10px;
