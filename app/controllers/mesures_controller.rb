@@ -3,8 +3,15 @@ class MesuresController < ApplicationController
   before_action :find_mesure, only: %i[show update destroy]
 
   def index
-    @mesures = Mesure.all
-    @comments = Comment.all.last(10)
+    @page = params[:page].to_i
+allmesures = Mesure.all
+    @pages = (1..(allmesures.count / 10))
+    if @page.nil?
+      @mesures = allmesures[0..9]
+    else
+      @mesures = allmesures[((@page - 1) * 10)..((@page * 10) - 1)]
+    end
+    @comments = Comment.all.last(20)
   end
 
   def show
