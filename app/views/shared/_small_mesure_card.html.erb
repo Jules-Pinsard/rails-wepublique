@@ -20,7 +20,7 @@
       <% end %>
     <% end %>
     <div class="d-flex justify-content-end">
-      <% @pages.each do |n| %>
+      <% pages.each do |n| %>
         <div class="page-link">
           <%= link_to "#{n}", mesures_path(:page => n)%>
         </div>

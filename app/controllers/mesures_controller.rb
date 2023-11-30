@@ -4,14 +4,14 @@ class MesuresController < ApplicationController
 
   def index
     @page = params[:page].to_i
-allmesures = Mesure.all
+    allmesures = Mesure.all
     @pages = (1..(allmesures.count / 10))
     if @page.nil?
       @mesures = allmesures[0..9]
     else
       @mesures = allmesures[((@page - 1) * 10)..((@page * 10) - 1)]
     end
-    @comments = Comment.all.last(20)
+    @comments = Comment.all.last(10)
   end
 
   def show
@@ -22,6 +22,7 @@ allmesures = Mesure.all
 
   def new
     @mesure = Mesure.new
+    
   end
 
   def create
@@ -31,8 +32,7 @@ allmesures = Mesure.all
     @mesure.user = current_user
     @mesure.status = "En cours de concertation"
     if @mesure.save
-
-      redirect_to @mesure
+      redirect_to @mesure, success: "La mesure a bien été créée"
     else
       render :new, status: :unprocessable_entity
     end
