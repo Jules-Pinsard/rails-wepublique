@@ -1,15 +1,18 @@
-<div class="row gap-3">
-  <h2 class='text-center mt-3'>Ajouter une nouvelle mesure</h2>
-      <%= simple_form_for @observation, :html=> { class: 'blue-box col-4' } do |f| %>
+<div class="m-0 row g-3">
+  <h2 class='text-center mt-3'>Ajouter une nouvelle observation</h2>
+  <div class="col-6">
+    <%= simple_form_for @observation, html: { class: 'blue-box' } do |f| %>
         <%= f.input :title %>
         <%= f.input :description %>
+        <%= f.input :location, placeholder: "Entrez une adresse ou placez l'observation sur la carte" %>
         <%= f.input :dangerosity, as: :select, collection: [1,2,3,4,5] %>
         <%= f.input :latitude, as: :hidden %>
         <%= f.input :longitude, as: :hidden %>
         <%= f.association :category %>
-    <div class="form-actions mt-5 mb-3 text-center">
-      <%= f.button :submit, class: "btn btn-primary" %>
-    </div>
+      <div class="form-actions my-2 text-end">
+        <%= f.button :submit, class: "btn btn-primary" %>
+      </div>
     <% end %>
+  </div>
   <%= render partial: "shared/mapbox", locals: {title: "Localisez votre problème", btn_red: false}%>
 </div>
