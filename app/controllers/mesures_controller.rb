@@ -29,7 +29,8 @@ allmesures = Mesure.all
     @mesure.user = current_user
     @mesure.status = "En cours de concertation"
     if @mesure.save
-      redirect_to mesures_path
+
+      redirect_to @mesure
     else
       render :new, status: :unprocessable_entity
     end
