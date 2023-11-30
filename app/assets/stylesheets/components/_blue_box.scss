@@ -20,6 +20,22 @@
     align-items: center;
   }
 
+  .votes-medium {
+    display: flex;
+    width: 60px;
+    font-size: 14px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .votes-small {
+    display: flex;
+    width: 60px;
+    font-size: 12px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   img {
     width: 100%;
   }
@@ -47,6 +63,14 @@
   a {
     text-decoration: none;
   }
+
+  .btn-link {
+    transition: 0.2s;
+  }
+  .btn-link:hover {
+    background-color: #BBD7E9;
+    border-radius: 10px;
+
   .date {
     width: 200px;
   }
@@ -90,4 +114,61 @@ a.mapboxgl-ctrl-logo {
   left: 20px;
   right: 20px;
   display: flex;
+}
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F6FBFF;
+  padding: 4px 8px 4px 8px;
+  margin: 4px;
+  flex-grow: 1;
+  border-radius: 10px;
+  p {
+    font-size: 16px;
+      text-align: center;
+      font-style: normal;
+  }
+  .name {
+    margin: 0;
+    font-size: 14px;
+  }
+  .time {
+    margin: 0;
+    font-size: 12px;
+    font-style: italic;
+  }
+  .answers {
+    display: flex;
+  }
+}
+
+
+.sub-comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F6FBFF;
+  padding: 4px 8px 4px 8px;
+  margin-top: 4px;
+  margin-left: 10ch;
+  margin-right: 4px;
+  flex-grow: 1;
+  opacity: 0.8;
+  border-radius: 10px;
+  p {
+    font-size: 14px;
+    text-align: center;
+    font-style: normal;
+  }
+  .name {
+    margin: 0;
+    font-size: 12px;
+  }
+  .time {
+    margin: 0;
+    font-size: 10px;
+    font-style: italic;
+  }
 }

@@ -30,7 +30,7 @@ class SubCommentsController < ApplicationController
   end
 
   def find_mesure
-    @mesure = Mesure.find(params[:trip_id])
+    @mesure = Mesure.find(params[:id])
   end
 
   def sub_comments_params

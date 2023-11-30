@@ -1,0 +1,11 @@
+<% sub_comments.each do |sub_comment| %>
+  <div class="sub-comment">
+    <h6 class="name"><%= sub_comment.user.first_name[0] %>. <%= sub_comment.user.last_name %> </h6>
+    <p class="comment-content" ><%= sub_comment.content %></p>
+    <p class="time"><%= (Time.now - sub_comment.created_at).minutes %> minutes ago</p>
+    <div class="votes">
+      <p class="votes-small"><%= sub_comment.votes_for.size %></p><i class="fa-regular fa-thumbs-up"></i>
+      <p class="votes-small"><%= sub_comment.get_downvotes.size %></p><i class="fa-regular fa-thumbs-down"></i>
+    </div>
+  </div>
+<% end %>

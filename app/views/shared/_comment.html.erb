@@ -1,0 +1,24 @@
+<div class="blue-box col-md-8">
+  <h5><%= comments.count %> commentaires</h5>
+  <% comments.each do |comment| %>
+    <div class="row comment">
+      <div class="comment">
+        <h6 class="name"><%= comment.user.first_name[0] %>. <%= comment.user.last_name %> </h6>
+        <p class="comment-content"><%= comment.content %></p>
+        <p class="time"><%= (Time.now - comment.created_at).minutes%> minutes ago</p>
+          <div class="votes">
+            <p class="votes-medium"><%= comment.votes_for.size %></p><i class="fa-regular fa-thumbs-up"></i>
+            <p class="votes-medium"><%= comment.get_downvotes.size %></p><i class="fa-regular fa-thumbs-down"></i>
+          </div>
+      </div>
+    </div>
+    <div class="answers">
+      <% if comment.sub_comments.present? %>
+        <button class="btn btn-link" onclick="toggleSubComments(<%= comment.id %>)"><%= comment.sub_comments.count %> réponses</button>
+      <% end %>
+      <div id="sub-comments-container-<%= comment.id %>" style="display: none;">
+        <%= render partial: "shared/sub_comment", locals: {sub_comments: comment.sub_comments } %>
+      </div>
+    </div>
+  <% end %>
+</div>
