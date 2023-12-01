@@ -6,7 +6,7 @@
       <div class="item">
         <h3><%= mesure.title %></h3>
         <div class="d-flex">
-          <p class="date">Discuté depuis le <%= mesure.created_at.strftime("%e %b à %H:%M") %> </p>
+          <p class="date">Discuté depuis le <%= mesure.created_at.strftime("%e %b %Y à %H:%M") %> </p>
           <div class="votes">
             <p><%= mesure.votes_for.size %></p>
             <i class="fa-solid fa-thumbs-up mx-1"></i>

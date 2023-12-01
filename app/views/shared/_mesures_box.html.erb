@@ -8,7 +8,7 @@
             <h5><%= mesure.title %></h5>
             <div class="d-flex justify-content-end gap-1">
               <% if mesure.status == "En cours de concertation" %>
-                <p>Depuis le: <%= mesure.created_at.strftime("%e %b") %> </p>
+                <p>Depuis le: <%= mesure.created_at.strftime("%e/%m/%y") %> </p>
               <% end %>
               <div class="votes">
                 <p><%= mesure.votes_for.size %></p>

@@ -1,13 +1,10 @@
 <div class="m-0 row g-4">
   <% if current_user && current_user.mayor %>
   <%= render partial: "shared/mesures_box", locals: {title: "Vos mesures", mesures: @mayor_mesures, parameter: "maire"} %>
-  <%= render partial: "shared/mapbox", locals: {title: "Carte des problèmes reportés", btn_red: true, btn_blue: true} %>
-  <%= render partial: "shared/mesures_box", locals: {title: "Les mesures citoyennes", mesures: @mesures, parameter: "citoyennes"} %>
-  <%= render partial: "shared/mesures_box", locals: {title: "Les mesures retenues", mesures: @mesures_retenues, parameter: "retenues"} %>
   <% else %>
   <%= render partial: "shared/mesures_box", locals: {title: "Les mesures du maire", mesures: @mayor_mesures, parameter: "maire"} %>
+  <% end %>
   <%= render partial: "shared/mapbox", locals: {title: "Carte des problèmes reportés", btn_red: true, btn_blue: true} %>
   <%= render partial: "shared/mesures_box", locals: {title: "Les mesures citoyennes", mesures: @mesures, parameter: "citoyennes"} %>
   <%= render partial: "shared/mesures_box", locals: {title: "Les mesures retenues", mesures: @mesures_retenues, parameter: "retenues"} %>
-  <% end %>
 </div>
