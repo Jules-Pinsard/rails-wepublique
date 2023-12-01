@@ -1,22 +1,22 @@
-<%= link_to "Retour à la liste", mesures_path, class:"btn btn-primary mt-3" %>
+<%= link_to "Retour à la liste", mesures_path, class:"btn btn-primary mt-3 ms-1" %>
 <div class="m-0 row g-2">
-  <div class="col-8">
-    <div class="blue-box">
-      <h2 class="text-center"><%= @mesure.title %></h2>
-        <p class="text-start"> <%= @mesure.category %> </p>
-      <h3 class="border border-black">
-        <p class="text-start text-wrap"> <%= @mesure.content %></p>
-      <h3>
-    </div>
-  </div>
-  <div class="col-4">
-    <div class="blue-box">
-      <div class="votes">
+  <div class="col-12">
+    <div class="blue-box position-relative">
+      <div class="votes position-absolute top-0 end-0 me-5 mt-3">
         <p><%= @mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up fa-2xl mx-1"></i>
         <p><%= @mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down fa-2xl mx-1"></i>
       </div>
-    </div>
-  </div>
-</div>
+      <h2 class="text-start"><%= @mesure.title %></h2>
+        <p class="text-start fs-4 ">Catégorie: <%= @mesure.category.name %> </p>
+        <div class="col-8">
 
+        <p class="text-start text-wrap fs-6 description-mesure"> <%= @mesure.content %></p>
+
+        </div>
+    </div>
+      <%= render partial: "shared/comments_area", locals: {comments: @comments } %>
+  </div>
+    <%# <div class="mt-2"> %>
+    <%# </div> %>
+</div>
 <%= render partial: "shared/comments_area", locals: {mesure: @mesure, comments: @comments, comment: @comment } %>
