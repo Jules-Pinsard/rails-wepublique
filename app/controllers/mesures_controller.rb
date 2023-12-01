@@ -3,9 +3,18 @@ class MesuresController < ApplicationController
   before_action :find_mesure, only: %i[show update destroy]
 
   def index
-    @page = params[:page].to_i
-    allmesures = Mesure.all
+    @page = params[:page].to_i if params[:page]
+    allmesures = Mesure.joins(:user).where("user.mayor": true) if params[:mesures] == "maire"
+    allmesures = Mesure.all if params[:mesures] == "citoyennes"
+    allmesures = Mesure.where(status: "Validé") if params[:mesures] == "retenues"
     @pages = (1..(allmesures.count / 10))
+    @title = "Les proposition de mesure citoyennes" if params[:mesures] == "citoyennes"
+    @title = "Les mesures retenues" if params[:mesures] == "retenues"
+    if params[:mesures] == "maire" && current_user.mayor
+      @title = "Vos propositions de mesure"
+    elsif params[:mesures] == "maire"
+      @title = "Les propositions de mesure du maire "
+    end
     if @page.nil?
       @mesures = allmesures[0..9]
     else
@@ -22,7 +31,7 @@ class MesuresController < ApplicationController
 
   def new
     @mesure = Mesure.new
-    
+
   end
 
   def create
