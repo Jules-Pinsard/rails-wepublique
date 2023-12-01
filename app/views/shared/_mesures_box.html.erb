@@ -6,19 +6,23 @@
         <%= link_to mesure do %>
           <div class="item">
             <h5><%= mesure.title %></h5>
-            <% if mesure.status == "En cours de concertation" %>
-              <p>Discuté depuis le: <%= mesure.created_at.strftime("%e %b à %H:%M") %> </p>
-            <% end %>
-            <div class="votes">
-              <p><%= mesure.votes_for.size %></p><i class="fa-solid fa-thumbs-up mx-1"></i>
-              <p><%= mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down mx-1"></i>
+            <div class="d-flex justify-content-end gap-1">
+              <% if mesure.status == "En cours de concertation" %>
+                <p>Discuté depuis le: <%= mesure.created_at.strftime("%e %b à %H:%M") %> </p>
+              <% end %>
+              <div class="votes">
+                <p><%= mesure.votes_for.size %></p>
+                <i class="fa-solid fa-thumbs-up mx-1"></i>
+                <p><%= mesure.get_downvotes.size %></p>
+                <i class="fa-solid fa-thumbs-down mx-1"></i>
+              </div>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
     <div class="position-bottom-map justify-content-end">
-      <%= link_to "Afficher plus", mesures_path, class: "btn btn-primary"  %>
+      <%= link_to "Afficher plus", mesures_path(mesures: parameter), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
