@@ -1,5 +1,5 @@
 <% if current_user.mayor && mesure.status == "En cours de concertation"%>
-  <div class="d-flex gap-2">
+  <div class="d-flex gap-2 justify-content-end">
     <%= link_to "Valider cette mesure", mesure_path(mesure, m: "Validé"), class:"btn btn-primary",data: { turbo_method: :patch, turbo_confirm: "Etes vous sûr de vouloir changer le status de cette mesure ?" } %>
     <%= link_to "Refuser cette mesure", mesure_path(mesure, m:"Refusé"), class:"btn btn-danger",data: { turbo_method: :patch, turbo_confirm: "Etes vous sûr de vouloir changer le status de cette mesure ?" } %>
   </div>

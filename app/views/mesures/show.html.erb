@@ -13,6 +13,7 @@
         <div class="col-8">
           <p class="text-wrap fs-6 description-mesure"> <%= @mesure.content %></p>
         </div>
+    <%= render partial: "shared/validation_button", locals: {mesure: @mesure} %>
       </div>
   </div>
   <%= render partial: "shared/comments_area", locals: {mesure: @mesure, comments: @comments, comment: @comment } %>
