@@ -46,6 +46,14 @@
   .btn-link {
     padding: 0px 8px 0px;
   }
+  .btn-link {
+    transition: 0.2s;
+  }
+
+  .btn-link:hover {
+    background-color: #BBD7E9;
+    border-radius: 10px;
+  }
 
 }
 
