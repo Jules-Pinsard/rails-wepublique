@@ -10,7 +10,7 @@ class MesuresController < ApplicationController
     @pages = (1..(allmesures.count / 10))
     @title = "Les proposition de mesure citoyennes" if params[:mesures] == "citoyennes"
     @title = "Les mesures retenues" if params[:mesures] == "retenues"
-    if params[:mesures] == "maire" && (current_user && current_user.mayor)
+    if current_user && current_user.mayor && params[:mesures] == "maire"
       @title = "Vos propositions de mesure"
     elsif params[:mesures] == "maire"
       @title = "Les propositions de mesure du maire "
