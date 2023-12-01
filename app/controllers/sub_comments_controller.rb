@@ -1,16 +1,15 @@
 class SubCommentsController < ApplicationController
   before_action :find_comment, only: %i[create destroy]
-  before_action :find_mesure, only: %i[create destroy]
+
   before_action :find_sub_mesure, only: %i[destroy]
 
   def create
     @sub_comment = SubComment.new
     @sub_comment.user = current_user
     @sub_comment.comment = @comment
+    @sub_comment.content = params[:sub_comment][:content]
     if @sub_comment.save
-      redirect_to @mesure
-    else
-      render "mesure/show", status: :unprocessable_entity
+      redirect_to @comment.mesure, notice: 'Le commentaire a bien été envoyé.'
     end
   end
 
@@ -22,7 +21,7 @@ class SubCommentsController < ApplicationController
   private
 
   def find_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
   end
 
   def find_sub_comment
@@ -30,10 +29,10 @@ class SubCommentsController < ApplicationController
   end
 
   def find_mesure
-    @mesure = Mesure.find(params[:id])
+    @mesure = Mesure.find(params[:mesure_id])
   end
 
   def sub_comments_params
-    params.require(:sub_comments).permit(:content)
+    params.require(:sub_comment).permit(:content, :comment_id, :mesure_id)
   end
 end

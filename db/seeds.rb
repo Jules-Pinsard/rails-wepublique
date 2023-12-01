@@ -28,7 +28,7 @@ User.create!([{ email: "j@j.com",
 
 Category.create!([{ name: "Mobilier" },
                   { name: "Environnement" },
-                  { name: "Sanité" },
+                  { name: "Santé" },
                   { name: "Culture" },
                   { name: "Solidarité" },
                   { name: "Sport" },

@@ -1,11 +1,20 @@
-<% sub_comments.each do |sub_comment| %>
-  <div class="sub-comment">
-    <h6 class="name"><%= sub_comment.user.first_name[0] %>. <%= sub_comment.user.last_name %> </h6>
-    <p class="comment-content" ><%= sub_comment.content %></p>
-    <p class="time"><%= (Time.now - sub_comment.created_at).minutes %> minutes ago</p>
-    <div class="votes">
-      <p class="votes-small"><%= sub_comment.votes_for.size %></p><i class="fa-regular fa-thumbs-up"></i>
-      <p class="votes-small"><%= sub_comment.get_downvotes.size %></p><i class="fa-regular fa-thumbs-down"></i>
+<div class="col-md-12 sub-comment-area">
+  <% sub_comments.each do |sub_comment| %>
+      <div class="sub-comment col-10">
+        <div class="user-name-time-sub-comment">
+          <h6 class="name-sub-comment"><%= sub_comment.user.first_name %> <%= sub_comment.user.last_name %> </h6>
+          <p class="time-sub-comment"><%= (Time.now - sub_comment.created_at).minutes%> minutes ago</p>
+        </div>
+        <p class="content"><%= sub_comment.content %></p>
+          <div class="answers-like">
+            <div class="answers">
+
+            </div>
+            <div class="votes">
+              <div class="sub-comment-votes"><%= sub_comment.votes_for.size %><i class="fa-regular fa-thumbs-up m-2"></i></div>
+              <div class="sub-comment-votes"><%= sub_comment.get_downvotes.size %><i class="fa-regular fa-thumbs-down m-2"></i></div>
+            </div>
+          </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

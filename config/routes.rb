@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get "category" => "pages#category"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -13,8 +14,7 @@ Rails.application.routes.draw do
   resources :mesures, only: %i[index show new create update destroy] do
     resources :comments, only: %i[create destroy]
   end
-
-  resources :comments, only: [] do
+  resources :comments do
     resources :sub_comments, only: %i[create destroy]
   end
 

@@ -6,10 +6,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @comment.user = current_user
     @comment.mesure = @mesure
+    @comment.content = params[:comment][:content]
     if @comment.save
-      redirect_to @mesure
-    else
-      render "mesure/show", status: :unprocessable_entity
+      redirect_to @mesure, notice: 'Le commentaire a bien été envoyé.'
     end
   end
 
@@ -21,7 +20,7 @@ class CommentsController < ApplicationController
   private
 
   def find_mesure
-    @mesure = Mesure.find(params[:id])
+    @mesure = Mesure.find(params[:mesure_id])
   end
 
   def find_comment
@@ -29,6 +28,6 @@ class CommentsController < ApplicationController
   end
 
   def comments_params
-    params.require(:comments).permit(:content)
+    params.require(:comment).permit(:content, :mesure_id)
   end
 end
