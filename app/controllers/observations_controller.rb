@@ -21,7 +21,7 @@ class ObservationsController < ApplicationController
     @observation.category = category
     @observation.user = current_user
     if @observation.save
-      redirect_to observations_path
+      redirect_to root_path, success: "L'observation a bien été créée"
     else
       render :new, status: :unprocessable_entity
       raise
