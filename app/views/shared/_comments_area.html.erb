@@ -2,6 +2,7 @@
   <%= render partial: "shared/comment", locals: {comments: @comments } %>
 </div>
 
+<%= link_to "Ajouter une mesure", new_mesure_path %>
 
 <script>
   function toggleSubComments(commentId) {

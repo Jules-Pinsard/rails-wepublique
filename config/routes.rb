@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :mesures, only: %i[index show new create update destroy] do
     resources :comments, only: %i[create destroy]
+    member do
+      patch "upvote", to: "mesures#upvote"
+      patch "downvote", to: "mesures#downvote"
+    end
   end
 
   resources :comments, only: [] do

@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: #F6FBFF;
   border-radius: 10px;
-  padding: 4px 8px 0px 8px;
+  padding: 4px 8px 0px;
   margin-top: 10px;
   .user-name-time-comment {
     display: flex;
@@ -58,7 +58,7 @@
     flex-direction: column;
     background-color: #F6FBFF;
     border-radius: 10px;
-    padding: 2px 8px 0px 4px;
+    padding: 4px 8px 0px;
     margin-top: 5px;
     .user-name-time-sub-comment {
       display: flex;

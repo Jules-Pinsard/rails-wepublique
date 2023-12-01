@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   validate :save_mayor?
 
+  acts_as_voter
+
   before_save :capitalize
   after_create :set_mayor
 

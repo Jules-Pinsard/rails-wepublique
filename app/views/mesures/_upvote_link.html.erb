@@ -1,0 +1,12 @@
+<%= content_tag "div", id: "upvote-#{mesure.id}", data: { controller: 'upvote' } do %>
+  <%#= link_to upvote_mesure_path(mesure), remote: true, data: { turbo_method: :patch, disable_with: "voting..." } do %>
+  <%= link_to upvote_mesure_path(mesure), data: { action: "click->upvote#upvote", disable_with: "voting..." } do %>
+    <% if current_user.voted_up_on? mesure %>
+      <i class="far fa-thumbs-up" style="color: green;"></i>
+      unlike
+    <% else %>
+      <i class="far fa-thumbs-up"></i>
+      like
+    <% end %>
+  <% end %>
+<% end %>

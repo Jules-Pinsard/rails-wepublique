@@ -1,0 +1,11 @@
+<h1>Mesures</h1>
+<% @mesures.each do |mesure| %>
+  <%= mesure.title %>
+  <% if current_user %>
+    <br>
+    <%= render 'mesures/upvote_link', mesure: mesure %>
+    <%= render 'mesures/like_count', mesure: mesure %>
+    <%= render 'mesures/downvote_link', mesure: mesure %>
+  <% end %>
+  <hr>
+<% end %>

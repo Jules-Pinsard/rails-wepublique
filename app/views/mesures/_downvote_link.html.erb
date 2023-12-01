@@ -1,0 +1,12 @@
+<%= content_tag "div", id: "downvote-#{mesure.id}", data: { controller: 'downvote' } do %>
+  <%#= link_to downvote_mesure_path(mesure), remote: true, data: {turbo_method: :patch, disable_with: "voting..." } do %>
+    <%= link_to downvote_mesure_path(mesure), data: { action: "click->downvote#downvote", disable_with: "voting..." } do %>
+    <% if current_user.voted_down_on? mesure %>
+      <i class="far fa-thumbs-down" style="color: red;"></i>
+      unvote
+    <% else %>
+      <i class="far fa-thumbs-down"></i>
+      downvote
+    <% end %>
+  <% end %>
+<% end %>
