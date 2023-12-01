@@ -7,11 +7,11 @@
         <p><%= @mesure.get_downvotes.size %></p><i class="fa-solid fa-thumbs-down fa-2xl mx-1"></i>
       </div>
       <h2 class="text-start"><%= @mesure.title %></h2>
-        <p class="text-start fs-4 ">catégorie: <%= @mesure.category.name %> </p>
+        <p class="text-start fs-4 ">Catégorie: <%= @mesure.category.name %> </p>
         <div class="col-8">
-          <h4>
-        <p class="text-start text-wrap fs-6"> <%= @mesure.content %></p>
-          </h4>
+
+        <p class="text-start text-wrap fs-6 description-mesure"> <%= @mesure.content %></p>
+
         </div>
     </div>
       <%= render partial: "shared/comments_area", locals: {comments: @comments } %>
