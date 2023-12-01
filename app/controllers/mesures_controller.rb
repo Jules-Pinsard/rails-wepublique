@@ -22,7 +22,7 @@ class MesuresController < ApplicationController
 
   def new
     @mesure = Mesure.new
-    
+
   end
 
   def create
@@ -39,7 +39,13 @@ class MesuresController < ApplicationController
   end
 
   def update
-    @mesure.update(mesures_params)
+    if current_user.mayor
+      @mesure.status =  params[:m]
+      @mesure.save
+      redirect_to mesure_path(@mesure), success: "La mesure a bien été #{params[:m].downcase}e"
+    else
+      redirect_to mesure_path(@mesure), status: :unauthorized
+    end
   end
 
   def destroy
