@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       patch "downvote"
     end
   end
-
+  resources :chatrooms , only: [] do
+  resources :messages, only: :create
+  end
   resources :observations, only: %i[index new create]
 end

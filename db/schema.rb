@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_04_111317) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_141410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,6 +43,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_111317) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "mesures", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -54,6 +70,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_111317) do
     t.float "cached_weighted_average", default: 0.0
     t.index ["category_id"], name: "index_mesures_on_category_id"
     t.index ["user_id"], name: "index_mesures_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
   create_table "observations", force: :cascade do |t|
@@ -122,6 +150,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_111317) do
 
   add_foreign_key "comments", "mesures"
   add_foreign_key "comments", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "mesures", "users"
   add_foreign_key "observations", "users"
   add_foreign_key "sub_comments", "comments"
