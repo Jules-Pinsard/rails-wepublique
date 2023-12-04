@@ -32,6 +32,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_141410) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["mesure_id"], name: "index_comments_on_mesure_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -54,6 +61,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_141410) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["category_id"], name: "index_mesures_on_category_id"
     t.index ["user_id"], name: "index_mesures_on_user_id"
   end
@@ -91,6 +105,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_141410) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["comment_id"], name: "index_sub_comments_on_comment_id"
     t.index ["user_id"], name: "index_sub_comments_on_user_id"
   end
