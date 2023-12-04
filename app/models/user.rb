@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_one_attached :avatar
   has_many :mesures
   has_many :observations, dependent: :destroy
   has_many :comments, through: :mesures
