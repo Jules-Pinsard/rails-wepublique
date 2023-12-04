@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :mesures
+  has_many :mesures, dependent: :destroy
   has_many :observations, dependent: :destroy
   has_many :comments, through: :mesures
   has_many :sub_comments, through: :comments
