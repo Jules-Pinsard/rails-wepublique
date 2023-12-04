@@ -12,10 +12,22 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :mesures, only: %i[index show new create update destroy] do
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: %i[create]
   end
-  resources :comments do
-    resources :sub_comments, only: %i[create destroy]
+
+  resources :comments, only: %i[destroy] do
+    member do
+      patch "upvote"
+      patch "downvote"
+    end
+    resources :sub_comments, only: %i[create]
+  end
+
+  resources :sub_comments, only: %i[destroy] do
+    member do
+      patch "upvote"
+      patch "downvote"
+    end
   end
 
   resources :observations, only: %i[index new create]

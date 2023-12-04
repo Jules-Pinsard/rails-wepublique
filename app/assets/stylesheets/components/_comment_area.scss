@@ -3,13 +3,13 @@
   flex-direction: column;
   background-color: #F6FBFF;
   border-radius: 10px;
-  padding: 4px 8px 0px 8px;
+  padding: 4px 8px 0px;
   margin-top: 10px;
 
   .user-name-time-comment {
     display: flex;
-    justify-content: left;
-    padding: 0px 80px 0px 8px;
+    justify-content: space-between;
+    padding: 0px 02px 0px 8px;
     height: 20px;
 
     .name-comment {
@@ -76,13 +76,13 @@
     flex-direction: column;
     background-color: #F6FBFF;
     border-radius: 10px;
-    padding: 2px 8px 0px 4px;
+    padding: 4px 8px 0px;
     margin-top: 5px;
 
     .user-name-time-sub-comment {
       display: flex;
-      justify-content: left;
-      padding: 0px 80px 0px 8px;
+      justify-content: space-between;
+      padding: 0px 02px 0px 8px;
       height: 20px;
 
       .name-sub-comment {

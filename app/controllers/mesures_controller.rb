@@ -24,7 +24,8 @@ class MesuresController < ApplicationController
   end
 
   def show
-    @comments = Comment.includes(:sub_comments).where(mesure: @mesure)
+    # @comments = Comment.includes(:sub_comments).where(mesure: @mesure)
+    @comments = @mesure.comments.includes(:sub_comments).order(created_at: :desc)
     @comment = Comment.new
     @sub_comment = SubComment.new
   end
@@ -32,6 +33,26 @@ class MesuresController < ApplicationController
   def new
     @mesure = Mesure.new
 
+  end
+
+  def upvote
+    @comment = Comment.find(params[:comment_id])
+    if current_user.voted_up_on? @comment
+      @comment.unvote_by current_user
+    else
+      @comment.upvote_by current_user
+    end
+    render json: { html: render_to_string(partial: 'comments/upvote_link', locals: { comment: @comment }, formats: :html) }
+  end
+
+  def downvote
+    @comment = Comment.find(params[:comment_id])
+    if current_user.voted_down_on? @comment
+      @comment.unvote_by current_user
+    else
+      @comment.downvote_by current_user
+    end
+    render json: { html: render_to_string(partial: 'comments/downvote_link', locals: { comment: @comment }, formats: :html) }
   end
 
   def create
