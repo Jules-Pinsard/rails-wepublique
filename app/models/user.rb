@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   has_one_attached :avatar
   has_many :mesures
-  has_many :observations
+  has_many :observations, dependent: :destroy
   has_many :comments, through: :mesures
   has_many :sub_comments, through: :comments
+  has_many :messages
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable

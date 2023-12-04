@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :comments do
     resources :sub_comments, only: %i[create destroy]
   end
-
+  resources :chatrooms , only: [] do
+  resources :messages, only: :create
+  end
   resources :observations, only: %i[index new create]
 end
