@@ -1,5 +1,6 @@
 <div class="col-8">
   <div class="blue-box">
+    <h3><%= title %></h3>
     <% mesures.each do |mesure| %>
       <%= link_to mesure do %>
         <div class="item">
@@ -16,13 +17,14 @@
         </div>
         <div class="item mt-0 mb-2">
           <p>"<%= mesure.content.slice(0..250) %>..."</p>
+          <p>Catégorie : <%= mesure.category.name %></p>
         </div>
       <% end %>
     <% end %>
     <div class="d-flex justify-content-end">
-      <% @pages.each do |n| %>
+      <% pages.each do |n| %>
         <div class="page-link">
-          <%= link_to "#{n}", mesures_path(:page => n)%>
+          <%= link_to "#{n}", mesures_path(mesures: params[:mesures],:page => n)%>
         </div>
       <% end %>
     </div>

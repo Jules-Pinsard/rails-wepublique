@@ -44,6 +44,7 @@
   h3 {
     text-align: center;
     background-color: #F6FBFF;
+    border-radius: 4px;
   }
 
   .item {
@@ -66,15 +67,6 @@
 
   a {
     text-decoration: none;
-  }
-
-  .btn-link {
-    transition: 0.2s;
-  }
-
-  .btn-link:hover {
-    background-color: #BBD7E9;
-    border-radius: 10px;
   }
 
   .date {
@@ -114,6 +106,8 @@ a.mapboxgl-ctrl-logo {
   margin-top: 4px;
   flex-grow: 1;
 
+  border-radius: 8px;
+
   .name {
     margin: 0;
     font-size: 14px;
@@ -141,4 +135,3 @@ a.mapboxgl-ctrl-logo {
     font-size: 12px;
   }
 }
-

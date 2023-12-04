@@ -1,11 +1,15 @@
-<h2 class='text-center mt-3'>Ajoutez une nouvelle mesure</h2>
-  <div class="container col-6">
-    <%= simple_form_for @mesure do |f| %>
-      <%= f.input :title %>
-      <%= f.input :content %>
-      <%= f.association :category %>
-  <div class="form-actions mt-5 mb-3 text-center">
-    <%= f.button :submit, class: "btn btn-primary" %>
-  </div>
-  <% end %>
+<div data-controller="new-mesure">
+      <%= simple_form_for @mesure do |f| %>
+      <div class="row gy-4 m-1">
+    <h2 class='text-center m-1'> Proposer une nouvelle mesure</h2>
+          <%= f.input :title, class: "flex-grow-1", label: false, placeholder: "Entrez le titre de votre mesure" %>
+          <div class="col-4 m-0">
+          <%= f.association :category, input_html: { 'data-action': "input->new-mesure#show", 'data-new-mesure-target': 'input' }, label: false, include_blank: "Choisissez une catégorie"%>
+        <%= f.input :content, label: false, placeholder: "Décrivez votre mesure", input_html: { style: 'height: 300px;' } %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+          </div>
+    <div data-new-mesure-target= "container" class="col-8 d-none mt-0">
+      </div>
+      <% end %>
+    </div>
 </div>

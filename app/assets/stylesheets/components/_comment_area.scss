@@ -5,35 +5,42 @@
   border-radius: 10px;
   padding: 4px 8px 0px;
   margin-top: 10px;
+
   .user-name-time-comment {
     display: flex;
     justify-content: space-between;
     padding: 0px 02px 0px 8px;
     height: 20px;
+
     .name-comment {
       font-weight: bold;
       font-size: 14px;
     }
+
     .time-comment {
       margin: 0px 20px;
       font-size: 12px;
       font-style: italic;
     }
   }
+
   .content {
     padding: 0px 8px 0px 8px;
     font-size: 16px;
     font-style: normal;
     margin: 0;
   }
+
   .answers-like {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .votes {
       padding-right: 180px;
       height: 20px;
     }
+
     .comment-votes {
       display: flex;
       width: 30px;
@@ -43,8 +50,18 @@
       margin: 10px;
     }
   }
+
   .btn-link {
     padding: 0px 8px 0px;
+  }
+
+  .btn-link {
+    transition: 0.2s;
+  }
+
+  .btn-link:hover {
+    background-color: #BBD7E9;
+    border-radius: 10px;
   }
 
 }
@@ -53,6 +70,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
   .sub-comment {
     display: flex;
     flex-direction: column;
@@ -60,35 +78,42 @@
     border-radius: 10px;
     padding: 4px 8px 0px;
     margin-top: 5px;
+
     .user-name-time-sub-comment {
       display: flex;
       justify-content: space-between;
       padding: 0px 02px 0px 8px;
       height: 20px;
+
       .name-sub-comment {
         font-weight: bold;
         font-size: 14px;
       }
+
       .time-sub-comment {
         margin: 0px 20px;
         font-size: 12px;
         font-style: italic;
       }
     }
+
     .content {
       padding: 0px 8px 0px 8px;
       font-size: 16px;
       font-style: normal;
       margin: 0;
     }
+
     .answers-like {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       .votes {
         padding-right: 100px;
         height: 20px;
       }
+
       .sub-comment-votes {
         display: flex;
         width: 30px;

@@ -1,13 +1,36 @@
-<div class="m-0 row g-2">
-  <% if current_user && current_user.mayor %>
-  <%= render partial: "shared/mesures_box", locals: {title: "Vos mesures", mesures: @mayor_mesures} %>
-  <%= render partial: "shared/mapbox", locals: {title: "Carte des problèmes reportés", btn_red: true, btn_blue: true} %>
-  <%= render partial: "shared/mesures_box", locals: {title: "Les mesures citoyennes", mesures: @mesures} %>
-  <%= render partial: "shared/mesures_box", locals: {title: "Yo les mesures retenues", mesures: @mesures_retenues} %>
-  <% else %>
-  <%= render partial: "shared/mesures_box", locals: {title: "Les mesures du maire", mesures: @mayor_mesures} %>
-  <%= render partial: "shared/mapbox", locals: {title: "Carte des problèmes reportés", btn_red: true, btn_blue: true} %>
-  <%= render partial: "shared/mesures_box", locals: {title: "Les mesures citoyennes", mesures: @mesures} %>
-  <%= render partial: "shared/mesures_box", locals: {title: "Yo les mesures retenues", mesures: @mesures_retenues} %>
-  <% end %>
+<div class="m-0 row g-4">
+  <div class="col-7">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="mayor-tab" data-bs-toggle="tab" data-bs-target="#mayor-tab-pane" type="button" role="tab" aria-controls="mayor-tab-pane" aria-selected="true">
+          <% if current_user && current_user.mayor %>
+            Vos propositions
+          <% else %>
+            Propositions du maire
+          <% end %>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="citizen-tab" data-bs-toggle="tab" data-bs-target="#citizen-tab-pane" type="button" role="tab" aria-controls="citizen-tab-pane" aria-selected="false">Propositions citoyennes</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="retenues-tab" data-bs-toggle="tab" data-bs-target="#retenues-tab-pane" type="button" role="tab" aria-controls="retenues-tab-pane" aria-selected="false">Mesures retenues</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <%= link_to "+", new_mesure_path, class: "nav-link", id:"red-tab" %>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="mayor-tab-pane" role="tabpanel" aria-labelledby="mayor-tab" tabindex="0">
+        <%= render partial: "shared/mesures_box", locals: {mesures: @mayor_mesures, parameter: "maire"} %>
+      </div>
+      <div class="tab-pane fade" id="citizen-tab-pane" role="tabpanel" aria-labelledby="citizen-tab" tabindex="0">
+        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures, parameter: "citoyennes"} %>
+      </div>
+      <div class="tab-pane fade" id="retenues-tab-pane" role="tabpanel" aria-labelledby="retenues-tab" tabindex="0">
+        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures_retenues, parameter: "retenues"} %>
+      </div>
+    </div>
+  </div>
+  <%= render partial: "shared/mapbox", locals: {title: "Observations citoyennes", btn_red: true, btn_blue: true} %>
 </div>
