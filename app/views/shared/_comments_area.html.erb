@@ -1,5 +1,5 @@
 <div class="col-8">
-  <%= render partial: "shared/comment", locals: {comments: @comments } %>
+  <%= render partial: "shared/comment", locals: {comments: @comments, sub_comments: @sub_comments } %>
 </div>
 
 <%= link_to "Ajouter une mesure", new_mesure_path %>

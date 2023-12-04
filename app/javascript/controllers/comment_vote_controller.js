@@ -1,21 +1,24 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="downvote"
+// Connects to data-controller="upvote"
 export default class extends Controller {
-  connect() {
-  }
-  downvote(event) {
+  static targets = ['upvoteArea', 'downvoteArea']
+
+  connect() {}
+
+  vote(event) {
     event.preventDefault();
-    console.log(event.currentTarget.href)
     fetch(event.currentTarget.href, {
       method: 'PATCH',
       headers: {
+        "Accept": 'application/json',
         "X-CSRF-Token": document.querySelector("meta[name=csrf-token]").content
       }
     })
     .then(response => response.json())
     .then(data => {
-      this.element.outerHTML = data.html;
+      this.upvoteAreaTarget.outerHTML = data.upvote_html;
+      this.downvoteAreaTarget.outerHTML = data.downvote_html;
     })
   }
 }

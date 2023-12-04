@@ -15,33 +15,34 @@ class MesuresController < ApplicationController
   end
 
   def show
-    @comments = Comment.includes(:sub_comments).where(mesure: @mesure)
+    # @comments = Comment.includes(:sub_comments).where(mesure: @mesure)
+    @comments = @mesure.comments.includes(:sub_comments).order(created_at: :desc)
     @comment = Comment.new
     @sub_comment = SubComment.new
   end
 
+  def new
+    @mesure = Mesure.new
+  end
+
   def upvote
-    @mesure = Mesure.find(params[:id])
-    if current_user.voted_up_on? @mesure
-      @mesure.unvote_by current_user
+    @comment = Comment.find(params[:comment_id])
+    if current_user.voted_up_on? @comment
+      @comment.unvote_by current_user
     else
-      @mesure.upvote_by current_user
+      @comment.upvote_by current_user
     end
-    render json: { html: render_to_string(partial: 'mesures/upvote_link', locals: { mesure: @mesure }, formats: :html) }
+    render json: { html: render_to_string(partial: 'comments/upvote_link', locals: { comment: @comment }, formats: :html) }
   end
 
   def downvote
-    @mesure = Mesure.find(params[:id])
-    if current_user.voted_down_on? @mesure
-      @mesure.unvote_by current_user
+    @comment = Comment.find(params[:comment_id])
+    if current_user.voted_down_on? @comment
+      @comment.unvote_by current_user
     else
-      @mesure.downvote_by current_user
+      @comment.downvote_by current_user
     end
-    render json: { html: render_to_string(partial: 'mesures/downvote_link', locals: { mesure: @mesure }, formats: :html) }
-  end
-
-  def new
-    @mesure = Mesure.new
+    render json: { html: render_to_string(partial: 'comments/downvote_link', locals: { comment: @comment }, formats: :html) }
   end
 
   def create
