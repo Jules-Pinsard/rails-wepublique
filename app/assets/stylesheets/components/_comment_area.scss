@@ -1,7 +1,7 @@
 .comment-area {
   display: flex;
   flex-direction: column;
-  background-color: #F6FBFF;
+  background-color: $light-gray;
   border-radius: 10px;
   padding: 4px 8px 0px;
   margin-top: 10px;
@@ -63,7 +63,7 @@
   .sub-comment {
     display: flex;
     flex-direction: column;
-    background-color: #F6FBFF;
+    background-color: $light-gray;
     border-radius: 10px;
     padding: 4px 8px 0px;
     margin-top: 5px;
