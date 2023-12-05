@@ -1,11 +1,11 @@
 .blue-box {
-  background-color: #BAD7E9;
-  color: #002654;
+  background-color: $light-blue;
+  color: $blue;
   border-radius: 4px;
   padding: 12px;
   position: relative;
   width: 100%;
-  box-shadow: 1px 1px 5px #BAD7E9;
+  box-shadow: 1px 1px 5px $light-blue;
 
   p {
     font-size: 12px;
@@ -43,7 +43,7 @@
 
   h3 {
     text-align: center;
-    background-color: #F6FBFF;
+    background-color: $light-gray;
     border-radius: 4px;
   }
 
@@ -51,7 +51,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #F6FBFF;
+    background-color: $light-gray;
     padding: 4px 8px 4px 16px;
     margin-top: 4px;
     flex-grow: 1;
@@ -75,7 +75,7 @@
 
   .page-link {
     text-decoration: underline;
-    background-color: #F6FBFF;
+    background-color: $light-gray;
     margin-right: 4px;
     border-radius: 50%;
     width: 24px;
@@ -101,7 +101,7 @@ a.mapboxgl-ctrl-logo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #F6FBFF;
+  background-color: $light-gray;
   padding: 4px 8px 4px 8px;
   margin-top: 4px;
   flex-grow: 1;
@@ -126,7 +126,7 @@ a.mapboxgl-ctrl-logo {
 
 .box-shadow {
   position: relative;
-  box-shadow: 1px 1px 5px #BAD7E9;
+  box-shadow: 1px 1px 5px $light-blue;
 .position-bottom-map {
   position: absolute;
   bottom: 12px;
@@ -139,4 +139,17 @@ a.mapboxgl-ctrl-logo {
   }
 }
 
+}
+.blue {
+  font-family: 'Poppins', sans-serif;
+  color: $blue;
+  h3 {
+    font-size: 18px;
+  }
+  h5 {
+    font-size: 14px;
+  }
+  strong {
+    color: $red;
+  }
 }

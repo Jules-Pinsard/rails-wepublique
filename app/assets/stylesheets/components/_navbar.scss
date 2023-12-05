@@ -1,14 +1,14 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #002654;
-  color: #FAFDFF;
+  background: $blue;
+  color: $light-gray;
   padding: 0;
   position: sticky;
   top: 0px;
   z-index: 1;
 
   a {
-    color: #FAFDFF;
+    color: $light-gray;
   }
 
   h3 {
@@ -21,7 +21,7 @@
   }
 
   .navbar-brand:hover {
-    color: #FAFDFF;
+    color: $light-gray;
   }
 }
 
@@ -35,9 +35,9 @@
 }
 
 .navbar-toggler-icon {
-  color: #FAFDFF;
+  color: $light-gray;
 }
 
 .dropdown-menu {
-  background: #002654;
+  background: $blue;
 }

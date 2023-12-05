@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   def prepare_chatbox
-    @chat_general = Chatroom.find(1)
+    @chat_general = Chatroom.all.includes(messages: :user).find(1)
     @message = Message.new
   end
 end

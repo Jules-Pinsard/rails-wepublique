@@ -1,18 +1,21 @@
 .nav-tabs {
 
   .nav-link.active {
-    color: #002654;
-    background-color: #BAD7E9;
+    color: $blue;
+    background-color: $light-blue;
   }
   .nav-link {
     color: #002654;
-    background-color: #F6FBFF;
+    background-color: $light-gray;
     font-size: 14px;
     font-weight: bold;
   }
+  .nav-link.nav-link.active:hover {
+    color: $light-gray
+  }
 
   .nav-link:hover {
-    color: #BAD7E9;
+    color: $light-blue;
   }
   #red-tab {
     color: $red;
