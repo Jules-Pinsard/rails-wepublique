@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @markers = Observation.all.includes(:category).geocoded.map do |observation|
       color = "#E97777" if ["Environnement","Santé","Finances"].include?(observation.category.name)
       color = "#96B6C5" if ["Solidarité", "Sport", "Inclusion", "Jeunesse"].include?(observation.category.name)
-      color = "#C7DCA7" if ["Culture" || "Patrimoine" || "Inclusion" || "Jeunesse"].include?(observation.category.name)
+      color = "#C7DCA7" if ["Culture", "Patrimoine", "Tourisme", "Mobilier"].include?(observation.category.name)
       color = "#F9F3CC" if observation.category.name == "Autre"
       {
         color: color,
