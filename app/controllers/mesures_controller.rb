@@ -24,7 +24,6 @@ class MesuresController < ApplicationController
   end
 
   def show
-    # @comments = Comment.includes(:sub_comments).where(mesure: @mesure)
     @comments = @mesure.comments.includes(:sub_comments).order(created_at: :desc)
     @comment = Comment.new
     @sub_comment = SubComment.new
