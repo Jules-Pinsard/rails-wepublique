@@ -1,6 +1,6 @@
 class MesuresController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :find_mesure, only: %i[show update destroy]
+  before_action :find_mesure, only: %i[show update destroy upvote]
 
   def index
     @page = params[:page].to_i if params[:page]
@@ -34,23 +34,13 @@ class MesuresController < ApplicationController
   end
 
   def upvote
-    @comment = Comment.find(params[:comment_id])
-    if current_user.voted_up_on? @comment
-      @comment.unvote_by current_user
+    if current_user.voted_up_on? @mesure
+      @mesure.unvote_by current_user
     else
-      @comment.upvote_by current_user
+      @mesure.upvote_by current_user
     end
-    render json: { html: render_to_string(partial: 'comments/upvote_link', locals: { comment: @comment }, formats: :html) }
-  end
-
-  def downvote
-    @comment = Comment.find(params[:comment_id])
-    if current_user.voted_down_on? @comment
-      @comment.unvote_by current_user
-    else
-      @comment.downvote_by current_user
-    end
-    render json: { html: render_to_string(partial: 'comments/downvote_link', locals: { comment: @comment }, formats: :html) }
+    mesure_upvote_html = render_to_string(partial: 'mesures/mesure_upvote_link', locals: { mesure: @mesure }, formats: :html)
+    render json: { mesure_upvote_html: mesure_upvote_html }
   end
 
   def create

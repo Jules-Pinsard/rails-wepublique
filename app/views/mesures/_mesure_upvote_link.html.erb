@@ -1,0 +1,35 @@
+<div data-controller="mesure-upvote">
+  <% if current_user %>
+    <%= content_tag "div", id: "upvote-#{@mesure.id}", data: { mesure_upvote_target: 'mesureupvoteArea'} do %>
+      <%= link_to upvote_mesure_path(@mesure), data: { turbo_method: :patch, action: "click->mesure-upvote#vote", disable_with: "voting..." } do %>
+        <% if current_user.voted_up_on? @mesure %>
+          <div class="like-box">
+            <i class="fa-solid fa-award logo"></i>
+            <div class="number">
+              <%= @mesure.cached_votes_up %>
+            </div>
+          </div>
+        <% else %>
+          <div class="like-box">
+            <i class="fa-solid fa-award logo"></i>
+            <div class="number">
+              <%= @mesure.cached_votes_up %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="like-box">
+      <i class="fa-solid fa-award logo"></i>
+      <div class="number">
+        <%= @mesure.cached_votes_up %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+<%# <%= render partial: "mesures/mesure_upvote_link", locals: {mesure: @mesure } %>
+<%# A AFFICHER LA OU ON VEUT %>

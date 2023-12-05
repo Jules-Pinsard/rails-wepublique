@@ -23,6 +23,12 @@ Rails.application.routes.draw do
     resources :sub_comments, only: %i[create]
   end
 
+  resources :mesures, only: [] do
+    member do
+      patch "upvote"
+    end
+  end
+
   resources :sub_comments, only: %i[destroy] do
     member do
       patch "upvote"
@@ -30,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
   resources :chatrooms , only: [] do
-  resources :messages, only: :create
+    resources :messages, only: :create
   end
   resources :observations, only: %i[index new create]
 end
