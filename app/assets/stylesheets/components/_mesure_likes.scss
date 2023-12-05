@@ -1,0 +1,36 @@
+.like-box {
+width: 75px;
+height: 60px;
+display: flex;
+align-items: center;
+margin: 2px;
+position: relative;
+transition: 0.4s;
+  .number {
+    font-size: 15px;
+    font-style: italic;
+    position: absolute;
+    right: 5px;
+    bottom: -5px;
+  }
+  .logo {
+    font-size: 56px;
+    margin: 2px;
+    transition: 0.4s;
+  }
+}
+
+.like-box:hover {
+  // background-image: url('../../images/bg_highlight.png');
+  .number:hover {
+    font-size: 15px;
+    font-style: italic;
+    position: absolute;
+    right: 5px;
+    bottom: -5px;
+  }
+  .logo {
+    font-size: 60px;
+    margin: 2px;
+  }
+}

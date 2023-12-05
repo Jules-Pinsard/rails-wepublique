@@ -4,7 +4,16 @@
         <div class="user-name-time-sub-comment">
           <div class="d-flex">
             <h6 class="name-sub-comment"><%= sub_comment.user.first_name %> <%= sub_comment.user.last_name %> </h6>
-            <p class="time-sub-comment"><%= (Time.now - sub_comment.created_at).minutes%> minutes ago</p>
+            <p class="time-comment">
+            <% minutes = ((Time.now - sub_comment.created_at)/60).round %>
+            <% if minutes < 60 %>
+              <p class="time">Il y a <%= minutes %> min</p>
+            <% elsif (minutes/60).round < 24%>
+              <p class="time">Il y a <%= (minutes/60).round %> h </p>
+            <% else %>
+              <p class="time">Il y a <%= (minutes/60/24).round %> j </p>
+            <% end %>
+          </p>
           </div>
           <% if sub_comment.user == current_user %>
             <%= link_to sub_comment_path(sub_comment), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr?" } do %>
