@@ -7,6 +7,7 @@ class ObservationsController < ApplicationController
   def new
     @observation = Observation.new
     @markers = Observation.all.geocoded.map do |observation|
+      
       {
         lat: observation.latitude,
         lng: observation.longitude,

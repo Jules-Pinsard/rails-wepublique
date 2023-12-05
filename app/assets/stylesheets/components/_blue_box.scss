@@ -124,6 +124,9 @@ a.mapboxgl-ctrl-logo {
   }
 }
 
+.box-shadow {
+  position: relative;
+  box-shadow: 1px 1px 5px #BAD7E9;
 .position-bottom-map {
   position: absolute;
   bottom: 12px;
@@ -134,4 +137,6 @@ a.mapboxgl-ctrl-logo {
   .btn {
     font-size: 12px;
   }
+}
+
 }
