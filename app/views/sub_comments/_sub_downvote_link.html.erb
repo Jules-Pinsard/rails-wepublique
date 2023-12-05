@@ -1,9 +1,18 @@
-<%= content_tag "div", id: "downvote-#{sub_comment.id}", data: { sub_comment_vote_target: 'subdownvoteArea'} do %>
+<% if current_user %>
+  <%= content_tag "div", id: "downvote-#{sub_comment.id}", data: { sub_comment_vote_target: 'subdownvoteArea'} do %>
     <%= link_to downvote_sub_comment_path(sub_comment), data: { action: "click->sub-comment-vote#vote", disable_with: "voting..." }, class: "sub-comment-votes" do %>
-    <% if current_user.voted_down_on? sub_comment %>
-      <%= sub_comment.cached_votes_down %><i class="fas fa-thumbs-down"></i>
-    <% else %>
-      <%= sub_comment.cached_votes_down %><i class="far fa-thumbs-down"></i>
+      <% if current_user.voted_down_on? sub_comment %>
+        <%= sub_comment.cached_votes_down %><i class="fas fa-thumbs-down"></i>
+      <% else %>
+        <%= sub_comment.cached_votes_down %><i class="far fa-thumbs-down"></i>
+      <% end %>
     <% end %>
   <% end %>
+<% else %>
+  <div class="sub-comment-votes">
+    <div class="m-1">
+      <%= sub_comment.cached_votes_down %>
+    </div>
+    <i class="far fa-thumbs-down"></i>
+  </div>
 <% end %>

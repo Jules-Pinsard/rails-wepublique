@@ -37,12 +37,10 @@
         </div>
         <div class="votes">
           <button class="btn btn-link btn-sm" onclick="toggleReplyForm(<%= comment.id %>)">Répondre</button>
-          <% if current_user %>
             <div data-controller="comment-vote" class="comment-votes">
               <%= render 'comments/upvote_link', comment: comment %>
               <%= render 'comments/downvote_link', comment: comment %>
             </div>
-          <% end %>
         </div>
       </div>
     </div>

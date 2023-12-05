@@ -6,6 +6,9 @@ Mesure.destroy_all
 Observation.destroy_all
 Comment.destroy_all
 SubComment.destroy_all
+Chatroom.destroy_all
+
+Chatroom.create!
 
 User.create!([{ email: "j@j.com",
                 first_name: "Jules",
@@ -39,7 +42,7 @@ Category.create!([{ name: "Mobilier" },
                   { name: "Tourisme" },
                   { name: "Autre" }])
 
-statuses = ["En cours de concertation", "Accepté", "Refusé"]
+statuses = ["En cours de concertation", "Validé", "Refusé"]
 
 mesures = [
   {
@@ -164,7 +167,7 @@ mesures = [
   {
     title: "Programme de formation à la prévention des incendies",
     content: "Lancement d'un programme de formation à la prévention des incendies pour sensibiliser la communauté aux risques et promouvoir la sécurité incendie.",
-    category: Category.find_by(name: "Sanité"),
+    category: Category.find_by(name: "Santé"),
     status: statuses.sample,
     user_id: (1..User.count).to_a.sample
   },

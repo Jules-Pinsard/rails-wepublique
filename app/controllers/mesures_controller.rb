@@ -32,7 +32,6 @@ class MesuresController < ApplicationController
 
   def new
     @mesure = Mesure.new
-
   end
 
   def upvote
