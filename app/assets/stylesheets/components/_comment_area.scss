@@ -37,7 +37,7 @@
     align-items: center;
 
     .votes {
-      padding-right: 180px;
+      padding-right: 190px;
       height: 20px;
     }
 
@@ -106,7 +106,7 @@
 
     .answers-like {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
 
       .votes {
