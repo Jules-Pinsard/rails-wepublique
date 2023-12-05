@@ -1,11 +1,12 @@
 .like-box {
-width: 75px;
-height: 60px;
-display: flex;
-align-items: center;
-margin: 2px;
-position: relative;
-transition: 0.4s;
+  width: 75px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin: 2px;
+  position: relative;
+  transition: 0.4s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   .number {
     font-size: 15px;
     font-style: italic;
@@ -13,24 +14,41 @@ transition: 0.4s;
     right: 5px;
     bottom: -5px;
   }
-  .logo {
-    font-size: 56px;
-    margin: 2px;
-    transition: 0.4s;
-  }
+}
+.logo {
+  font-size: 56px;
+  margin: 2px;
+  position: relative;
 }
 
-.like-box:hover {
-  // background-image: url('../../images/bg_highlight.png');
-  .number:hover {
-    font-size: 15px;
-    font-style: italic;
-    position: absolute;
-    right: 5px;
-    bottom: -5px;
+.highlight {
+  display: inline-block;
+  position: absolute;
+  bottom: -2px;
+  left: 0px;
+  z-index: -1;
+  background-color: #F2BB05;
+  height: 25%;
+  width: 0%;
+  transition: width 0.5s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.like-box:hover .highlight{
+  width: 200%;
+}
+
+.small-like-box {
+  width: 35px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  margin: 2px;
+  .small-number {
+    font-size: 12px;
   }
-  .logo {
-    font-size: 60px;
-    margin: 2px;
+  .small-logo {
+    font-size: 20px;
+    margin: 4px;
   }
 }

@@ -11,20 +11,80 @@ Chatroom.destroy_all
 Chatroom.create!
 
 User.create!([{ email: "j@j.com",
-                first_name: "Jules",
-                last_name: "Pinsard",
+                first_name: "Julia",
+                last_name: "Pesart",
                 password: "azerty",
                 password_confirmation: "azerty",
                 code: "" },
               { email: "m@m.com",
-                first_name: "Mael",
-                last_name: "Lemire",
+                first_name: "Maelle",
+                last_name: "Lemaitre",
                 password: "azerty",
                 password_confirmation: "azerty",
                 code: "" },
               { email: "n@n.com",
-                first_name: "Nathan",
-                last_name: "Toussaint",
+                first_name: "Nathalie",
+                last_name: "Tusard",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "" },
+              { email: "1@1.com",
+                first_name: "Didier",
+                last_name: "Sanchez",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "" },
+              { email: "2@2.com",
+                first_name: "Valérie",
+                last_name: "Tamponne",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "" },
+              { email: "3@3.com",
+                first_name: "Luc",
+                last_name: "Bricadelle",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "" },
+              { email: "4@4.com",
+                first_name: "Emmanuel",
+                last_name: "Petit",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "" },
+              { email: "5@5.com",
+                first_name: "Robert",
+                last_name: "Kubica",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "" },
+              { email: "6@6.com",
+                first_name: "Roger",
+                last_name: "Wallon",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "" },
+              { email: "7@7.com",
+                first_name: "Julie",
+                last_name: "Robert",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "" },
+              { email: "8@8.com",
+                first_name: "Angela",
+                last_name: "Merkel",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "ExempleDeCode" },
+              { email: "9@9.com",
+                first_name: "Christianne",
+                last_name: "Taubira",
+                password: "azerty",
+                password_confirmation: "azerty",
+                code: "" },
+              { email: "10@10.com",
+                first_name: "Ségolène",
+                last_name: "Malia",
                 password: "azerty",
                 password_confirmation: "azerty",
                 code: "" }])
@@ -378,8 +438,22 @@ sub_comments = [
 
 created_mesures = Mesure.create!(mesures)
 
+Mesure.all.each do |mesure|
+  rand(0..150).times do
+    mesure.liked_by User.all.sample
+  end
+end
+
+un_peu = [0, 0, 0, 1, 2]
+
+pas_beaucoup = [0, 0, 1, 2, 3]
+
+pas_mal = [0, 0, 0, 0, 1, 2, 3, 4]
+
+beaucoup = [0, 0, 0, 1, 2, 3, 5, 7]
+
 created_mesures.each do |mesure|
-  (2..rand(4)).each do |i|
+  rand(0..5).times do |i|
     user_ids = (1..User.count).to_a - [mesure[:user_id]]
     Comment.create!(
       content: comments.sample,
@@ -390,7 +464,13 @@ created_mesures.each do |mesure|
 end
 
 Comment.all.each do |comment|
-  (0..rand(2)).each do |i|
+  beaucoup.sample.times do
+    comment.liked_by User.all.sample
+  end
+  pas_beaucoup.sample.times do
+    comment.downvote_from User.all.sample
+  end
+  rand(0..2).times do |i|
     user_ids = (1..User.count).to_a - [comment.user_id]
     SubComment.create!(
       content: sub_comments.sample,
@@ -400,13 +480,176 @@ Comment.all.each do |comment|
   end
 end
 
-30.times do
-  Observation.create!(
-    title: Faker::Lorem.sentence,
-    location: Faker::Address.city,
-    description: Faker::Lorem.paragraph,
-    dangerosity: rand(1..5),
-    user: User.all.sample,
-    category: Category.all.sample
-  )
+SubComment.all.each do |sub_comment|
+  pas_mal.sample.times do
+    sub_comment.liked_by User.all.sample
+  end
+  un_peu.sample.times do
+    sub_comment.downvote_from User.all.sample
+  end
 end
+
+observations = [
+  {
+    title: "Problème de signalisation manquante à l'intersection",
+    location: "Rue Gaston Bachelard, 52100 Saint-Dizier",
+    description: "L'intersection de la rue de la Libération et de l'avenue des Cerisiers n'a pas de panneau stop, ce qui crée une situation dangereuse. Une signalisation appropriée est nécessaire.",
+    category: Category.find_by(name: "Mobilier"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Dégradation des espaces verts du parc municipal",
+    location: "Av. de Belle Forêt-sur-Marne, 52100 Saint-Dizier, 52100 Saint-Dizier",
+    description: "Les espaces verts du parc municipal sont mal entretenus. Des déchets sont dispersés, et les bancs sont vandalisés. Un nettoyage et des réparations sont nécessaires.",
+    category: Category.find_by(name: "Patrimoine"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Nid-de-poule sur la route principale",
+    location: "Rue de l'Epinotte, 52100 Saint-Dizier",
+    description: "Un grand nid-de-poule s'est formé sur la route principale près du supermarché. Cela endommage les voitures et représente un risque pour la circulation.",
+    category: Category.find_by(name: "Inclusion"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Bancs publics endommagés par la météo",
+    location: "Rue George Sand, 52100 Saint-Dizier",
+    description: "Les bancs le long de la rivière ont été fortement affectés par les intempéries. Le bois est pourri, et certains bancs sont devenus dangereux. Une réparation est urgente.",
+    category: Category.find_by(name: "Mobilier"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Déversement de produits chimiques près de l'école",
+    location: "Rue du Brigadier Albert, 52100 Saint-Dizier",
+    description: "Des produits chimiques ont été déversés près de l'école primaire. Cela représente un risque potentiel pour la santé des enfants. L'intervention immédiate des autorités est requise.",
+    category: Category.find_by(name: "Santé"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Lampadaire clignotant dans le quartier résidentiel",
+    location: "Rue du Marche, 52100 Saint-Dizier",
+    description: "Un lampadaire dans le quartier résidentiel clignote de manière intermittente la nuit. Cela crée de l'inconfort pour les résidents. Une réparation rapide est nécessaire.",
+    category: Category.find_by(name: "Mobilier"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Défaut d'éclairage dans l'allée du parc",
+    location: "Rue de la Tambourine, 52100 Saint-Dizier",
+    description: "L'éclairage dans l'allée du parc ne fonctionne pas correctement, créant des zones sombres et potentiellement dangereuses la nuit. Une réparation immédiate est demandée.",
+    category: Category.find_by(name: "Santé"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Arbres malades dans le square des Tulipes",
+    location: "Rue de Bourgogne, 52100 Saint-Dizier",
+    description: "Certains arbres dans le square des Tulipes semblent malades. Un arboriculteur devrait être consulté pour évaluer la situation et prendre des mesures appropriées.",
+    category: Category.find_by(name: "Environnement"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Défaut d'entretien des aires de jeu pour enfants",
+    location: "Rue Jean Cassou, 52100 Saint-Dizier",
+    description: "Les aires de jeu pour enfants ont besoin d'un entretien urgent. Les balançoires grincent, et les surfaces en caoutchouc sont endommagées. La sécurité des enfants est compromise.",
+    category: Category.find_by(name: "Jeunesse"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Tag sur les murs du centre culturel",
+    location: "Rue Roger Michelot, 52100 Saint-Dizier",
+    description: "Des graffitis ont été apposés sur les murs du centre culturel. Cela nuit à l'apparence esthétique du bâtiment. Un nettoyage est requis.",
+    category: Category.find_by(name: "Patrimoine"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Fuites d'eau près du stade de sport",
+    location: "Rue Roger Martin du Gard, 52100 Saint-Dizier",
+    description: "Des fuites d'eau ont été détectées près du stade de sport. Cela crée des flaques d'eau et peut affecter la qualité du terrain de jeu.",
+    category: Category.find_by(name: "Sport"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Stationnement sauvage devant l'école secondaire",
+    location: "Rue Valentina Terechkova, 52100 Saint-Dizier",
+    description: "Les parents se garent de manière chaotique devant l'école secondaire, créant des problèmes de circulation et de sécurité. Des mesures de régulation sont nécessaires.",
+    category: Category.find_by(name: "Jeunesse"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Poubelles publiques débordantes sur la place du marché",
+    location: "Rue Philippe Charbonneaux, 52100 Saint-Dizier",
+    description: "Les poubelles publiques sur la place du marché débordent de déchets. Cela crée une mauvaise image et peut attirer les animaux nuisibles.",
+    category: Category.find_by(name: "Tourisme"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Fenêtres cassées à la bibliothèque municipale",
+    location: "Rue Paul Verlaine, 52100 Saint-Dizier",
+    description: "Plusieurs fenêtres de la bibliothèque municipale sont brisées. Cela compromet la sécurité du bâtiment et nécessite des réparations immédiates.",
+    category: Category.find_by(name: "Culture"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Sentier de randonnée envahi par la végétation",
+    location: "Rue Paul Cezanne, 52100 Saint-Dizier",
+    description: "Le sentier de randonnée près du bois est envahi par la végétation, rendant la marche difficile. Un débroussaillage est nécessaire.",
+    category: Category.find_by(name: "Environnement"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Défaut d'éclairage dans le parking du centre commercial",
+    location: "Rue Paul Bert, 52100 Saint-Dizier",
+    description: "Certains lampadaires dans le parking du centre commercial ne fonctionnent pas correctement, créant des zones sombres. Cela affecte la sécurité des clients.",
+    category: Category.find_by(name: "Santé"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Accès handicapé bloqué devant la mairie",
+    location: "Rue Olof Palme, 52100 Saint-Dizier",
+    description: "L'accès handicapé devant la mairie est bloqué en raison de travaux de construction. Une signalisation appropriée est nécessaire pour diriger les personnes handicapées vers un autre itinéraire.",
+    category: Category.find_by(name: "Inclusion"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Véhicules abandonnés dans la rue des Cerisiers",
+    location: "Rue Notre Dame, 52100 Saint-Dizier",
+    description: "Plusieurs véhicules semblent abandonnés dans la rue des Cerisiers. Cela peut causer des problèmes de stationnement et de circulation.",
+    category: Category.find_by(name: "Autre"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Inondation mineure après une pluie intense",
+    location: "Rue Mozart, 52100 Saint-Dizier",
+    description: "Après une forte pluie, certaines rues ont été inondées en raison d'un mauvais drainage. Des améliorations sont nécessaires pour éviter de futurs problèmes d'inondation.",
+    category: Category.find_by(name: "Autre"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  },
+  {
+    title: "Défaillance des feux de circulation à l'intersection principale",
+    location: "Rue Montpensier, 52100 Saint-Dizier",
+    description: "Les feux de circulation à l'intersection principale ne fonctionnent pas correctement, créant des embouteillages et des situations dangereuses. Une réparation urgente est demandée.",
+    category: Category.find_by(name: "Autre"),
+    dangerosity: rand(1..5),
+    user: User.all.sample
+  }
+]
+
+created_observations = Observation.create!(observations)
