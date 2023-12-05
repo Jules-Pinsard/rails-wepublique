@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
   static values = { chatroomId: Number }
-  static targets = ["messages"]
+  static targets = ["messages", "icon", "view"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -13,6 +13,14 @@ export default class extends Controller {
   }
 
   #insertMessageAndScrollDown(data) {
+    if (this.viewTarget.ariaHidden) {
+      if (this.iconTarget.hidden) {
+        this.iconTarget.children[0].innerText = 1
+        this.iconTarget.hidden = false
+      } else {
+        this.iconTarget.children[0].innerText = parseInt(this.iconTarget.children[0].innerText) + 1
+      }
+    }
     this.messagesTarget.insertAdjacentHTML("beforeend", data)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
@@ -23,5 +31,10 @@ export default class extends Controller {
 
   disconnect() {
     this.channel.unsubscribe()
+  }
+
+  resetNotification() {
+    this.iconTarget.children[0].innerText = ""
+    this.iconTarget.hidden = "true"
   }
 }
