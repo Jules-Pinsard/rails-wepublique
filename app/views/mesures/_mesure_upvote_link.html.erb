@@ -4,14 +4,20 @@
       <%= link_to upvote_mesure_path(@mesure), data: { turbo_method: :patch, action: "click->mesure-upvote#vote", disable_with: "voting..." } do %>
         <% if current_user.voted_up_on? @mesure %>
           <div class="like-box">
-            <i class="fa-solid fa-award logo"></i>
+            <i class="fa-solid fa-award logo">
+              <div class="highlight">
+              </div>
+            </i>
             <div class="number">
               <%= @mesure.cached_votes_up %>
             </div>
           </div>
         <% else %>
           <div class="like-box">
-            <i class="fa-solid fa-award logo"></i>
+              <i class="fa-solid fa-award logo">
+                <div class="highlight">
+                </div>
+              </i>
             <div class="number">
               <%= @mesure.cached_votes_up %>
             </div>
@@ -21,7 +27,10 @@
     <% end %>
   <% else %>
     <div class="like-box">
-      <i class="fa-solid fa-award logo"></i>
+      <i class="fa-solid fa-award logo">
+        <div class="highlight">
+        </div>
+      </i>
       <div class="number">
         <%= @mesure.cached_votes_up %>
       </div>

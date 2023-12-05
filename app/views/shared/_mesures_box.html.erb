@@ -10,12 +10,7 @@
             <% elsif mesure.status = "Validé" && parameter == "maire"%>
               <p>Validée</p>
             <% end %>
-            <div class="votes">
-              <p><%= mesure.votes_for.size %></p>
-              <i class="fa-solid fa-thumbs-up mx-1"></i>
-              <p><%= mesure.get_downvotes.size %></p>
-              <i class="fa-solid fa-thumbs-down mx-1"></i>
-            </div>
+          <%= render 'shared/mesure_likes', mesure: mesure %>
           </div>
         </div>
       <% end %>
