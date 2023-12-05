@@ -1,17 +1,17 @@
 <div class="row m-3">
-<div class="col-7 d-flex align-items-center blue">
+<div class="col-7 d-flex align-items-center blue gap-2">
 <%= image_tag "human-cooperation.svg" %>
 <h3>Participez aux <strong>échanges</strong> entre le maire et les citoyens de votre ville pour encourager la mise en place de nouvelles mesures </h3>
 </div>
-<div class="col-5 blue d-flex align-items-center">
+<div class="col-5 blue d-flex align-items-center gap-2">
 <%= image_tag "map.svg" %>
 <div class="col">
-<h3>Un <strong>soucis</strong> dans un lieu spécifique ? </h3>
+<h3 class="mb-1">Un <strong>soucis</strong> dans un lieu spécifique ? </h3>
 <h5>Reportez le afin qu'il soit pris en charge et réglé dans les meilleurs délais</h5>
 </div>
 </div>
 </div>
-<div class="m-0 row g-4">
+<div class="m-0 row gx-4">
   <div class="col-7">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
@@ -35,13 +35,13 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="mayor-tab-pane" role="tabpanel" aria-labelledby="mayor-tab" tabindex="0">
-        <%= render partial: "shared/mesures_box", locals: {mesures: @mayor_mesures, parameter: "maire"} %>
+        <%= render partial: "shared/mesures_box", locals: {mesures: @mayor_mesures, parameter: "maire", cl:"no-radius-top-left"} %>
       </div>
       <div class="tab-pane fade" id="citizen-tab-pane" role="tabpanel" aria-labelledby="citizen-tab" tabindex="0">
-        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures, parameter: "citoyennes"} %>
+        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures, parameter: "citoyennes", cl:"no-radius-top-left"} %>
       </div>
       <div class="tab-pane fade" id="retenues-tab-pane" role="tabpanel" aria-labelledby="retenues-tab" tabindex="0">
-        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures_retenues, parameter: "retenues"} %>
+        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures_retenues, parameter: "retenues",  cl:"no-radius-top-left"} %>
       </div>
     </div>
   </div>

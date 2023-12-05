@@ -2,13 +2,13 @@
   <h2 class='text-center mt-3'>Ajouter une nouvelle observation</h2>
   <div class="col-6">
     <%= simple_form_for @observation, html: { class: 'blue-box' } do |f| %>
-        <%= f.input :title,label: false, placeholder: "Entrez le titre de votre observation" %>
-        <%= f.input :description,label: false, placeholder: "Décrivez votre observation" %>
-        <%= f.input :location, label: false, placeholder: "Entrez une adresse ou placez l'observation sur la carte" %>
-        <%= f.input :dangerosity, as: :select, collection: [1,2,3,4,5],label: false, include_blank: "Indiquez un niveau de dangerosité" %>
-        <%= f.input :latitude, as: :hidden %>
-        <%= f.input :longitude, as: :hidden %>
-        <%= f.association :category,label: false, include_blank: "Choisissez une catégorie" %>
+      <%= f.input :title,label: false, placeholder: "Entrez le titre de votre observation" %>
+      <%= f.input :description,label: false, placeholder: "Décrivez votre observation" %>
+      <%= f.input :location, label: false, input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+      <%= f.input :dangerosity, as: :select, collection: [1,2,3,4,5],label: false, include_blank: "Indiquez un niveau de dangerosité" %>
+      <%= f.input :latitude, as: :hidden %>
+      <%= f.input :longitude, as: :hidden %>
+      <%= f.association :category,label: false, include_blank: "Choisissez une catégorie" %>
       <div class="form-actions my-2 text-end">
         <%= f.button :submit, class: "btn btn-primary" %>
       </div>

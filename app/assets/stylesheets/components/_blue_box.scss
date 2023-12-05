@@ -153,3 +153,6 @@ a.mapboxgl-ctrl-logo {
     color: $red;
   }
 }
+.no-radius-top-left {
+  border-top-left-radius: 0 !important;
+}

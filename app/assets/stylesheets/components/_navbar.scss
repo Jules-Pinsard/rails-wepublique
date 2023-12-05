@@ -12,12 +12,17 @@
   }
 
   h3 {
-    font-family: 'Fasthand', cursive;
+    font-family: 'Raleway', sans-serif;
     font-size: 36px;
   }
 
+  #public {
+    font-weight: light;
+    font-family: 'Brygada 1918', serif;
+  }
+
   .nav-link:hover {
-    color: #BAD7E9;
+    color: $light-blue;
   }
 
   .navbar-brand:hover {
