@@ -1,4 +1,4 @@
-<div class="col-10 mb-5">
+<div class="col-11 mb-5">
   <div class="blue-box mt-5 position-relative">
     <div class="mt-3 mx-5 d-flex justify-content-between">
       <h2><%= @mesure.title %></h2>
@@ -18,7 +18,7 @@
         <p class="mt-4"><i class="fa-regular fa-clipboard fa-xl"></i> <%= @mesure.status %> </p>
       </div>
         <p class="text-wrap fs-6 description-mesure mt-3"> <%= @mesure.content %></p>
-    <div class="col-10 mt-3 mb-3 ms-5 d-flex">
+    <div class="col-11 mt-3 mb-3 ms-5 d-flex">
         <%= render partial: "shared/validation_button", locals: {mesure: @mesure} %>
         <%= render partial: "shared/comments_area", locals: {mesure: @mesure, comments: @comments, comment: @comment } %>
     </div>
