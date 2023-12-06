@@ -4,7 +4,7 @@
     <% comments.each do |comment| %>
       <%= link_to comment.mesure, class:"small-white-item" do  %>
         <h6 class="name"><%= comment.user.first_name[0] %>. <%= comment.user.last_name %> </h6>
-        <p class="col-6">"<%= comment.content.slice(0..30) %>..."</p>
+        <p class="col-6">"<%= comment.content.slice(0..70) %>..."</p>
         <% minutes = ((Time.now - comment.created_at)/60).round %>
         <% if minutes < 60 %>
           <p class="time">Il y a <%= minutes %> min</p>
