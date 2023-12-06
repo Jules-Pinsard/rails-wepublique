@@ -90,7 +90,7 @@ real_users = User.create!([{ email: "j@j.com",
                              code: "" }])
 
 fake_users = []
-200.times do
+800.times do
   fake_users << User.create!(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
