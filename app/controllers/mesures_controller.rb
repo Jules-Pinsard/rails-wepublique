@@ -4,9 +4,9 @@ class MesuresController < ApplicationController
 
   def index
     @page = params[:page].to_i if params[:page]
-    allmesures = Mesure.includes(:user).where("user.mayor": true) if params[:mesures] == "maire"
-    allmesures = Mesure.includes(:user).all if params[:mesures] == "citoyennes"
-    allmesures = Mesure.includes(:user).where(status: "Validé") if params[:mesures] == "retenues"
+    allmesures = Mesure.includes(:user).includes(:category).where(user: {mayor: true}, mesures: {status: ["En cours de concertation", "Validé"]}).order(created_at: :desc) if params[:mesures] == "maire"
+    allmesures = Mesure.includes(:user).includes(:category).all.where(status: "En cours de concertation").order(created_at: :desc) if params[:mesures] == "citoyennes"
+    allmesures = Mesure.includes(:user).includes(:category).where(status: "Validé").order(created_at: :desc) if params[:mesures] == "retenues"
     @pages = (1..(allmesures.count / 10))
     @title = "Les proposition de mesure citoyennes" if params[:mesures] == "citoyennes"
     @title = "Les mesures retenues" if params[:mesures] == "retenues"

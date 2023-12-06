@@ -5,12 +5,12 @@
   padding: 12px;
   position: relative;
   width: 100%;
-  box-shadow: 1px 1px 5px $light-blue;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.15 ) ;
   z-index: 0;
 
   p {
     font-size: 12px;
-    font-style: italic;
     font-weight: lighter;
   }
 
@@ -51,14 +51,17 @@
   .item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     background-color: $light-gray;
+    border-radius: 4px;
     padding: 4px 8px 4px 16px;
-    margin-top: 4px;
+    margin-top: 8px;
     flex-grow: 1;
+    position: relative;
 
     h5 {
       margin: 0;
+      font-weight: bolder;
+      font-size: 18px;
     }
 
     p {
@@ -83,6 +86,11 @@
     height: 24px;
     text-align: center;
     align-items: center;
+  }
+  .right-corner {
+    position: absolute;
+    top: 4px;
+    right: 8px;
   }
 }
 
@@ -127,7 +135,7 @@ a.mapboxgl-ctrl-logo {
 
 .box-shadow {
   position: relative;
-  box-shadow: 1px 1px 5px $light-blue;
+  box-shadow: 1px 1px 5px $light-gray;
 .position-bottom-map {
   position: absolute;
   bottom: 12px;

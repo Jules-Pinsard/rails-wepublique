@@ -1,6 +1,7 @@
 <div data-controller="new-mesure">
       <%= simple_form_for @mesure do |f| %>
       <div class="row gy-4 m-1">
+<%= link_to "Retour", request.referer, class: "btn btn-primary col-1" %>
     <h2 class='text-center m-1'> Proposer une nouvelle mesure</h2>
           <%= f.input :title, class: "flex-grow-1", label: false, placeholder: "Entrez le titre de votre mesure" %>
           <div class="col-4 m-0">

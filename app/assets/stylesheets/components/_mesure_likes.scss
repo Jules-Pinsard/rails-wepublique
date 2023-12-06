@@ -46,14 +46,13 @@
 }
 
 .small-like-box {
-  width: 35px;
-  height: 20px;
   display: flex;
   align-items: center;
   margin: 2px;
 
   .small-number {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bold;
   }
 
   .small-logo {

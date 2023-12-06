@@ -1,4 +1,4 @@
-<%= link_to "Ajouter une mesure", new_mesure_path, class:"btn btn-primary mt-3" %>
+<%= link_to "Ajouter une mesure", new_mesure_path, class:"btn btn-primary mt-3 ms-3" %>
 <div class="m-0 row g-4">
   <%= render partial: "shared/small_mesure_card", locals: {mesures: @mesures, pages: @pages, title: @title} %>
   <%= render partial: "shared/messages_tab", locals: {comments: @comments } %>

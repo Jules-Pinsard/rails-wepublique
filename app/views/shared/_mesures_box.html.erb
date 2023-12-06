@@ -1,17 +1,16 @@
 <div class="blue-box <%= cl %> ">
-  <div class="mb-5 pb-2">
+  <div class="mb-2 pb-2">
     <% mesures.each do |mesure| %>
-      <%= link_to mesure do %>
-        <div class="item">
-          <h5><%= mesure.title %></h5>
-          <div class="d-flex justify-content-end gap-1">
-            <% if mesure.status == "En cours de concertation" %>
-              <p>Depuis le: <%= mesure.created_at.strftime("%e/%m/%y") %> </p>
-            <% elsif mesure.status = "Validé" && parameter == "maire"%>
-              <p>Validée</p>
-            <% end %>
+      <%= link_to mesure, class: "item align-items-center" do %>
+        <h5><%= mesure.title %></h5>
+        <div class="d-flex justify-content-end gap-1 align-items-center flex-nowrap">
+          <% if mesure.status == "En cours de concertation" %>
+            <i class="fa-regular fa-comment-dots text-primary"></i>
+            <p><%= mesure.created_at.strftime("%e/%m/%y") %> </p>
+          <% elsif mesure.status = "Validé"%>
+            <i class="fa-regular fa-square-check text-success"></i>
+          <% end %>
           <%= render 'shared/mesure_likes', mesure: mesure %>
-          </div>
         </div>
       <% end %>
     <% end %>

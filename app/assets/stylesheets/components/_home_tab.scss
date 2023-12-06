@@ -1,14 +1,22 @@
 .nav-tabs {
+  border: none;
+  outline: none;
 
   .nav-link.active {
     color: $blue;
     background-color: $light-blue;
+    z-index: 1000;
+    position: relative;
+    border: none;
+    outline: none;
   }
   .nav-link {
     color: #002654;
     background-color: $light-gray;
     font-size: 14px;
     font-weight: bold;
+    border: none;
+    outline: none;
   }
   .nav-link.nav-link.active:hover {
     color: $light-gray

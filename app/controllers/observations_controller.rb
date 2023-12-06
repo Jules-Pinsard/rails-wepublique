@@ -7,9 +7,9 @@ class ObservationsController < ApplicationController
   def new
     @observation = Observation.new
     @markers = Observation.all.includes(:category).includes(:user).geocoded.map do |observation|
-      color = "#E97777" if ["Environnement","Santé","Finances"].include?(observation.category.name)
-      color = "#96B6C5" if ["Solidarité", "Sport", "Inclusion", "Jeunesse"].include?(observation.category.name)
-      color = "#C7DCA7" if ["Culture", "Patrimoine", "Tourisme", "Mobilier"].include?(observation.category.name)
+      color = "#B31A1A" if ["Environnement","Santé","Finances"].include?(observation.category.name)
+      color = "#1343A9" if ["Solidarité", "Sport", "Inclusion", "Jeunesse"].include?(observation.category.name)
+      color = "#317232" if ["Culture", "Patrimoine", "Tourisme", "Mobilier"].include?(observation.category.name)
       color = "#F9F3CC" if observation.category.name == "Autre"
       {
         color: color,
