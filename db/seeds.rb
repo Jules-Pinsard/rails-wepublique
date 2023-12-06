@@ -1,5 +1,7 @@
 require 'faker'
 
+puts "Destroying database..."
+
 Comment.destroy_all
 User.destroy_all
 Category.destroy_all
@@ -8,7 +10,15 @@ Observation.destroy_all
 SubComment.destroy_all
 Chatroom.destroy_all
 
+puts "Database destroyed!"
+
+puts "Creating Chatroom..."
+
 Chatroom.create!
+
+puts "Chatroom created!"
+
+puts "Creating Users..."
 
 real_users = User.create!([{ email: "j@j.com",
                              first_name: "Julia",
@@ -101,6 +111,10 @@ fake_users = []
   )
 end
 
+puts "Users created!"
+
+puts "Creating Categories..."
+
 Category.create!([{ name: "Mobilier" },
                   { name: "Environnement" },
                   { name: "Santé" },
@@ -114,7 +128,15 @@ Category.create!([{ name: "Mobilier" },
                   { name: "Tourisme" },
                   { name: "Autre" }])
 
+puts "Categories created!"
+
+puts "Creating Status..."
+
 statuses = ["En cours de concertation", "Validé", "Refusé"]
+
+puts "Status created!"
+
+puts "Creating Mesures..."
 
 mesures = [
   {
@@ -392,6 +414,18 @@ mesures = [
   }
 ]
 
+created_mesures = Mesure.create!(mesures)
+
+Mesure.all.each do |mesure|
+  [rand(0..3), rand(0..3), rand(0..3), rand(8..37), rand(40..100), rand(200..300), rand(500..800)].sample.times do
+    mesure.liked_by(fake_users.sample)
+  end
+end
+
+puts "Mesures created!"
+
+puts "Creating Comments..."
+
 comments = [
   "Pas convaincu du tout. On a d'autres trucs plus urgents à régler, sérieux !",
   "Génial, enfin quelqu'un qui pense à rendre notre quartier plus cool ! 👍",
@@ -448,14 +482,6 @@ sub_comments = [
   "Initiatives = cool ! On devrait tous en proposer plus souvent. 🚀"
 ]
 
-created_mesures = Mesure.create!(mesures)
-
-Mesure.all.each do |mesure|
-  [rand(0..3), rand(0..3), rand(0..3), rand(8..37), rand(40..100), rand(200..300), rand(500..800)].sample.times do
-    mesure.liked_by(fake_users.sample)
-  end
-end
-
 un_peu = [0, 0, 0, 1, 2]
 
 pas_beaucoup = [0, 0, 1, 2, 3]
@@ -500,6 +526,10 @@ SubComment.all.each do |sub_comment|
     sub_comment.downvote_from real_users.sample
   end
 end
+
+puts "Comments created!"
+
+puts "Creating Observations..."
 
 observations = [
   {
@@ -665,3 +695,7 @@ observations = [
 ]
 
 Observation.create!(observations)
+
+puts "Observations created!"
+
+puts "Database successfully loaded"
