@@ -1,18 +1,17 @@
 <div class="blue-box animate__animated animate__fadeIn">
   <h3>Les mesure déjà proposées</h3>
   <% mesures.each do |mesure| %>
-    <%= link_to mesure do %>
-      <div class="item">
-        <h3><%= mesure.title %></h3>
-        <div class="d-flex">
-          <p class="date">Discuté depuis le <%= mesure.created_at.strftime("%e %b %Y à %H:%M") %> </p>
+      <%= link_to mesure, class: "item align-items-center" do %>
+        <h5><%= mesure.title %></h5>
+        <div class="d-flex justify-content-end gap-1 align-items-center flex-nowrap">
+          <% if mesure.status == "En cours de concertation" %>
+            <i class="fa-regular fa-comment-dots text-primary"></i>
+            <p><%= mesure.created_at.strftime("%e/%m/%y") %> </p>
+          <% elsif mesure.status = "Validé"%>
+            <i class="fa-regular fa-square-check text-success"></i>
+          <% end %>
           <%= render 'shared/mesure_likes', mesure: mesure %>
         </div>
-      </div>
-      <div class="item mt-0 mb-2">
-        <p>"<%= mesure.content.slice(0..250) %>..."</p>
-        <p>Status : <%= mesure.status %></p>
-      </div>
-    <% end %>
+      <% end %>
   <% end %>
 </div>
