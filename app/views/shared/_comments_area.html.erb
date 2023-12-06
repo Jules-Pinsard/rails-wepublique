@@ -1,9 +1,6 @@
 <div class="col-8">
   <%= render partial: "shared/comment", locals: {comments: @comments, sub_comments: @sub_comments } %>
 </div>
-
-<%= link_to "Ajouter une mesure", new_mesure_path %>
-
 <script>
   function toggleSubComments(commentId) {
     var subCommentsContainer = document.getElementById('sub-comments-container-' + commentId);
@@ -14,8 +11,8 @@
     }
   }
 
-function toggleReplyForm(commentId) {
+  function toggleReplyForm(commentId) {
   var formContainer = document.getElementById('reply-form-container-' + commentId);
   formContainer.style.display = (formContainer.style.display === 'none') ? 'block' : 'none';
-}
+  }
 </script>
