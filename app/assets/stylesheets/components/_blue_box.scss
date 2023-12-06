@@ -138,9 +138,8 @@ a.mapboxgl-ctrl-logo {
   box-shadow: 1px 1px 5px $light-gray;
 .position-bottom-map {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
+  top: 12px;
+  right: 24px;
   display: flex;
 
   .btn {
@@ -149,7 +148,7 @@ a.mapboxgl-ctrl-logo {
 }
 
 }
-.blue {
+.blue-text {
   font-family: 'Poppins', sans-serif;
   color: $blue;
   h3 {
