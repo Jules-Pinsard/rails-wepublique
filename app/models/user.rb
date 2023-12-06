@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  has_one_attached :avatar
-  has_many :mesures
-  has_many :observations
-  has_many :comments, through: :mesures
-  has_many :sub_comments, through: :comments
+  has_many :mesures, dependent: :destroy
+  has_many :observations, dependent: :destroy
+  has_many :comments, through: :mesures, dependent: :destroy
+  has_many :sub_comments, through: :comments, dependent: :destroy
+  has_many :messages, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   validate :save_mayor?
+
+  acts_as_voter
 
   before_save :capitalize
   after_create :set_mayor

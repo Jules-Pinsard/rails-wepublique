@@ -4,12 +4,7 @@
       <h2><%= @mesure.title %></h2>
         <div class=" d-flex">
           <div class="ms-4 thumbs d-flex align-items-center justify-content-center">
-            <p><%= @mesure.votes_for.size %></p>
-            <i class="fa-solid fa-thumbs-up fa-2xl ps-2"></i>
-          </div>
-          <div class="ms-4 thumbs d-flex align-items-center justify-content-center">
-            <p><%= @mesure.get_downvotes.size %></p>
-            <i class="fa-solid fa-thumbs-down fa-2xl ps-2"></i>
+            <%= render partial: "mesures/mesure_upvote_link", locals: {mesure: @mesure } %>
           </div>
         </div>
     </div>

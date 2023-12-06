@@ -1,12 +1,12 @@
 class MesuresController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :find_mesure, only: %i[show update destroy]
+  before_action :find_mesure, only: %i[show update destroy upvote]
 
   def index
     @page = params[:page].to_i if params[:page]
-    allmesures = Mesure.joins(:user).where("user.mayor": true) if params[:mesures] == "maire"
-    allmesures = Mesure.all if params[:mesures] == "citoyennes"
-    allmesures = Mesure.where(status: "Validé") if params[:mesures] == "retenues"
+    allmesures = Mesure.includes(:user).where("user.mayor": true) if params[:mesures] == "maire"
+    allmesures = Mesure.includes(:user).all if params[:mesures] == "citoyennes"
+    allmesures = Mesure.includes(:user).where(status: "Validé") if params[:mesures] == "retenues"
     @pages = (1..(allmesures.count / 10))
     @title = "Les proposition de mesure citoyennes" if params[:mesures] == "citoyennes"
     @title = "Les mesures retenues" if params[:mesures] == "retenues"
@@ -20,18 +20,27 @@ class MesuresController < ApplicationController
     else
       @mesures = allmesures[((@page - 1) * 10)..((@page * 10) - 1)]
     end
-    @comments = Comment.all.last(10)
+    @comments = Comment.includes(:mesure).includes(:user).all.order(created_at: :desc).last(10)
   end
 
   def show
-    @comments = Comment.includes(:sub_comments).where(mesure: @mesure)
+    @comments = @mesure.comments.includes(:sub_comments).order(created_at: :desc)
     @comment = Comment.new
     @sub_comment = SubComment.new
   end
 
   def new
     @mesure = Mesure.new
+  end
 
+  def upvote
+    if current_user.voted_up_on? @mesure
+      @mesure.unvote_by current_user
+    else
+      @mesure.upvote_by current_user
+    end
+    mesure_upvote_html = render_to_string(partial: 'mesures/mesure_upvote_link', locals: { mesure: @mesure }, formats: :html)
+    render json: { mesure_upvote_html: mesure_upvote_html }
   end
 
   def create

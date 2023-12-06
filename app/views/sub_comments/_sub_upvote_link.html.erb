@@ -1,0 +1,18 @@
+<% if current_user %>
+  <%= content_tag "div", id: "upvote-#{sub_comment.id}", data: { sub_comment_vote_target: 'subupvoteArea'} do %>
+    <%= link_to upvote_sub_comment_path(sub_comment), data: { turbo_method: :patch, action: "click->sub-comment-vote#vote", disable_with: "voting..." }, class: "sub-comment-votes" do %>
+      <% if current_user.voted_up_on? sub_comment %>
+        <%= sub_comment.cached_votes_up %><i class="fas fa-thumbs-up"></i>
+      <% else %>
+        <%= sub_comment.cached_votes_up %><i class="far fa-thumbs-up"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+  <div class="sub-comment-votes">
+    <div class="m-1">
+      <%= sub_comment.cached_votes_up %>
+    </div>
+    <i class="far fa-thumbs-up"></i>
+  </div>
+<% end %>

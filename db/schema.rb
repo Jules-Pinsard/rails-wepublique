@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_141610) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_141410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,14 +48,37 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_141610) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "mesure_id", null: false
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["mesure_id"], name: "index_comments_on_mesure_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "mesures", force: :cascade do |t|
@@ -66,6 +89,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_141610) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["category_id"], name: "index_mesures_on_category_id"
     t.index ["user_id"], name: "index_mesures_on_user_id"
   end
@@ -91,6 +121,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_141610) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["comment_id"], name: "index_sub_comments_on_comment_id"
     t.index ["user_id"], name: "index_sub_comments_on_user_id"
   end
@@ -131,6 +168,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_141610) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "mesures"
   add_foreign_key "comments", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "mesures", "users"
   add_foreign_key "observations", "users"
   add_foreign_key "sub_comments", "comments"

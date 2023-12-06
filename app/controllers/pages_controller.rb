@@ -2,8 +2,13 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
 
   def home
-    @markers = Observation.all.geocoded.map do |observation|
+    @markers = Observation.all.includes(:category).includes(:user).geocoded.map do |observation|
+      color = "#E97777" if ["Environnement","Santé","Finances"].include?(observation.category.name)
+      color = "#96B6C5" if ["Solidarité", "Sport", "Inclusion", "Jeunesse"].include?(observation.category.name)
+      color = "#C7DCA7" if ["Culture", "Patrimoine", "Tourisme", "Mobilier"].include?(observation.category.name)
+      color = "#F9F3CC" if observation.category.name == "Autre"
       {
+        color: color,
         lat: observation.latitude,
         lng: observation.longitude,
         info_window_html: render_to_string(partial: "shared/observation_window", locals: {observation: observation})

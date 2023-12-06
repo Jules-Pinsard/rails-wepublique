@@ -1,0 +1,32 @@
+<div data-controller="chatroom-subscription"
+      data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>">
+  <button class="chat-button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-action="click->chatroom-subscription#resetNotification">
+    <div style="postion:relative;">
+    <i class="fa-regular fa-comments"></i>
+    <div class="red-circle" hidden= true data-chatroom-subscription-target="icon">
+    <p></p>
+    </div>
+    </div>
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-chatroom-subscription-target="view">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="container chatroom">
+          <div class="modal-header p-0">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Le Café du coin</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="messages" data-chatroom-subscription-target="messages">
+            <% chatroom.messages.each do |message| %>
+              <%= render "shared/message", message: message %>
+            <% end %>
+          </div>
+          <%= simple_form_for [chatroom, message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+            <%= f.input :content, label: false, placeholder: "Discutez", wrapper_html: {class: "flex-grow-1"}%>
+            <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

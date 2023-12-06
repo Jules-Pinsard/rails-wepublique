@@ -17,6 +17,7 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
+        console.log(data);
         this.containerTarget.classList.remove("d-none")
         this.containerTarget.innerHTML = data.inserted_item
       })

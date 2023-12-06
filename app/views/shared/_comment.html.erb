@@ -9,17 +9,24 @@
   <% comments.each do |comment| %>
     <div class="comment-area">
       <div class="user-name-time-comment">
-        <h6 class="name-comment"><%= comment.user.first_name %> <%= comment.user.last_name %> </h6>
-        <p class="time-comment">
-          <% minutes = ((Time.now - comment.created_at)/60).round %>
-          <% if minutes < 60 %>
-            <p class="time">Il y a <%= minutes %> min</p>
-          <% elsif (minutes/60).round < 24%>
-            <p class="time">Il y a <%= (minutes/60).round %> h </p>
-          <% else %>
-            <p class="time">Il y a <%= (minutes/60/24).round %> j </p>
+        <div class="d-flex">
+          <h6 class="name-comment"><%= comment.user.first_name %> <%= comment.user.last_name %> </h6>
+          <p class="time-comment">
+            <% minutes = ((Time.now - comment.created_at)/60).round %>
+            <% if minutes < 60 %>
+              <p class="time">Il y a <%= minutes %> min</p>
+            <% elsif (minutes/60).round < 24%>
+              <p class="time">Il y a <%= (minutes/60).round %> h </p>
+            <% else %>
+              <p class="time">Il y a <%= (minutes/60/24).round %> j </p>
+            <% end %>
+          </p>
+        </div>
+        <% if comment.user == current_user %>
+          <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr?" } do %>
+            <i class="fa-regular fa-trash-can"></i>
           <% end %>
-        </p>
+        <% end %>
       </div>
       <p class="content"><%= comment.content %></p>
       <div class="answers-like">
@@ -30,8 +37,10 @@
         </div>
         <div class="votes">
           <button class="btn btn-link btn-sm" onclick="toggleReplyForm(<%= comment.id %>)">Répondre</button>
-          <div class="comment-votes"><%= comment.votes_for.size %><i class="fa-regular fa-thumbs-up m-2"></i></div>
-          <div class="comment-votes"><%= comment.get_downvotes.size %><i class="fa-regular fa-thumbs-down m-2"></i></div>
+            <div data-controller="comment-vote" class="comment-votes">
+              <%= render 'comments/upvote_link', comment: comment %>
+              <%= render 'comments/downvote_link', comment: comment %>
+            </div>
         </div>
       </div>
     </div>
@@ -47,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div id="sub-comments-container-<%= comment.id %>" style="display: none;">
+    <div id="sub-comments-container-<%= comment.id %>" style="display: none" class="comment-votes">
       <%= render partial: "shared/sub_comment", locals: {sub_comments: comment.sub_comments } %>
     </div>
   <% end %>

@@ -1,7 +1,7 @@
 class SubCommentsController < ApplicationController
-  before_action :find_comment, only: %i[create destroy]
+  before_action :find_comment, only: %i[create]
 
-  before_action :find_sub_mesure, only: %i[destroy]
+  before_action :find_sub_comment, only: %i[destroy]
 
   def create
     @sub_comment = SubComment.new
@@ -13,9 +13,33 @@ class SubCommentsController < ApplicationController
     end
   end
 
+  def upvote
+    @sub_comment = SubComment.find(params[:id])
+    if current_user.voted_up_on? @sub_comment
+      @sub_comment.unvote_by current_user
+    else
+      @sub_comment.upvote_by current_user
+    end
+    sub_upvote_html = render_to_string(partial: 'sub_comments/sub_upvote_link', locals: { sub_comment: @sub_comment }, formats: :html)
+    sub_downvote_html = render_to_string(partial: 'sub_comments/sub_downvote_link', locals: { sub_comment: @sub_comment }, formats: :html)
+    render json: { sub_upvote_html: sub_upvote_html, sub_downvote_html: sub_downvote_html }
+  end
+
+  def downvote
+    @sub_comment = SubComment.find(params[:id])
+    if current_user.voted_down_on? @sub_comment
+      @sub_comment.unvote_by current_user
+    else
+      @sub_comment.downvote_by current_user
+    end
+    sub_upvote_html = render_to_string(partial: 'sub_comments/sub_upvote_link', locals: { sub_comment: @sub_comment }, formats: :html)
+    sub_downvote_html = render_to_string(partial: 'sub_comments/sub_downvote_link', locals: { sub_comment: @sub_comment }, formats: :html)
+    render json: { sub_upvote_html: sub_upvote_html, sub_downvote_html: sub_downvote_html }
+  end
+
   def destroy
     @sub_comment.destroy
-    redirect_to @mesure, status: :see_other
+    redirect_to request.referer, status: :see_other
   end
 
   private

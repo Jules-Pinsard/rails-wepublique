@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WePublic</title>
+    <title>WePublic · La plateforme participative</title>
     <link rel="shortcut icon" href="<%= asset_path 'logo.png' %>" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -19,6 +20,7 @@
             <%= yield %>
         </div>
     </div>
+      <%= render partial: "shared/chatbox", locals: {chatroom: @chat_general, message: @message } %>
     <%= render "shared/footer" %>
   </body>
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js">
