@@ -451,7 +451,7 @@ sub_comments = [
 created_mesures = Mesure.create!(mesures)
 
 Mesure.all.each do |mesure|
-  rand(0..250).times do
+  [rand(0..3), rand(0..3), rand(0..3), rand(8..37), rand(40..100), rand(200..300), rand(500..800)].sample.times do
     mesure.liked_by(fake_users.sample)
   end
 end
