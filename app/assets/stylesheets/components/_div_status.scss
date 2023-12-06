@@ -1,9 +1,19 @@
 .div_status {
   display: flex;
   align-items: center;
+  margin-right: auto;
+  max-width: 790px;
 
   p {
+    display: flex;
     font-size: 18px;
     align-items: center;
+    margin-right: auto;
+    max-width: 350px;
+  }
+
+  i {
+    margin-right: 12px;
+    text-shadow: 1px 1px 1px black;
   }
 }
