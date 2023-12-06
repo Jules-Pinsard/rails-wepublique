@@ -24,7 +24,7 @@
         <p class="content"><%= sub_comment.content %></p>
           <div class="answers-like">
             <div class="comment-votes">
-            <div data-controller="sub-comment-vote" class="votes">
+            <div data-controller="sub-comment-vote" class="votes" data-sub-comment-vote-user-value="<%= current_user ? current_user.id : 0 %>" >
               <%= render 'sub_comments/sub_upvote_link', sub_comment: sub_comment %>
               <%= render 'sub_comments/sub_downvote_link', sub_comment: sub_comment %>
             </div>
