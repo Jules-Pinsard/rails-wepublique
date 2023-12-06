@@ -1,44 +1,48 @@
-<div data-controller="mesure-upvote">
-  <% if current_user %>
-    <%= content_tag "div", id: "upvote-#{@mesure.id}", data: { mesure_upvote_target: 'mesureupvoteArea'} do %>
-      <%= link_to upvote_mesure_path(@mesure), data: { turbo_method: :patch, action: "click->mesure-upvote#vote", disable_with: "voting..." } do %>
+<div data-controller="mesure-upvote" data-mesure-upvote-user-value="<%= current_user ? current_user.id : 0 %>">
+  <%= content_tag "div", id: "upvote-#{@mesure.id}", data: { mesure_upvote_target: 'mesureupvoteArea'} do %>
+    <%= link_to upvote_mesure_path(@mesure), data: { turbo_method: :patch, action: "click->mesure-upvote#vote", disable_with: "voting..." } do %>
+      <% if current_user %>
         <% if current_user.voted_up_on? @mesure %>
-          <div class="like-box">
-            <i class="fa-solid fa-award logo">
+          <div class="like-box" tabindex="0">
               <div class="highlight">
               </div>
+            <i class="fa-solid fa-award logo">
             </i>
             <div class="number">
               <%= @mesure.cached_votes_up %>
             </div>
           </div>
         <% else %>
-          <div class="like-box">
-              <i class="fa-solid fa-award logo">
-                <div class="highlight">
-                </div>
-              </i>
+          <div class="like-box" tabindex="0">
+              <div class="highlight">
+              </div>
+            <i class="fa-solid fa-award logo">
+            </i>
             <div class="number">
               <%= @mesure.cached_votes_up %>
             </div>
           </div>
         <% end %>
+      <% else %>
+        <div class="like-box" tabindex="0">
+            <div class="highlight">
+            </div>
+          <i class="fa-solid fa-award logo">
+          </i>
+          <div class="number">
+            <%= @mesure.cached_votes_up %>
+          </div>
+        </div>
       <% end %>
     <% end %>
-  <% else %>
-    <div class="like-box">
-      <i class="fa-solid fa-award logo">
-        <div class="highlight">
-        </div>
-      </i>
-      <div class="number">
-        <%= @mesure.cached_votes_up %>
-      </div>
-    </div>
   <% end %>
 </div>
-
-
-
 <%# <%= render partial: "mesures/mesure_upvote_link", locals: {mesure: @mesure } %>
 <%# A AFFICHER LA OU ON VEUT %>
+
+<script>
+  document.querySelector('.like-box').addEventListener('click', function(event) {
+    var likeBox = event.currentTarget;
+    likeBox.classList.toggle('clicked');
+  });
+</script>
