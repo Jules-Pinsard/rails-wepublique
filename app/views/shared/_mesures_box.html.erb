@@ -1,6 +1,6 @@
 <div class="blue-box <%= cl %> ">
   <div class="mb-2 pb-2">
-  <% mesures.each do |mesure| %>
+    <% mesures.each do |mesure| %>
       <%= link_to mesure, class: "item flex-column" do %>
         <div class="d-flex my-2">
           <h5 class="text-start ">
@@ -16,15 +16,19 @@
           <%= "blue" if ["Solidarité", "Sport", "Inclusion", "Jeunesse"].include?(mesure.category.name)%>
           <%= "green" if ["Culture", "Patrimoine", "Tourisme", "Mobilier"].include?(mesure.category.name)%>
           <%= "#F9F3CC" if mesure.category.name == "Autre"%>
-          ">Catégorie : <%= mesure.category.name %></p>
+          "><%= mesure.category.name %></p>
           <div class="d-flex align-items-center gap-1">
-          <% if mesure.status == "En cours de concertation" %>
-           <p>Statut: </p> <i class="fa-regular fa-comment-dots text-primary"></i><p>depuis <%= mesure.created_at.strftime("%e %b à %H:%M") %> </p>
-          <% elsif mesure.status == "Refusé" %>
-          <p>Statut: </p><i class="fa-solid fa-xmark text-danger"></i>
-          <% elsif mesure.status == "Validé" %>
-          <p>Statut: </p><i class="fa-regular fa-square-check text-success"></i>
-          <% end %>
+            <% if mesure.status == "En cours de concertation" %>
+              <p>Statut: </p>
+              <i class="fa-regular fa-comment-dots text-primary"></i>
+              <p>depuis <%= mesure.created_at.strftime("%e %b à %H:%M") %> </p>
+            <% elsif mesure.status == "Refusé" %>
+              <p>Statut: </p>
+              <i class="fa-solid fa-xmark text-danger"></i>
+            <% elsif mesure.status == "Validé" %>
+              <p>Statut: </p>
+              <i class="fa-regular fa-square-check text-success"></i>
+            <% end %>
           </div>
         </div>
         <div class="my-2">
@@ -32,12 +36,11 @@
         </div>
       <% end %>
     <% end %>
-
   </div>
   <div class="justify-content-between d-flex">
-  <div class="d-flex align-items-end mb-2 ms-2">
-    <%= link_to "Afficher plus", mesures_path(mesures: parameter), class: "btn btn-primary" %>
-  </div>
+    <div class="d-flex align-items-end mb-2 ms-2">
+      <%= link_to "Afficher plus", mesures_path(mesures: parameter), class: "btn btn-primary" %>
+    </div>
     <%= render partial: "shared/legende" %>
   </div>
 </div>

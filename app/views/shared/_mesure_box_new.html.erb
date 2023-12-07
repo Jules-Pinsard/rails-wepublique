@@ -1,17 +1,32 @@
-<div class="blue-box animate__animated animate__fadeIn">
-  <h3>Les mesure déjà proposées</h3>
-  <% mesures.each do |mesure| %>
-      <%= link_to mesure, class: "item align-items-center" do %>
-        <h5><%= mesure.title %></h5>
-        <div class="d-flex justify-content-end gap-1 align-items-center flex-nowrap">
-          <% if mesure.status == "En cours de concertation" %>
-            <i class="fa-regular fa-comment-dots text-primary"></i>
-            <p><%= mesure.created_at.strftime("%e/%m/%y") %> </p>
-          <% elsif mesure.status = "Validé"%>
-            <i class="fa-regular fa-square-check text-success"></i>
-          <% end %>
-          <%= render 'shared/mesure_likes', mesure: mesure %>
-        </div>
-      <% end %>
+<div class="animate__animated animate__fadeIn">
+<% mesures.each do |mesure| %>
+  <%= link_to mesure, class: "item flex-column" do %>
+    <div class="d-flex my-2">
+      <h5 class="text-start ">
+        <%= mesure.title.slice(0..55) %><%= "..." if mesure.title.length > 55 %>
+      </h5>
+      <div class="right-corner">
+        <%= render partial: "shared/mesure_likes", locals: {mesure: mesure } %>
+      </div>
+    </div>
+    <div class="d-flex my-0 justify-content-between me-2">
+      <div class="my-2 col-8">
+        <p class="fst-italic">"<%= mesure.content.slice(0..250) %><%= "..." if mesure.content.length > 250 %>"</p>
+      </div>
+      <div class="d-flex align-items-center gap-1 flex-nowrap">
+        <% if mesure.status == "En cours de concertation" %>
+          <p>Statut: </p>
+          <i class="fa-regular fa-comment-dots text-primary"></i>
+          <p class="flex-nowrap">depuis <%= mesure.created_at.strftime("%e %b à %H:%M") %> </p>
+        <% elsif mesure.status == "Refusé" %>
+          <p>Statut: </p>
+          <i class="fa-solid fa-xmark text-danger"></i>
+        <% elsif mesure.status == "Validé" %>
+          <p>Statut: </p>
+          <i class="fa-regular fa-square-check text-success"></i>
+        <% end %>
+      </div>
+    </div>
   <% end %>
+<% end %>
 </div>
