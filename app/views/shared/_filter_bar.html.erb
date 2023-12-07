@@ -9,7 +9,7 @@
 <div class="item">
   <p>Trier par :</p>
 </div>
-    <%= f.input :title, as: :select, collection: ["Nombre de soutien","Date de création","Satut"],label: false, include_blank: "                    ",selected: params.dig(:mesure,:title) %>
-    <%= f.input :content, as: :select, collection: ["Croissant","Décroissant"], label: false, include_blank: "             ",selected: params.dig(:mesure,:content)%>
+    <%= f.input :title, as: :select, collection: ["Nombre de soutien","Date de création","Satut"],label: false, include_blank: "                    ",selected: (params.dig(:mesure,:title) || "Date de création") %>
+    <%= f.input :content, as: :select, collection: ["Croissant","Décroissant"], label: false, include_blank: "             ",selected: (params.dig(:mesure,:content) || "Décroissant") %>
     <%= f.submit  %>
   <% end %>

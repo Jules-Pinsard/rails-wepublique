@@ -7,6 +7,7 @@ class MesuresController < ApplicationController
     allmesures = Mesure.includes(:user).includes(:category).all
     mesures = allmesures
     if params[:mesure].present?
+      params[:mesure].permit(:title, :content, :category_id,:user_id, :status)
       mesures = mesures.where(user: {mayor: true}) if params[:mesure][:user_id].present?
       category = Category.find(params[:mesure][:category_id]) if params[:mesure][:category_id].present?
       mesures = mesures.where(category: {name: category.name}) if params[:mesure][:category_id].present?
@@ -14,15 +15,16 @@ class MesuresController < ApplicationController
     end
 
     if params[:mesure].present?
-      sens = "asc"
-      sens = "desc" if params[:mesure][:content] == "Décroissant"
-      mesures = mesures.order(created_at: :"#{sens}") if params[:mesure][:title] == "Date de création"
-      mesures = mesures.order(cached_votes_up: :"#{sens}") if params[:mesure][:title] == "Nombre de soutien"
-      mesures = mesures.order(status: :"#{sens}") if params[:mesure][:title] == "Satut"
+      sens = "desc"
+      sens = "asc" if params[:mesure][:content] == "Croissant"
+      if params[:mesure][:title] == "Nombre de soutien"
+        mesures = mesures.order(cached_votes_up: :"#{sens}")
+      elsif params[:mesure][:title] == "Satut"
+        mesures = mesures.order(status: :"#{sens}")
+      else
+        mesures = mesures.order(created_at: :"#{sens}")
+      end
     end
-    mesures = allmesures.where(user: {mayor: true}, mesures: {status: ["En cours de concertation", "Validé"]}).order(created_at: :desc) if params[:mesures] == "maire"
-    mesures = allmesures.where(status: "En cours de concertation").order(created_at: :desc) if params[:mesures] == "citoyennes"
-    mesures = allmesures.where(status: "Validé").order(created_at: :desc) if params[:mesures] == "retenues"
 
     @pages = (1..(mesures.count / 10))
 
