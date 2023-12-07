@@ -79,14 +79,20 @@
 
   .page-link {
     margin-top: 4px;
-    text-decoration: underline;
+    text-decoration: none;
     background-color: $light-gray;
     margin-right: 4px;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     align-items: center;
+  }
+  .page-link.active {
+    background-color: $blue;
+    a{
+      color: $light-gray;
+    }
   }
   .right-corner {
     position: absolute;
