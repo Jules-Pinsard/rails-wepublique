@@ -35,13 +35,13 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade " id="mayor-tab-pane" role="tabpanel" aria-labelledby="mayor-tab" tabindex="0">
-        <%= render partial: "shared/mesures_box", locals: {mesures: @mayor_mesures, parameter: "maire", cl:"no-radius-top-left"} %>
+        <%= render partial: "shared/mesures_box", locals: {mesures: @mayor_mesures, parameter: {user_id: "Oui"}, cl:"no-radius-top-left"} %>
       </div>
       <div class="tab-pane fade show active" id="citizen-tab-pane" role="tabpanel" aria-labelledby="citizen-tab" tabindex="0">
-        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures, parameter: "citoyennes", cl:"no-radius-top-left"} %>
+        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures, parameter: {}, cl:"no-radius-top-left"} %>
       </div>
       <div class="tab-pane fade" id="retenues-tab-pane" role="tabpanel" aria-labelledby="retenues-tab" tabindex="0">
-        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures_retenues, parameter: "retenues",  cl:"no-radius-top-left"} %>
+        <%= render partial: "shared/mesures_box", locals: {mesures: @mesures_retenues, parameter: {status: "Validé"},  cl:"no-radius-top-left"} %>
       </div>
     </div>
   </div>

@@ -1,1 +1,15 @@
-<div class="item"></div>
+<div data-controller="filter-controller"></div>
+<div class="item d-flex">
+  <p>Filtre :</p>
+  <%= simple_form_for Mesure.new, url: mesures_path, method: :get do |f| %>
+    <%= f.input :user_id, as: :select, collection: ["Oui"],label: false, include_blank: "Créées par le maire ?",selected: params.dig(:mesure,:user_id) %>
+    <%= f.association :category, label: false, include_blank: "Choisissez une catégorie", selected: params.dig(:mesure,:category_id) %>
+    <%= f.input :status, as: :select, collection: ["En cours de concertation","Refusé","Validé"],label: false, include_blank: "Choisissez un statut", selected: params.dig(:mesure,:status)%>
+</div>
+<div class="item">
+  <p>Trier par :</p>
+</div>
+    <%= f.input :title, as: :select, collection: ["Nombre de soutien","Date de création","Satut"],label: false, include_blank: "                    ",selected: params.dig(:mesure,:title) %>
+    <%= f.input :content, as: :select, collection: ["Croissant","Décroissant"], label: false, include_blank: "             ",selected: params.dig(:mesure,:content)%>
+    <%= f.submit  %>
+  <% end %>
