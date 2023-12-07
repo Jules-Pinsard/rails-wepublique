@@ -8,7 +8,7 @@ export default class extends Controller {
 
   show() {
     if (this.inputTarget.value === "") {
-      this.containerTarget.innerHTML = ""
+      this.containerTarget.innerHTML = '<p class="fst-italic text-center mt-3"> Choisissez une catégorie pour afficher les mesures </p>'
     }
     console.log(this.inputTarget.value);
     fetch(`/category/?id=${this.inputTarget.value}`, {
@@ -18,7 +18,6 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         console.log(data);
-        this.containerTarget.classList.remove("d-none")
         this.containerTarget.innerHTML = data.inserted_item
       })
   }

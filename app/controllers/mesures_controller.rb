@@ -3,23 +3,37 @@ class MesuresController < ApplicationController
   before_action :find_mesure, only: %i[show update destroy upvote]
 
   def index
-    @page = params[:page].to_i if params[:page]
-    allmesures = Mesure.includes(:user).includes(:category).where(user: {mayor: true}, mesures: {status: ["En cours de concertation", "Validé"]}).order(created_at: :desc) if params[:mesures] == "maire"
-    allmesures = Mesure.includes(:user).includes(:category).all.where(status: "En cours de concertation").order(created_at: :desc) if params[:mesures] == "citoyennes"
-    allmesures = Mesure.includes(:user).includes(:category).where(status: "Validé").order(created_at: :desc) if params[:mesures] == "retenues"
-    @pages = (1..(allmesures.count / 10))
-    @title = "Les proposition de mesure citoyennes" if params[:mesures] == "citoyennes"
-    @title = "Les mesures retenues" if params[:mesures] == "retenues"
-    if current_user && current_user.mayor && params[:mesures] == "maire"
-      @title = "Vos propositions de mesure"
-    elsif params[:mesures] == "maire"
-      @title = "Les propositions de mesure du maire "
+    @page = params[:page].to_i if params[:page].present?
+    allmesures = Mesure.includes(:user).includes(:category).all
+    mesures = allmesures
+
+    if params[:mesure].present?
+      mesures = mesures.where(user: {mayor: true}) if params[:mesure][:mayor] == "1"
+      category = Category.find(params[:mesure][:category_id]) if params[:mesure][:category_id].present?
+      mesures = mesures.where(category: {name: category.name}) if params[:mesure][:category_id].present?
+      mesures = mesures.where(mesures: {status: params[:mesure][:status]}) if params[:mesure][:status].present?
     end
+
+    if params[:mesure].present?
+      sens = "desc"
+      sens = "asc" if params[:mesure][:order] == "Croissant"
+      if params[:mesure][:sort_by] == "Nombre de soutien"
+        mesures = mesures.order(cached_votes_up: :"#{sens}")
+      elsif params[:mesure][:sort_by] == "Satut"
+        mesures = mesures.order(status: :"#{sens}")
+      else
+        mesures = mesures.order(created_at: :"#{sens}")
+      end
+    end
+
+    @pages = (1..(mesures.count / 10))
+
     if @page.nil?
-      @mesures = allmesures[0..9]
+      @mesures = mesures[0..9]
     else
-      @mesures = allmesures[((@page - 1) * 10)..((@page * 10) - 1)]
+      @mesures = mesures[((@page - 1) * 10)..((@page * 10) - 1)]
     end
+
     @comments = Comment.includes(:mesure).includes(:user).all.order(created_at: :desc).last(10)
   end
 

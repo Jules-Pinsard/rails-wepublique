@@ -62,7 +62,7 @@ SimpleForm.setup do |config|
   end
 
   # vertical input for boolean
-  config.wrappers :vertical_boolean, tag: 'fieldset', class: 'mb-3' do |b|
+  config.wrappers :vertical_boolean, tag: 'fieldset' do |b|
     b.use :html5
     b.optional :readonly
     b.wrapper :form_check_wrapper, class: 'form-check' do |bb|
@@ -111,7 +111,7 @@ SimpleForm.setup do |config|
   end
 
   # vertical select input
-  config.wrappers :vertical_select, class: 'mb-3' do |b|
+  config.wrappers :vertical_select do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'form-label'
@@ -292,7 +292,7 @@ SimpleForm.setup do |config|
   # bootstrap custom forms
   #
   # custom input switch for boolean
-  config.wrappers :custom_boolean_switch, class: 'mb-3' do |b|
+  config.wrappers :custom_boolean_switch do |b|
     b.use :html5
     b.optional :readonly
     b.wrapper :form_check_wrapper, tag: 'div', class: 'form-check form-switch' do |bb|

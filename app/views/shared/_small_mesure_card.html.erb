@@ -1,6 +1,7 @@
 <div class="col-8">
   <div class="blue-box">
-    <h3><%= title %></h3>
+    <h3>Les mesures</h3>
+    <%= render partial: "shared/filter_bar" %>
     <% mesures.each do |mesure| %>
       <%= link_to mesure, class: "item flex-column" do %>
         <div class="d-flex mt-1">
@@ -12,7 +13,12 @@
           </div>
         </div>
         <div class="d-flex my-0 justify-content-between me-2">
-          <p>Catégorie : <%= mesure.category.name %></p>
+          <p class="
+          <%= "red" if ["Environnement","Santé","Finances"].include?(mesure.category.name)%>
+          <%= "blue" if ["Solidarité", "Sport", "Inclusion", "Jeunesse"].include?(mesure.category.name)%>
+          <%= "green" if ["Culture", "Patrimoine", "Tourisme", "Mobilier"].include?(mesure.category.name)%>
+          <%= "#F9F3CC" if mesure.category.name == "Autre"%>
+          "><%= mesure.category.name %></p>
           <div class="d-flex align-items-center gap-1">
           <% if mesure.status == "En cours de concertation" %>
            <p>Statut: </p> <i class="fa-regular fa-comment-dots text-primary"></i><p>depuis <%= mesure.created_at.strftime("%e %b à %H:%M") %> </p>
@@ -30,8 +36,11 @@
     <% end %>
     <div class="d-flex justify-content-end">
       <% pages.each do |n| %>
-        <div class="page-link">
-          <%= link_to "#{n}", mesures_path(mesures: params[:mesures],:page => n)%>
+        <div class="page-link
+        <% if n == params[:page].to_i || (!params[:page].present? && n == 1) %>
+        <%= " active" %>
+        <% end %>">
+          <%= link_to "#{n}", mesures_path(mesure: {mayor: params.dig(:mesure,:mayor), category_id: params.dig(:mesure,:category_id), sort_by: params.dig(:mesure,:sort_by), order: params.dig(:mesure,:order)},page: n)%>
         </div>
       <% end %>
     </div>

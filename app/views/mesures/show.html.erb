@@ -9,7 +9,5 @@
       <h3>Cette mesure vise à améliorer la catégorie <strong><%=@mesure.category.name%></strong> au sein de la commune. Soutenez cette initiative si vous souhaitez qu'elle soit étudiée.</h3>
     </div>
   </div>
-
-    <%= render partial: "shared/comments_area", locals: {mesure: @mesure, comments: @comments, comment: @comment } %>
-
+  <%= render partial: "shared/comments_area", locals: {mesure: @mesure, comments: @comments, comment: @comment } %>
 </div>

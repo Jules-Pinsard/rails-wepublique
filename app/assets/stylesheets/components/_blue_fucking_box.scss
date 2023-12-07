@@ -78,14 +78,21 @@
   }
 
   .page-link {
-    text-decoration: underline;
+    margin-top: 4px;
+    text-decoration: none;
     background-color: $light-gray;
     margin-right: 4px;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     align-items: center;
+  }
+  .page-link.active {
+    background-color: $blue;
+    a{
+      color: $light-gray;
+    }
   }
   .right-corner {
     position: absolute;
@@ -138,9 +145,8 @@ a.mapboxgl-ctrl-logo {
   box-shadow: 1px 1px 5px $light-gray;
 .position-bottom-map {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
+  top: 12px;
+  right: 24px;
   display: flex;
 
   .btn {
@@ -149,7 +155,7 @@ a.mapboxgl-ctrl-logo {
 }
 
 }
-.blue {
+.blue-text {
   font-family: 'Poppins', sans-serif;
   color: $blue;
   h3 {
