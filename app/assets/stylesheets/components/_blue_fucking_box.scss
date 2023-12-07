@@ -141,11 +141,13 @@ a.mapboxgl-ctrl-logo {
 }
 
 .box-shadow {
+  font-family: 'Raleway', sans-serif;
   position: relative;
-  box-shadow: 1px 1px 5px $light-gray;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.15) ;
+  border-radius: 4px;
 .position-bottom-map {
   position: absolute;
-  top: 12px;
+  top: 52px;
   right: 24px;
   display: flex;
 
@@ -153,7 +155,13 @@ a.mapboxgl-ctrl-logo {
     font-size: 12px;
   }
 }
-
+  h3 {
+    margin-top: 8px;
+    color: $blue;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+  }
 }
 .blue-text {
   font-family: 'Poppins', sans-serif;
