@@ -165,3 +165,25 @@ a.mapboxgl-ctrl-logo {
 .no-radius-top-left {
   border-top-left-radius: 0 !important;
 }
+
+.white-box {
+  background-color: white;
+  color: $blue;
+  border-radius: 4px;
+  padding: 12px;
+  position: relative;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.15 ) ;
+  z-index: 0;
+
+  p {
+    font-size: 12px;
+    font-weight: lighter;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+}
