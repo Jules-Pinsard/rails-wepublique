@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   margin-right: auto;
+  flex-wrap: wrap;
 
   p {
     display: flex;
@@ -10,10 +11,12 @@
     margin-right: auto;
   }
 
-  p
-
   i {
     margin-right: 15px;
     text-shadow: 1px 1px 1px black;
   }
+}
+
+.wrapped {
+  flex-wrap: wrap;
 }
