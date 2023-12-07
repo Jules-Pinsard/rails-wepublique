@@ -32,7 +32,7 @@
     <div class="d-flex justify-content-end">
       <% pages.each do |n| %>
         <div class="page-link">
-          <%= link_to "#{n}", mesures_path(mesure: params[:mesure],page: n)%>
+          <%= link_to "#{n}", mesures_path(mesure: {mayor: params[:mesure][:mayor], category_id: params[:mesure][:category_id], sort_by: params[:mesure][:sort_by], order: params[:mesure][:order]},page: n)%>
         </div>
       <% end %>
     </div>

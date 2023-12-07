@@ -3,12 +3,12 @@ class MesuresController < ApplicationController
   before_action :find_mesure, only: %i[show update destroy upvote]
 
   def index
-    @page = params[:page].to_i if params[:page]
+    @page = params[:page].to_i if params[:page].present?
     allmesures = Mesure.includes(:user).includes(:category).all
     mesures = allmesures
+
     if params[:mesure].present?
-      params[:mesure].permit(:title, :content, :category_id,:user_id, :status)
-      mesures = mesures.where(user: {mayor: true}) if params[:mesure][:user_id].present?
+      mesures = mesures.where(user: {mayor: true}) if params[:mesure][:mayor] == "1"
       category = Category.find(params[:mesure][:category_id]) if params[:mesure][:category_id].present?
       mesures = mesures.where(category: {name: category.name}) if params[:mesure][:category_id].present?
       mesures = mesures.where(mesures: {status: params[:mesure][:status]}) if params[:mesure][:status].present?
@@ -16,10 +16,10 @@ class MesuresController < ApplicationController
 
     if params[:mesure].present?
       sens = "desc"
-      sens = "asc" if params[:mesure][:content] == "Croissant"
-      if params[:mesure][:title] == "Nombre de soutien"
+      sens = "asc" if params[:mesure][:order] == "Croissant"
+      if params[:mesure][:sort_by] == "Nombre de soutien"
         mesures = mesures.order(cached_votes_up: :"#{sens}")
-      elsif params[:mesure][:title] == "Satut"
+      elsif params[:mesure][:sort_by] == "Satut"
         mesures = mesures.order(status: :"#{sens}")
       else
         mesures = mesures.order(created_at: :"#{sens}")
