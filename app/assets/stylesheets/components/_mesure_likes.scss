@@ -1,50 +1,57 @@
-.like-box {
-  width: 75px;
-  height: 60px;
+.like {
+  justify-content: space-between;
+  margin: 5% 3%;
+}
+.top {
+  align-items: flex-start;
+}
+.line-1 {
+  height: 1px;
+  background: $blue;
+  opacity: 0.5;
+  width: 95%;
   display: flex;
-  align-items: center;
-  margin: 2px;
-  position: relative;
-  transition: 0.4s;
-  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-  cursor: pointer;
+  justify-content: center;
+}
+.category-status {
+  margin: 1%;
+}
+
+.mid-item {
+  margin: 10px;
+}
+
+.description {
+  margin: 20px 0px 25px;
+}
+
+.boutons {
+  margin: 10px 0px 0px;
+  width: 40%;
+  display: flex;
+  justify-content: end;
+  width: 100%;
+}
+
+.small-bouton {
+  font-size: 14px !important;
+  padding: 1px 6px 1px;
+}
+
+.like-box {
+  display: flex;
+  margin-left: 2px;
 }
 .number {
   font-size: 15px;
   font-style: italic;
-  position: absolute;
-  right: 5px;
-  bottom: -5px;
 }
 .logo {
-  font-size: 56px;
-  margin: 2px;
-  position: relative;
+  font-size: 20px;
   color: $red;
   transition: color 0.4s;
+  margin-left: 4px;
 }
-
-.like-box.clicked .logo {
-  color: blue;
-}
-
-.highlight {
-  display: inline-block;
-  position: absolute;
-  bottom: -2px;
-  left: 0px;
-  z-index: -1;
-  background-color: #F2BB05;
-  height: 25%;
-  width: 0%;
-  transition: width 0.5s;
-  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.like-box:hover .highlight {
-  width: 100%;
-}
-
 .small-like-box {
   display: flex;
   align-items: center;
@@ -53,12 +60,13 @@
   .small-number {
     font-size: 14px;
     font-weight: bold;
-    width: 25px;
+    width: 21px;
     text-align: center;
   }
 
   .small-logo {
-    font-size: 20px;
+    font-size: 18px;
     margin: 4px;
+    text-decoration: none;
   }
 }

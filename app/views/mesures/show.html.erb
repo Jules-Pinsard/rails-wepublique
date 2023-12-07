@@ -1,7 +1,13 @@
 <%= link_to "Retour", request.referer, class: "btn btn-primary m-0 mt-3" %>
 <div class="row">
-  <div class="col-4 mb-3">
-    <%= render partial: "mesures/mesure_show_card", locals: {mesure: @mesure } %>
+  <div class="col top">
+    <div class="d-flex col mb-1">
+      <%= render partial: "mesures/mesure_show_card", locals: {mesure: @mesure } %>
+    </div>
+    <div class="blue d-flex align-items-center gap-2 mt-4">
+      <%= image_tag "#{@mesure.category.name}.svg" %>
+      <h3>Cette mesure vise à améliorer la catégorie <strong><%=@mesure.category.name%></strong> au sein de la commune. Soutenez cette initiative si vous souhaitez qu'elle soit étudiée.</h3>
+    </div>
   </div>
-    <%= render partial: "shared/comments_area", locals: {mesure: @mesure, comments: @comments, comment: @comment } %>
+  <%= render partial: "shared/comments_area", locals: {mesure: @mesure, comments: @comments, comment: @comment } %>
 </div>
