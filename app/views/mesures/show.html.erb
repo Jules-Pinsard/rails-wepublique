@@ -1,9 +1,7 @@
 <%= link_to "Retour", request.referer, class: "btn btn-primary m-0 mt-3" %>
 <div class="row">
-  <div class="d-flex col-5 mb-1">
+  <div class="col-4 mb-3">
     <%= render partial: "mesures/mesure_show_card", locals: {mesure: @mesure } %>
   </div>
-  <div class="col-10">
     <%= render partial: "shared/comments_area", locals: {mesure: @mesure, comments: @comments, comment: @comment } %>
-  </div>
 </div>
