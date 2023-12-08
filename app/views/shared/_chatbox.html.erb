@@ -1,11 +1,11 @@
 <div data-controller="chatroom-subscription"
       data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>">
   <button class="chat-button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-action="click->chatroom-subscription#resetNotification">
-    <div style="postion:relative;">
-    <i class="fa-regular fa-comments"></i>
-    <div class="red-circle" hidden= true data-chatroom-subscription-target="icon">
-    <p></p>
-    </div>
+    <div style="position:relative;">
+      <i class="fa-regular fa-comments"></i>
+      <div class="red-circle" hidden=true data-chatroom-subscription-target="icon">
+        <p></p>
+      </div>
     </div>
   </button>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-chatroom-subscription-target="view">
@@ -29,4 +29,15 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+
+      myModal._element.addEventListener('shown.bs.modal', function () {
+        var messagesContainer = document.querySelector('.messages');
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      });
+    });
+  </script>
 </div>
