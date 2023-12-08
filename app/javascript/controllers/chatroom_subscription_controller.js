@@ -17,7 +17,6 @@ export default class extends Controller {
     this.iconTarget.children[0].innerText = parseInt(this.iconTarget.children[0].innerText) + 1
     this.messagesTarget.insertAdjacentHTML("beforeend", data.html)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-
     if (data.user_id !== this.userIdValue) {
       fetch(`/users/${this.userIdValue}/notifications/`, {
         method: "POST"
@@ -34,7 +33,7 @@ export default class extends Controller {
   }
 
   resetNotification() {
-    this.iconTarget.children[0].innerText = ""
+    this.iconTarget.children[0].innerText = 0
     this.iconTarget.classList.add("d-none")
     fetch(`/users/${this.userIdValue}/notifications/destroy`, {
       method: "DELETE"
