@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   def prepare_chatbox
     @chat_general = Chatroom.includes(messages: :user).first
     @message = Message.new
-    @notification = Notification.where(user_id: current_user.id)
+    @notification = Notification.where(user_id: current_user.id) if user_signed_in?
   end
 end

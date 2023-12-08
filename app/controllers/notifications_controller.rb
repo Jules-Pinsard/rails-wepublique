@@ -8,4 +8,4 @@ class NotificationsController < ApplicationController
   def destroy
     Notification.where(user_id: current_user.id).destroy_all
   end
-end
+end 
