@@ -14,9 +14,9 @@ class PagesController < ApplicationController
         info_window_html: render_to_string(partial: "shared/observation_window", locals: {observation: observation})
       }
     end
-    @mayor_mesures = Mesure.joins(:user).where("user.mayor": true).order(created_at: :desc).order(created_at: :desc).first(4)
-    @mesures = Mesure.where(status: "En cours de concertation").order(created_at: :desc).first(4)
-    @mesures_retenues = Mesure.where(status: "Validé").order(created_at: :desc).first(4)
+    @mayor_mesures = Mesure.includes(:category).includes(:user).where("user.mayor": true).order(created_at: :desc).first(4)
+    @mesures = Mesure.includes(:category).includes(:user).where(status: "En cours de concertation").order(created_at: :desc).first(4)
+    @mesures_retenues = Mesure.includes(:category).includes(:user).where(status: "Validé").order(created_at: :desc).first(4)
   end
 
   def category
