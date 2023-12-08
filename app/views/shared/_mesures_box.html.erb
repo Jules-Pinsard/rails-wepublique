@@ -15,7 +15,7 @@
           <%= "red" if ["Environnement","Santé","Finances"].include?(mesure.category.name)%>
           <%= "blue" if ["Solidarité", "Sport", "Inclusion", "Jeunesse"].include?(mesure.category.name)%>
           <%= "green" if ["Culture", "Patrimoine", "Tourisme", "Mobilier"].include?(mesure.category.name)%>
-          <%= "#F9F3CC" if mesure.category.name == "Autre"%>
+          <%= "yellow" if mesure.category.name == "Autre"%>
           "><%= mesure.category.name %></p>
           <div class="d-flex align-items-center gap-1">
             <% if mesure.status == "En cours de concertation" %>

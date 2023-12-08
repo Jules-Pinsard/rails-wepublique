@@ -1,6 +1,6 @@
 <div class="col-md-5 box-shadow p-0">
-<h3>Observations Citoyennes</h3>
-    <div style="width: 100%; height: 100%; flex: grow;"
+<h3 class="titre-map">Observations Citoyennes</h3>
+    <div style="width: 100%; flex: grow;"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
