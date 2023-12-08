@@ -13,15 +13,8 @@ export default class extends Controller {
   }
 
   #insertMessageAndScrollDown(data) {
-    if (this.viewTarget.ariaHidden) {
-      if (this.iconTarget.hidden) {
-        this.iconTarget.children[0].innerText = 1
-        this.iconTarget.classList.remove("d-none")
-      } else {
-        this.iconTarget.children[0].innerText = parseInt(this.iconTarget.children[0].innerText) + 1
-      }
-    }
-
+    this.iconTarget.classList.remove("d-none")
+    this.iconTarget.children[0].innerText = parseInt(this.iconTarget.children[0].innerText) + 1
     this.messagesTarget.insertAdjacentHTML("beforeend", data.html)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
 
