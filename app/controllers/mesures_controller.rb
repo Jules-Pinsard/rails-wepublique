@@ -47,6 +47,20 @@ class MesuresController < ApplicationController
     @mesure = Mesure.new
   end
 
+  def update
+    if current_user.mayor
+      @mesure.status =  params[:m]
+      @mesure.save
+      redirect_to mesure_path(@mesure), success: "La mesure a bien été #{params[:m].downcase}e"
+    else
+      redirect_to mesure_path(@mesure), status: :unauthorized
+    end
+  end
+
+  def destroy
+    @mesure.destroy
+  end
+
   def upvote
     if current_user.voted_up_on? @mesure
       @mesure.unvote_by current_user
@@ -68,20 +82,6 @@ class MesuresController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def update
-    if current_user.mayor
-      @mesure.status =  params[:m]
-      @mesure.save
-      redirect_to mesure_path(@mesure), success: "La mesure a bien été #{params[:m].downcase}e"
-    else
-      redirect_to mesure_path(@mesure), status: :unauthorized
-    end
-  end
-
-  def destroy
-    @mesure.destroy
   end
 
   private

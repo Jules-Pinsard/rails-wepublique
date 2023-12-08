@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
-  static values = { chatroomId: Number }
+  static values = { chatroomId: Number, userId: Number }
   static targets = ["messages", "icon", "view"]
 
   connect() {
@@ -21,8 +21,15 @@ export default class extends Controller {
         this.iconTarget.children[0].innerText = parseInt(this.iconTarget.children[0].innerText) + 1
       }
     }
-    this.messagesTarget.insertAdjacentHTML("beforeend", data)
+
+    this.messagesTarget.insertAdjacentHTML("beforeend", data.html)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+
+    if (data.user_id !== this.userIdValue) {
+      fetch(`/users/${this.userIdValue}/notifications/`, {
+        method: "POST"
+      })
+    }
   }
 
   resetForm(event) {
@@ -36,5 +43,8 @@ export default class extends Controller {
   resetNotification() {
     this.iconTarget.children[0].innerText = ""
     this.iconTarget.hidden = "true"
+    fetch(`/users/${this.userIdValue}/notifications/destroy`, {
+      method: "DELETE"
+    })
   }
 }

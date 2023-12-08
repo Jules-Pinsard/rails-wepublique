@@ -40,6 +40,11 @@ Rails.application.routes.draw do
   end
   resources :observations, only: %i[index new create]
 
+  resources :users, only: [] do
+    resources :notifications, only: %i[create]
+  end
+  delete "/users/:user_id/notifications/destroy" => "notifications#destroy"
+
   get '/404', to: 'errors#not_found'
   get '/500', to: 'errors#internal_server'
   get '/422', to: 'errors#unprocessable'

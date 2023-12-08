@@ -1,10 +1,13 @@
 <div data-controller="chatroom-subscription"
-      data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>">
+      data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>"
+      data-chatroom-subscription-user-id-value="<%= current_user.id %>">
   <button class="chat-button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-action="click->chatroom-subscription#resetNotification">
     <div style="position:relative;">
       <i class="fa-regular fa-comments"></i>
-      <div class="red-circle" hidden=true data-chatroom-subscription-target="icon">
-        <p></p>
+      <div class="red-circle
+      <%= "d-none" if notification.length == 0%>
+      " data-chatroom-subscription-target="icon">
+        <p><%= notification.length %></p>
       </div>
     </div>
   </button>
