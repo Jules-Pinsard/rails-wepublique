@@ -1,9 +1,16 @@
-<h5><%= observation.title %></h5>
-<div class="row gap-4">
-<p class="col 6">Reporté par <%= observation.user.first_name %> <%= observation.user.last_name %></p>
-<p class="col 6"> le <%= observation.created_at.strftime("%e %b %Y") %></p>
+<div class="container font-raleway">
+<h5 class="text-center"><%= observation.title %></h5>
+<div class="d-flex justify-content-between">
+<p class="mb-2"><%= observation.user.first_name %> <%= observation.user.last_name %></p>
+<p class="mb-2"> le <%= observation.created_at.strftime("%e %b %Y") %></p>
 </div>
-<div class="row gap-4">
-<p class="col 6"> Catégorie: <%= observation.category.name %></p>
+<div class="d-flex gap-4  border-bottom border-dark-subtle justify-content-end">
+<p class="mb-2
+          <%= "red" if ["Environnement","Santé","Finances"].include?(observation.category.name)%>
+          <%= "blue" if ["Solidarité", "Sport", "Inclusion", "Jeunesse"].include?(observation.category.name)%>
+          <%= "green" if ["Culture", "Patrimoine", "Tourisme", "Mobilier"].include?(observation.category.name)%>
+          <%= "yellow" if observation.category.name == "Autre"%>
+          "><%= observation.category.name %></p>
 </div>
-<p> <%= observation.description %></p>
+<p class="fst-italic mt-1"> <%= observation.description %></p>
+</div>
