@@ -16,7 +16,7 @@ export default class extends Controller {
     if (this.viewTarget.ariaHidden) {
       if (this.iconTarget.hidden) {
         this.iconTarget.children[0].innerText = 1
-        this.iconTarget.hidden = false
+        this.iconTarget.classList.remove("d-none")
       } else {
         this.iconTarget.children[0].innerText = parseInt(this.iconTarget.children[0].innerText) + 1
       }
@@ -42,7 +42,7 @@ export default class extends Controller {
 
   resetNotification() {
     this.iconTarget.children[0].innerText = ""
-    this.iconTarget.hidden = "true"
+    this.iconTarget.classList.add("d-none")
     fetch(`/users/${this.userIdValue}/notifications/destroy`, {
       method: "DELETE"
     })
