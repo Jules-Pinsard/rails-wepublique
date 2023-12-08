@@ -1,7 +1,7 @@
 <div data-controller="filter">
 <div class="item d-flex justify-content-evenly align-items-center">
   <p>Filter par :</p>
-  <%= simple_form_for Mesure.new, url: mesures_path, method: :get do |f| %>
+  <%= simple_form_for Mesure.new, url: mesures_path, method: :get, html: {data: {turbo: false}} do |f| %>
   <div class="d-flex align-items-center gap-2 row-gap-0">
     <%= f.association :category, label: false, include_blank: "Catégorie", selected: params.dig(:mesure,:category_id), input_html: {'data-action': "input->filter#click"} %>
     <%= f.input :status, as: :select, collection: ["En cours de concertation","Refusé","Validé"],label: false, include_blank: "Statut", selected: params.dig(:mesure,:status), input_html: {'data-action': "input->filter#click"}%>
