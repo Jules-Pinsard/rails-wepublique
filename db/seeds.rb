@@ -162,21 +162,21 @@ mesures = [
   },
   {
     title: "Création d'un parc écologique",
-    content: "Création d'un parc écologique avec des sentiers pédestres, des zones de biodiversité et des aires de pique-nique pour promouvoir la préservation de l'environnement.",
+    content: "Création d'un parc écologique à l'embouchure de la Marne avec des sentiers pédestres, des zones de biodiversité et des aires de pique-nique pour promouvoir la préservation de l'environnement.",
     category: Category.find_by(name: "Environnement"),
     status: statuses.sample,
     user: real_users.sample
   },
   {
     title: "Amélioration des transports en commun",
-    content: "Proposition visant à améliorer les transports en commun pour réduire le trafic routier et offrir des options de déplacement plus durables.",
+    content: "Proposition visant à améliorer les transports en commun aux alentours de la base aérienne pour réduire le trafic routier et offrir des options de déplacement plus durables.",
     category: Category.find_by(name: "Inclusion"),
     status: statuses.sample,
     user: real_users.sample
   },
   {
     title: "Projet de rénovation du centre sportif",
-    content: "Rénovation complète du centre sportif local, y compris la modernisation des installations, la création de nouveaux terrains de jeux et l'ajout d'un espace fitness.",
+    content: "Rénovation complète du centre sportif du FC Dizier, y compris la modernisation des installations, la création de nouveaux terrains de jeux et l'ajout d'un espace fitness.",
     category: Category.find_by(name: "Sport"),
     status: statuses.sample,
     user: real_users.sample
@@ -210,8 +210,8 @@ mesures = [
     user: real_users.sample
   },
   {
-    title: "Projet de rénovation du marché local",
-    content: "Rénovation du marché local pour créer un espace moderne, accueillant et adapté aux besoins des producteurs locaux et des habitants.",
+    title: "Projet de rénovation du marché vert",
+    content: "Rénovation du marché des Halles pour créer un espace moderne, accueillant et adapté aux besoins des producteurs locaux et des habitants.",
     category: Category.find_by(name: "Autre"),
     status: statuses.sample,
     user: real_users.sample
@@ -225,7 +225,7 @@ mesures = [
   },
   {
     title: "Création d'un festival culturel annuel",
-    content: "Organisation d'un festival culturel annuel mettant en avant l'art local, la musique, la cuisine et les traditions pour renforcer le sentiment communautaire.",
+    content: "Organisation d'un festival culturel chaque juillet mettant en avant l'art local, la musique, la cuisine et les traditions pour renforcer le sentiment communautaire.",
     category: Category.find_by(name: "Culture"),
     status: statuses.sample,
     user: real_users.sample
@@ -253,7 +253,7 @@ mesures = [
   },
   {
     title: "Création d'une aire de jeux pour enfants",
-    content: "Aménagement d'une aire de jeux moderne pour les enfants, avec des équipements adaptés à tous les âges et des zones ombragées.",
+    content: "Aménagement d'une aire de jeux moderne pour les enfants aux abords du parc Valéry, avec des équipements adaptés à tous les âges et des zones ombragées.",
     category: Category.find_by(name: "Jeunesse"),
     status: statuses.sample,
     user: real_users.sample
@@ -288,7 +288,7 @@ mesures = [
   },
   {
     title: "Initiative zéro déchet",
-    content: "Mise en place d'une initiative visant à réduire les déchets dans le quartier en encourageant le recyclage et l'utilisation de produits durables.",
+    content: "Mise en place de sorties de ramassage de déchets visant à réduire les détritus dans le quartier et sensibiliser sur le recyclage et l'utilisation de produits durables.",
     category: Category.find_by(name: "Environnement"),
     status: statuses.sample,
     user: real_users.sample
@@ -309,13 +309,13 @@ mesures = [
   },
   {
     title: "Initiative de jardins partagés",
-    content: "Création de jardins partagés où les habitants peuvent cultiver des fruits et légumes ensemble, favorisant ainsi la communauté et l'alimentation locale.",
+    content: "Création de jardins partagés dans le parc du Jard où les habitants peuvent cultiver des fruits et légumes ensemble, favorisant ainsi la communauté et l'alimentation locale.",
     category: Category.find_by(name: "Solidarité"),
     status: statuses.sample,
     user: real_users.sample
   },
   {
-    title: "Programme de mentorat pour jeunes entrepreneurs",
+    title: "Programme de mentorat pour porteurs de projet",
     content: "Mise en place d'un programme de mentorat visant à soutenir les jeunes entrepreneurs locaux en les mettant en relation avec des mentors expérimentés.",
     category: Category.find_by(name: "Jeunesse"),
     status: statuses.sample,
@@ -336,15 +336,15 @@ mesures = [
     user: real_users.sample
   },
   {
-    title: "Réhabilitation d'un bâtiment historique",
-    content: "Restauration d'un bâtiment historique pour en faire un centre culturel, préservant ainsi le patrimoine local.",
+    title: "Réhabilitation de l'ancienne mairie",
+    content: "Restauration du bâtiment de l'ancienne mairie pour en faire un centre culturel et artistique, préservant ainsi le patrimoine local.",
     category: Category.find_by(name: "Patrimoine"),
     status: statuses.sample,
     user: real_users.sample
   },
   {
-    title: "Réhabilitation d'un espace public abandonné",
-    content: "Transformation d'un espace public abandonné en un lieu accueillant avec des bancs, des jardins communautaires et des installations artistiques.",
+    title: "Réhabilitation des jardins du Vizier",
+    content: "Transformation de l'espace abandonné en un lieu accueillant avec des bancs, des jardins communautaires et des installations artistiques.",
     category: Category.find_by(name: "Mobilier"),
     status: statuses.sample,
     user: real_users.sample
