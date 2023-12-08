@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_04_141410) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_08_143800) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,6 +98,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_141410) do
     t.float "cached_weighted_average", default: 0.0
     t.index ["category_id"], name: "index_mesures_on_category_id"
     t.index ["user_id"], name: "index_mesures_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "observations", force: :cascade do |t|

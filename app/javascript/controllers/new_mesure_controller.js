@@ -10,7 +10,6 @@ export default class extends Controller {
     if (this.inputTarget.value === "") {
       this.containerTarget.innerHTML = '<p class="fst-italic text-center mt-3"> Choisissez une catégorie pour afficher les mesures </p>'
     }
-    console.log(this.inputTarget.value);
     fetch(`/category/?id=${this.inputTarget.value}`, {
       method: "GET",
       headers: { "Accept": "application/json" }
