@@ -13,11 +13,11 @@ export default class extends Controller {
   }
 
   #insertMessageAndScrollDown(data) {
-    this.iconTarget.classList.remove("d-none")
-    this.iconTarget.children[0].innerText = parseInt(this.iconTarget.children[0].innerText) + 1
     this.messagesTarget.insertAdjacentHTML("beforeend", data.html)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
     if (data.user_id !== this.userIdValue) {
+      this.iconTarget.classList.remove("d-none")
+      this.iconTarget.children[0].innerText = parseInt(this.iconTarget.children[0].innerText) + 1
       fetch(`/users/${this.userIdValue}/notifications/`, {
         method: "POST"
       })
