@@ -3,29 +3,34 @@
     <div class="d-flex align-items-center">
       <%= link_to "/", class: "navbar-brand d-flex align-items-center" do %>
         <%= image_tag "logo.png" %>
-      <h3 class="m-0 ms-2">We</h3><h3 class="m-0" id="public">public</h3>
+        <h3 class="m-0 ms-2">We</h3>
+        <h3 class="m-0" id="public">public</h3>
       <% end %>
     </div>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item d-flex me-1">
-            <%= link_to "Proposer une mesure", new_mesure_path, class: "nav-link" %>
-            <%= link_to "Deconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-          </li>
+          <div class="nav-item mx-2 d-flex align-items-center">
+          Bonjour <%= current_user.first_name %>
+          </div>
           <li class="nav-item dropdown">
+            <%= image_tag "default-avatar.webp", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Voir les mesures", mesures_path, class: "dropdown-item" %>
+              <%= link_to "Proposer une mesure", new_mesure_path, class: "dropdown-item" %>
+            <%= link_to "Deconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+          </li>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
-          <li class="d-flex align-items-center"><h5 class="m-0">|</h5></li>
+          <li class="d-flex align-items-center">
+            <h5 class="m-0">|</h5>
+          </li>
           <li class="nav-item">
             <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
           </li>

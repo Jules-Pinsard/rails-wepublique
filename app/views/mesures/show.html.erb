@@ -6,7 +6,7 @@
     </div>
     <div class="d-flex align-items-center blue-text gap-2 mt-4">
       <%= image_tag "#{@mesure.category.name}.svg" %>
-      <h3>Cette mesure vise à améliorer la catégorie <strong><%=@mesure.category.name%></strong> au sein de la commune. Soutenez cette initiative si vous souhaitez qu'elle soit étudiée.</h3>
+      <h5>Cette mesure vise à améliorer la catégorie <strong><%=@mesure.category.name%></strong> au sein de la commune. Soutenez cette initiative si vous souhaitez qu'elle soit étudiée.</h5>
     </div>
   </div>
   <%= render partial: "shared/comments_area", locals: {mesure: @mesure, comments: @comments, comment: @comment } %>
