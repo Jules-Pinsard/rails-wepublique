@@ -18,11 +18,11 @@ class MesuresController < ApplicationController
       sens = "desc"
       sens = "asc" if params[:mesure][:order] == "Croissant"
       if params[:mesure][:sort_by] == "Nombre de soutien"
-        mesures = mesures.order(cached_votes_up: :"#{sens}")
-      elsif params[:mesure][:sort_by] == "Satut"
-        mesures = mesures.order(status: :"#{sens}")
+        mesures = mesures.order(cached_votes_up: sens.to_sym)
+      elsif params[:mesure][:sort_by] == "Statut"
+        mesures = mesures.order(status: sens.to_sym)
       else
-        mesures = mesures.order(created_at: :"#{sens}")
+        mesures = mesures.order(created_at: sens.to_sym)
       end
     end
 
