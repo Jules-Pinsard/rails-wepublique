@@ -1,17 +1,18 @@
 <div data-controller="filter">
-<div class="item d-flex justify-content-evenly align-items-center">
-  <p>Filter par :</p>
-  <%= simple_form_for Mesure.new, url: mesures_path, html: { data: { "filter-target": "form" } }, method: :get do |f| %>
-  <div class="d-flex align-items-center gap-2 row-gap-0">
-    <%= f.association :category, label: false, include_blank: "Catégorie", selected: params.dig(:mesure,:category_id), input_html: {'data-action': "input->filter#click"} %>
-    <%= f.input :status, as: :select, collection: ["En cours de concertation","Refusé","Validé"],label: false, include_blank: "Statut", selected: params.dig(:mesure,:status), input_html: {'data-action': "input->filter#click"}%>
-    <%= f.input :mayor, as: :boolean ,label: 'Mesures du maire',legend: false,selected: params.dig(:mesure,:user_id), class: "m-0", input_html: { checked: (params.dig(:mesure,:mayor) == "1"), 'data-action': "input->filter#click" } %>
-  </div>
-</div>
-<div class="item align-items-center justify-content-end gap-2">
-  <p>Trier par :</p>
-    <%= f.input :sort_by, as: :select, collection: ["Nombre de soutien","Date de création","Statut"],label: false,selected: (params.dig(:mesure,:sort_by) || "Date de création"), input_html: {'data-action': "input->filter#click"} %>
-    <%= f.input :order, as: :select, collection: ["Croissant","Décroissant"], label: false,selected: (params.dig(:mesure,:order) || "Décroissant"), input_html: {'data-action': "input->filter#click"} %>
-</div>
+  <%= simple_form_for Mesure.new, url: mesures_path, method: :get do |f| %>
+    <div class="item d-flex justify-content-evenly align-items-center">
+      <p>Filter par :</p>
+      <div class="d-flex align-items-center gap-2 row-gap-0">
+        <%= f.association :category, label: false, include_blank: "Catégorie", selected: params.dig(:mesure,:category_id), input_html: {'data-action': "input->filter#click"} %>
+        <%= f.input :status, as: :select, collection: ["En cours de concertation","Refusé","Validé"],label: false, include_blank: "Statut", selected: params.dig(:mesure,:status), input_html: {'data-action': "input->filter#click"}%>
+        <%= f.input :mayor, as: :boolean ,label: 'Mesures du maire',legend: false,selected: params.dig(:mesure,:user_id), class: "m-0", input_html: { checked: (params.dig(:mesure,:mayor) == "1"), 'data-action': "input->filter#click" } %>
+      </div>
+    </div>
+    <div class="item align-items-center justify-content-end gap-2">
+      <p>Trier par :</p>
+      <%= f.input :sort_by, as: :select, collection: ["Nombre de soutien","Date de création","Statut"],label: false,selected: (params.dig(:mesure,:sort_by) || "Date de création"), input_html: {'data-action': "input->filter#click"} %>
+      <%= f.input :order, as: :select, collection: ["Croissant","Décroissant"], label: false,selected: (params.dig(:mesure,:order) || "Décroissant"), input_html: {'data-action': "input->filter#click"} %>
+      <%= f.button :submit, class: "d-none", 'data-filter-target': 'button' %>
+    </div>
   <% end %>
 </div>
